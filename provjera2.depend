@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1638818336 source:c:\users\arija\desktop\provjera2\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+
+1645897358 source:c:\users\arija\desktop\wp\arijan_karic_provjera2\main.cpp
+	<tchar.h>
+	<vector>
+	<windows.h>
+	<iostream>
+	<math.h>
+	<algorithm>
+
+1656861525 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+	<math.h>
+	"GenerateObjects.hpp"
+	"praviUpdate.hpp"
+	"DrawObjekat.hpp"
+
+1656861654 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\generateobjects.cpp
+	"GenerateObjects.hpp"
+	<iostream>
+
+1656851699 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\generateobjects.hpp
+	<vector>
+	"Object.hpp"
+
+1656856888 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
+	<windows.h>
+	"Global.hpp"
+
+1656851691 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\global.hpp
+
+1652737782 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\global.cpp
+
+1652738665 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimer.cpp
+	"PiranhaTimer.hpp"
+
+1652737928 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimer.hpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+
+1652739738 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerup.hpp
+	<windows.h>
+	<iostream>
+	"Object.hpp"
+
+1656849562 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerdown.hpp
+	<windows.h>
+	<iostream>
+	"distanceBetweenObjects.hpp"
+
+1656850819 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerdown.cpp
+	"PiranhaTimerDown.hpp"
+
+1652740341 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerup.cpp
+	"PiranhaTimerUp.hpp"
+
+1656842306 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\praviupdate.hpp
+	"GlobalObjects.hpp"
+	<iostream>
+
+1656853006 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\globalobjects.hpp
+	"Object.hpp"
+	"PiranhaTimerDown.hpp"
+	"PiranhaTimerUp.hpp"
+	<vector>
+	<algorithm>
+
+1656851303 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\praviupdate.cpp
+	"praviUpdate.hpp"
+
+1656849577 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.hpp
+	"Object.hpp"
+	<math.h>
+
+1656849497 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.cpp
+	"distanceBetweenObjects.hpp"
+
+1656852727 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.hpp
+	"GlobalObjects.hpp"
+
+1656858904 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.cpp
+	"DrawObjekat.hpp"
+	<windows.h>
+
