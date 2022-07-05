@@ -1,7 +1,6 @@
 #include<windows.h>
 #include <iostream>
-#include "distanceBetweenObjects.hpp"
+#include "Mario.hpp"
 
 void CALLBACK PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
-extern Object mario;
 

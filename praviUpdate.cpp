@@ -3,63 +3,63 @@
 void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario and Mario
 {
 //    std::cout << "-----------------------------------------------------------\n";
-//    std::cout << "praviUpdate\nmario.dy: " << mario.dy << std::endl;
+//    std::cout << "praviUpdate\nmario.dy: " << mario->dy << std::endl;
 //    std::cout << "-----------------------------------------------------------\n";
 
 //    static bool marioFocus = false;
     int totalDY = 0;
-    int testDY = mario.dy/abs(mario.dy);
-    while(totalDY != mario.dy)
+    int testDY = mario->dy/abs(mario->dy);
+    while(totalDY != mario->dy)
     {
-        if(mario.y < (VISINAPROZORA/2 - mario.height/2 - 10))
+        if(mario->y < (VISINAPROZORA/2 - mario->height/2 - 10))
         {
-            std::cout << mario.y << std::endl;
-            mario.ground += testDY;
-            initial_ground.y += testDY;
-            if(mario.y >= mario.ground)
+            std::cout << mario->y << std::endl;
+            mario->ground += testDY;
+            initial_ground += testDY;
+            if(mario->y >= mario->ground)
             {
-                int dist = mario.y - mario.ground;
-                mario.ground = mario.y;
-                initial_ground.y += dist;
+                int dist = mario->y - mario->ground;
+                mario->ground = mario->y;
+                initial_ground += dist;
                 UpdatePositionOfObjects(0, dist);
-                mario.objectY = 1;
+                mario->objectY = 1;
             }
             UpdatePositionOfObjects(0, testDY);
-            if((initial_ground.y - background.y + 211) < VISINAPROZORA)
+            if((initial_ground - background->y + 211) < VISINAPROZORA)
             {
-                int dist = VISINAPROZORA - 211 - initial_ground.y + background.y;
+                int dist = VISINAPROZORA - 211 - initial_ground + background->y;
                 UpdatePositionOfObjects(0, dist/2);
                 if(testDY < 0)
                 {
                     std::cout << "mario nanize\n";
-                    mario.y += 1;
+                    mario->y += 1;
                 }
             }
         }
-        else if((mario.y + mario.height/2) >= (VISINAPROZORA/2 - 10))
+        else if((mario->y + mario->height/2) >= (VISINAPROZORA/2 - 10))
         {
 //        std::cout << "mario focus\ninitial_ground: " << initial_ground.y << std::endl;
-            static int correctionError;
-            if(initial_ground.typeOfObject != DEATHGROUND)
-            {
-                correctionError = 0;
-            }
-            else
-            {
-                correctionError = 16;
-            }
-            if((initial_ground.y - background.y + 211) != (VISINAPROZORA + correctionError))
+//            static int correctionError;
+//            if(initial_ground.typeOfObject != DEATHGROUND)
+//            {
+//                correctionError = 0;
+//            }
+//            else
+//            {
+//                correctionError = 16;
+//            }
+            if((initial_ground - background->y + 211) != (VISINAPROZORA))
             {
                 int dist;
-                dist = VISINAPROZORA - 211 - initial_ground.y + background.y + correctionError;
+                dist = VISINAPROZORA - 211 - initial_ground + background->y;
                 UpdatePositionOfObjects(0, dist/2);
 //                return;
             }
-            mario.y -= testDY;
-            if(mario.y >= mario.ground) // da ne bi Mario propao kroz zemlju
+            mario->y -= testDY;
+            if(mario->y >= mario->ground) // da ne bi Mario propao kroz zemlju
             {
-                mario.y = mario.ground;
-                mario.objectY = 1;
+                mario->y = mario->ground;
+                mario->objectY = 1;
             }
         }
         else
@@ -69,18 +69,18 @@ void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario an
         }
         totalDY += testDY;
     }
-    mario.dy -= 3;
-    if(mario.dy < 0)
-        mario.stateY = DOWN;
-    else if(mario.dy > 0)
-        mario.stateY = UP;
+    mario->dy -= 3;
+    if(mario->dy < 0)
+        mario->stateY = DOWN;
+    else if(mario->dy > 0)
+        mario->stateY = UP;
     else
-        mario.stateY = NEUTRAL;
+        mario->stateY = NEUTRAL;
 
 //    std::cout << "-------------------------------------------------------------\n";
-//    std::cout << "Nakon updatea mario.y: " << mario.y << std::endl;
+//    std::cout << "Nakon updatea mario->y: " << mario->y << std::endl;
 //    std::cout << "-------------------------------------------------------------\n";
-    for(Object* el:objects)
+    for(const std::shared_ptr<Object>& el:objects)
     {
         if((el->typeOfObject == COIN) && (el->cycles == (el->cyclesUntilDeath/2)))
         {
@@ -125,7 +125,7 @@ void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario an
                 HWND hwnd = GetForegroundWindow();
                 el->dy = 0;
                 el->y = el->startingY - 38;
-                SetTimer(hwnd, (UINT_PTR)el, 3000, (TIMERPROC) PiranhaTimerUp);
+                SetTimer(hwnd, (UINT_PTR)el.get(), 3000, (TIMERPROC) PiranhaTimerUp);
                 std::cout << "UpTimer" << std::endl;
             }
             else if(el->y > el->startingY)
@@ -135,7 +135,7 @@ void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario an
                 el->dy = 0;
                 el->y = el->startingY;
                 el->flag = false; // piranha is not active
-                SetTimer(hwnd, (UINT_PTR)el, 4500, (TIMERPROC) PiranhaTimerDown);
+                SetTimer(hwnd, (UINT_PTR)el.get(), 4500, (TIMERPROC) PiranhaTimerDown);
                 std::cout << "DownTimer" << std::endl;
             }
         }
@@ -151,16 +151,16 @@ void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario an
             int endPointY = el->y + el->dy;
             while(testingObjectY != endPointY)
             {
-                if((el->typeOfObject == FLOWER_ENEMY) && (el->flag == true) && (mario.stateY != UP) && (mario.x < (el->x + el->rightSide)) && (mario.x > (el->x + el->leftSide)) && (mario.y == (testingObjectY + el->topSide)))
+                if((el->typeOfObject == FLOWER_ENEMY) && (el->flag == true) && (mario->stateY != UP) && ((mario->x + mario->leftSide) < (el->x + el->rightSide)) && ((mario->x + mario->rightSide) > (el->x + el->leftSide)) && ((mario->y + mario->bottomSide) == (testingObjectY + el->topSide)))
                 {
-                    std::cout << "hit flower_enemy top side: " << mario.y << " " << (testingObjectY + el->topSide) << std::endl;
+                    std::cout << "2hit flower_enemy top side: " << mario->y << " " << (testingObjectY + el->topSide) << std::endl;
                     Render(hwnd);
                     system("pause");
                     break;
                 }
-                else if((el->typeOfObject == FLOWER_ENEMY) && (el->flag == true) && (mario.x < (el->x + el->rightSide)) && (mario.x > (el->x + el->leftSide)) && (mario.y == (testingObjectY + el->bottomSide)))
+                else if((el->typeOfObject == FLOWER_ENEMY) && (el->flag == true) && ((mario->x + mario->leftSide) < (el->x + el->rightSide)) && ((mario->x + mario->rightSide) > (el->x + el->leftSide)) && ((mario->y + mario->topSide) == (testingObjectY + el->bottomSide)))
                 {
-                    std::cout << "hit flower_enemy bottom side(why?)\n";
+                    std::cout << "2hit flower_enemy bottom side(why?)\n";
                     Render(hwnd);
                     system("pause");
                     break;
@@ -185,7 +185,6 @@ void praviUpdate(HWND hwnd) // Updating position of objects relative to Mario an
         if(el->cyclesUntilDeath == el->cycles)
         {
             objects.erase(std::remove(objects.begin(), objects.end(), el), objects.end());
-            delete el;
         }
 
 

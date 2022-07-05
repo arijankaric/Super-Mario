@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+#include <iostream>
+#include <vector>
+
 #define PRITISNUTO(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 
 #define COIN 101
@@ -24,10 +28,12 @@
 #define UP 120
 #define DOWN 121
 #define HILL 122
+#define MARIO 123
 
 
 #define SIRINAPROZORA 240
 #define VISINAPROZORA 320
+
 
 
 

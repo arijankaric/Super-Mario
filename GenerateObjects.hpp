@@ -1,5 +1,5 @@
 #include <vector>
-#include "Object.hpp"
+#include "Background.hpp"
 
 
 void GenerateObjects();

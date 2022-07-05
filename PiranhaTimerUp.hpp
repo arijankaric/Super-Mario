@@ -1,5 +1,5 @@
 #include<windows.h>
 #include <iostream>
-#include "Object.hpp"
+#include "Mario.hpp"
 
 void CALLBACK PiranhaTimerUp(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
