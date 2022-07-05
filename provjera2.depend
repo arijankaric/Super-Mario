@@ -12,7 +12,7 @@
 	<math.h>
 	<algorithm>
 
-1657032915 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
+1657044440 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
 	<tchar.h>
 	<windows.h>
 	<iostream>
@@ -30,7 +30,7 @@
 	<vector>
 	"Background.hpp"
 
-1657028313 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
+1657046021 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
 	<windows.h>
 	<iostream>
 	"Global.hpp"
@@ -80,11 +80,11 @@
 1657032368 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\praviupdate.cpp
 	"praviUpdate.hpp"
 
-1657027417 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.hpp
+1657046215 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.hpp
 	"Object.hpp"
 	<math.h>
 
-1657027401 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.cpp
+1657046220 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.cpp
 	"distanceBetweenObjects.hpp"
 
 1656852727 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.hpp
@@ -123,7 +123,7 @@
 1657024708 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.hpp
 	"Mario.hpp"
 
-1657032902 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
+1657046123 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
 	"Mario.hpp"
 
 1657033025 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
@@ -132,7 +132,7 @@
 1657027651 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.hpp
 	"Mario.hpp"
 
-1657032939 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
+1657046292 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
 	"distanceBetweenObjects.hpp"
 
 1657031852 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp

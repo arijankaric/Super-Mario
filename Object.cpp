@@ -22,7 +22,7 @@ void Object::moveX(std::shared_ptr<Object> obj, bool whosMoving)
     {
         for(const auto& objTest : objects)
         {
-            if(distanceBetweenObjects(this->sharedPtr, obj) > 100)
+            if(distanceBetweenObjects(this, obj.get()) > 100)
                 continue;
 
             this->testingX = this->x;
@@ -70,7 +70,7 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
     {
         for(const auto& objTest : objects)
         {
-            if(distanceBetweenObjects(this->sharedPtr, objTest) > 100)
+            if(distanceBetweenObjects(this, objTest.get()) > 100)
                 continue;
 
             this->testingY = this->y;
@@ -143,4 +143,47 @@ void Object::draw(HDC hdcBuffer, HDC hdcMem)
 
     SelectObject(hdcMem, hbmMask_);
     BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCPAINT);
+}
+
+bool Object::checkXRange() const
+{
+    if((((this->x + this->leftSide) < (this->compareObj->x + this->compareObj->rightSide)) && ((this->x + this->leftSide) > (this->compareObj->x + this->compareObj->leftSide))) || (((this->x + this->rightSide) < (this->compareObj->x + this->compareObj->rightSide)) && ((this->x + this->rightSide) > (this->compareObj->x + this->compareObj->leftSide))))
+        return true;
+    return false;
+}
+
+bool Object::checkYRange() const
+{
+    if((((this->y + this->bottomSide) < (this->compareObj->y + this->compareObj->bottomSide)) && ((this->y + this->bottomSide) > (this->compareObj->y + this->compareObj->topSide))) || (((this->y + this->topSide) < (this->compareObj->y + this->compareObj->bottomSide)) && ((this->y + this->topSide) > (this->compareObj->y + this->compareObj->topSide))) )
+        return true;
+    return false;
+}
+
+bool Object::checkXLeft() const
+{
+    if((this->x + this->leftSide) == (this->compareObj->x + this->compareObj->rightSide))
+        return true;
+    return false;
+}
+
+bool Object::checkXRight() const
+{
+    if((this->x + this->rightSide) == (this->compareObj->x + this->compareObj->leftSide))
+        return true;
+    return false;
+}
+
+bool Object::checkYTop() const
+{
+    if((this->y + this->topSide) == (this->compareObj->y + this->compareObj->bottomSide))
+        return true;
+    return false;
+
+}
+
+bool Object::checkYBottom() const
+{
+    if((this->y + this->bottomSide) == (this->compareObj->y + this->compareObj->topSide))
+        return true;
+    return false;
 }

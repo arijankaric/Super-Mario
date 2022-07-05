@@ -67,8 +67,13 @@ public:
     virtual void moveY(std::shared_ptr<Object> obj, bool whosMoving);
     virtual void moveX(std::shared_ptr<Object> obj, bool whosMoving);
     std::string&& getStringTypeOfObject(std::shared_ptr<Object> obj);
-
-    std::shared_ptr<Object> sharedPtr; // pointing to self
+    bool checkXRange() const;
+    bool checkYRange() const;
+    bool checkYTop() const;
+    bool checkYBottom() const;
+    bool checkXLeft() const;
+    bool checkXRight() const;
+    std::shared_ptr<Object> compareObj = nullptr;
 };
 
 extern HWND hwnd;

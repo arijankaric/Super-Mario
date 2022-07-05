@@ -2,10 +2,10 @@
 
 void CALLBACK PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime)
 {
-    std::shared_ptr<Object> flowerEnemy = ((Object*)idTimer)->sharedPtr;
-    std::shared_ptr<Object> pipe = ((Object*)flowerEnemy->parent)->sharedPtr;
-    std::cout << "distance between Mario and piranha: " << distanceBetweenObjects(mario, flowerEnemy) << std::endl;
-    if (distanceBetweenObjects(mario, (*((Object*)idTimer)).sharedPtr) < 50 || ((pipe->y + pipe->topSide) == mario->ground))
+    Object* flowerEnemy = ((Object*)idTimer);
+    Object* pipe = ((Object*)flowerEnemy->parent);
+    std::cout << "distance between Mario and piranha: " << distanceBetweenObjects(mario.get(), flowerEnemy) << std::endl;
+    if (distanceBetweenObjects(mario.get(), flowerEnemy) < 50 || ((pipe->y + pipe->topSide) == mario->ground))
     {
         std::cout << "Piranha is not going up since Mario is too close or Mario hasn't changed his footing yet" << std::endl;
         SetTimer(hwnd, (UINT_PTR)idTimer, 1000, (TIMERPROC) PiranhaTimerDown);

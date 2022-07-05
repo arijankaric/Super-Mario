@@ -190,7 +190,7 @@ void UpdateObjekat(HWND hwnd, RECT* rect) // Checking for interactions
 //    initial_ground = whereInitialGround(background->x);
     for(const std::shared_ptr<Object>& el:objects)
     {
-        if(distanceBetweenObjects(mario, el) > 120)
+        if(distanceBetweenObjects(mario.get(), el.get()) > 120)
         {
             continue;
         }

@@ -3,4 +3,4 @@
 #include "Object.hpp"
 #include <math.h>
 
-int distanceBetweenObjects(const std::shared_ptr<Object> obj1, const std::shared_ptr<Object> obj2);
+int distanceBetweenObjects(const Object* obj1, const Object* obj2) noexcept;
