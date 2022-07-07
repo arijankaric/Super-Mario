@@ -396,9 +396,9 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
         testDY = mario->dy/abs(mario->dy);
     while(totalDY != mario->dy)
     {
-        if(mario->y < (VISINAPROZORA/2 - mario->height/2 - 10))
+        if(mario->y < (VISINAPROZORA/2 - mario->height/2))
         {
-            std::cout << mario->y << std::endl;
+//            std::cout << "mario->y: " << mario->y << std::endl;
             mario->ground += testDY;
             initial_ground += testDY;
             if(mario->y >= mario->ground)
@@ -421,7 +421,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
                 }
             }
         }
-        else if((mario->y + mario->height/2) >= (VISINAPROZORA/2 - 10))
+        else if((mario->y + mario->height/2) >= (VISINAPROZORA/2))
         {
 //        std::cout << "mario focus\ninitial_ground: " << initial_ground.y << std::endl;
 //            static int correctionError;
