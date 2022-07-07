@@ -19,8 +19,6 @@ Ground::Ground(int x, int y)
     this->leftSide = 0;
     this->rightSide = 53;
 //    this->changeCycles = 0;
-    if(outline)
-        this->outline = true;
 }
 
 bool Ground::checkBottom(std::shared_ptr<Object> obj)

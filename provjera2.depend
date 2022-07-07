@@ -12,7 +12,7 @@
 	<math.h>
 	<algorithm>
 
-1657185379 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
+1657186731 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
 	<tchar.h>
 	<windows.h>
 	<iostream>
@@ -26,7 +26,7 @@
 	<vector>
 	"Background.hpp"
 
-1657182751 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
+1657187105 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
 	<windows.h>
 	<iostream>
 	"Global.hpp"
@@ -90,7 +90,7 @@
 	"DrawObjekat.hpp"
 	<windows.h>
 
-1657180668 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.hpp
+1657187090 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.hpp
 	"Background.hpp"
 	<windows.h>
 	<iostream>
@@ -99,7 +99,7 @@
 1657031189 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.cpp
 	"Background.hpp"
 
-1657177780 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.hpp
+1657187028 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.hpp
 	"distanceBetweenObjects.hpp"
 
 1657181308 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.cpp
@@ -108,22 +108,22 @@
 1657181268 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.hpp
 	"Object.hpp"
 
-1657181177 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.cpp
+1657187140 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.cpp
 	"FlowerEnemy.hpp"
 
 1657181188 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.hpp
 	"Mario.hpp"
 
-1657024796 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.cpp
+1657187150 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.cpp
 	"Ground.hpp"
 
 1657024708 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.hpp
 	"Mario.hpp"
 
-1657181148 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
+1657186556 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
 	"Mario.hpp"
 
-1657182424 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
+1657187158 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
 	"Pipe.hpp"
 
 1657182444 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.hpp
@@ -132,13 +132,13 @@
 1657180723 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
 	"distanceBetweenObjects.hpp"
 
-1657181220 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp
+1657187131 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp
 	"Coin.hpp"
 
 1657181208 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.hpp
 	"Background.hpp"
 
-1657183532 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.cpp
+1657187115 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.cpp
 	"QuestionBlock.hpp"
 	"Coin.hpp"
 
@@ -158,6 +158,6 @@
 	<iterator>
 	<algorithm>
 
-1657185150 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.cpp
+1657186900 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.cpp
 	"Game.hpp"
 

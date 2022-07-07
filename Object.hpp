@@ -55,7 +55,7 @@ public:
     int testingY;
     int testingX;
 
-    bool outline = false;
+    bool outline = true;
     virtual bool checkX(std::shared_ptr<Object> obj, int dx); // more like checkXFuture
     virtual bool checkY(std::shared_ptr<Object> obj, int dy); // checkYFuture
     virtual bool checkBottom(std::shared_ptr<Object> obj);
@@ -79,6 +79,3 @@ public:
     vektorObjekata objects;
     vektorObjekata movingObjects;
 };
-
-//extern HWND hwnd;
-//extern std::vector <std::shared_ptr<Object>> objects;

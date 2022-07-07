@@ -127,8 +127,11 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
         vrijeme_pocetak = GetTickCount(); // DWORD GetTickCount(); The return value is the number of milliseconds that have elapsed since the system was started.
 
         game1.CheckInput();
+        std::cout << "checkInput izvrsen\n";
         game1.Update();
+        std::cout << "update izvrsen\n";
         game1.Render();
+        std::cout << "render izvrsen\n";
 
         while(GetTickCount()- vrijeme_pocetak < 16.66666666666667) // 1000/60 = 16.66666666666667; 55 prethodna vrijednost
         {

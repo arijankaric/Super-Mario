@@ -22,6 +22,3 @@ public:
     void setWalkRight();
     void setWalkLeft();
 };
-
-//extern std::shared_ptr<Object> mario;
-

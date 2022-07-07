@@ -16,8 +16,6 @@ Pipe::Pipe(int x, int y, vektorObjekata obj, vektorObjekata movObj)
     this->rightSide = 48;
     this->topSide = -23;
     this->bottomSide = 25;
-    if(outline)
-        this->outline = true;
 }
 
 bool Pipe::checkLeft(std::shared_ptr<Object> obj)

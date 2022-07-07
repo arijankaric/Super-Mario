@@ -14,7 +14,3 @@ public:
     bool checkLeft(std::shared_ptr<Object> obj)override;
     bool checkRight(std::shared_ptr<Object> obj)override;
 };
-
-//extern Background background;
-//extern std::shared_ptr<Object> background;
-//extern int initial_ground;

@@ -18,8 +18,6 @@ QuestionBlock::QuestionBlock(int x, int y)
     this->rightSide = 14;
     this->topSide = 0;
     this->bottomSide = 16;
-//    if(outline)
-//        this->outline = true;
 }
 
 bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj)

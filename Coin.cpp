@@ -16,8 +16,6 @@ Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
     this->X = 0;
     if(dying)
         this->cyclesUntilDeath = 10;
-    if(outline)
-        this->outline = true;
     this->typeOfObject = COIN;
 }
 

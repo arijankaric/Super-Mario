@@ -22,8 +22,6 @@ FlowerEnemy::FlowerEnemy(vektorObjekata obj, vektorObjekata movObj, int x, int y
     this->cyclesForChange = 10;
 //    this->parent = p;
 //    this->changeCycles = 0;
-    if(outline)
-        this->outline = true;
 }
 
 bool FlowerEnemy::checkBottom(std::shared_ptr<Object> obj)

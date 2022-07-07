@@ -13,6 +13,7 @@ Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
     this->y = VISINAPROZORA - 80;
     this->x = SIRINAPROZORA/2-this->width/2;
     this->dx = 5;
+    this->dy = 0;
     this->bottomSide = 25;
     this->leftSide = 12;
     this->rightSide = 24;
