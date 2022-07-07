@@ -1,7 +1,9 @@
 #include "FlowerEnemy.hpp"
 
-FlowerEnemy::FlowerEnemy(int x, int y)
+FlowerEnemy::FlowerEnemy(vektorObjekata obj, vektorObjekata movObj, int x, int y)
 {
+    this->objects = obj;
+    this->movingObjects = movObj;
     this->typeOfObject = FLOWER_ENEMY;
     this->x = x;
     this->startingY = this->y = y;
@@ -77,4 +79,16 @@ bool FlowerEnemy::checkRight(std::shared_ptr<Object> obj)
         return false;
     }
     return true;
+}
+
+void FlowerEnemy::draw(HDC hdcBuffer, HDC hdcMem)
+{
+    int height = this->startingY - this->y;
+    SelectObject(hdcMem, this->hbm_);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X*this->width, 0, SRCAND);
+
+    SelectObject(hdcMem, this->hbmMask_);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X*this->width, 0, SRCPAINT);
+
+    return;
 }

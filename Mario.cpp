@@ -1,7 +1,9 @@
 #include "Mario.hpp"
 
-Mario::Mario(int x, int y)
+Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
 {
+    this->objects = obj;
+    this->movingObjects = movObj;
     this->hbm_ = hbmMarioWalkRight;
     this->hbmMask_ = hbmMarioWalkRightMask;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
@@ -18,45 +20,45 @@ Mario::Mario(int x, int y)
     this->outline = true;
 }
 
-bool Mario::checkLeft(std::shared_ptr<Object> obj)
-{
-    if(checkXLeft() && checkYRange())
-    {
-        std::cout << "left side Mario collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
-    }
-    return true;
-}
-
-bool Mario::checkRight(std::shared_ptr<Object> obj)
-{
-    if(checkXRight() && checkYRange())
-    {
-        std::cout << "right side Mario collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
-    }
-    return true;
-}
-
-bool Mario::checkTop(std::shared_ptr<Object> obj)
-{
-    if(checkYTop() && checkXRange())
-    {
-        std::cout << "top side Mario collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
-    }
-    return true;
-}
-
-bool Mario::checkBottom(std::shared_ptr<Object> obj)
-{
-    if(checkYBottom() && checkXRange())
-    {
-        std::cout << "bottom side Mario collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
-    }
-    return true;
-}
+//bool Mario::checkLeft(std::shared_ptr<Object> obj)
+//{
+//    if(checkXLeft(obj) && checkYRange(obj))
+//    {
+//        std::cout << "left side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+//        return false;
+//    }
+//    return true;
+//}
+//
+//bool Mario::checkRight(std::shared_ptr<Object> obj)
+//{
+//    if(checkXRight(obj) && checkYRange(obj))
+//    {
+//        std::cout << "right side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+//        return false;
+//    }
+//    return true;
+//}
+//
+//bool Mario::checkTop(std::shared_ptr<Object> obj)
+//{
+//    if(checkYTop(obj) && checkXRange(obj))
+//    {
+//        std::cout << "top side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+//        return false;
+//    }
+//    return true;
+//}
+//
+//bool Mario::checkBottom(std::shared_ptr<Object> obj)
+//{
+//    if(checkYBottom(obj) && checkXRange(obj))
+//    {
+//        std::cout << "bottom side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+//        return false;
+//    }
+//    return true;
+//}
 
 void Mario::setWalkLeft()
 {

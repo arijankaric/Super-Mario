@@ -1,26 +1,25 @@
-//#include "Object.hpp"
 #include "distanceBetweenObjects.hpp"
 
-bool Object::checkX(std::shared_ptr<Object> obj)
+bool Object::checkX(std::shared_ptr<Object> obj, int dx) // checkXFuture, napravi checkXCurrent(bez int dx)
 {
-    return checkLeft(obj) && checkRight(obj);
+    return (checkLeft(obj) && (dx < 0)) || (checkRight(obj) && (dx > 0));
 }
 
-bool Object::checkY(std::shared_ptr<Object> obj)
+bool Object::checkY(std::shared_ptr<Object> obj, int dy) // checkYFuture, napravi checkYCurrent(bez int dy)
 {
-    return checkTop(obj) && checkBottom(obj);
+    return (checkTop(obj) && (dy < 0)) || (checkBottom(obj) && (dy > 0));
 }
 
 Object::~Object()
 {
-    std::cout << "Object destructor" << std::endl;
+    std::cout << "Object destructor: " << getStringTypeOfObject(this) << std::endl;
 }
 
 void Object::moveX(std::shared_ptr<Object> obj, bool whosMoving)
 {
     if(whosMoving) // this is moving
     {
-        for(const auto& objTest : objects)
+        for(const auto& objTest : *objects)
         {
             if(distanceBetweenObjects(this, obj.get()) > 100)
                 continue;
@@ -68,7 +67,7 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
 {
     if(whosMoving) // this is moving
     {
-        for(const auto& objTest : objects)
+        for(const auto& objTest : *objects)
         {
             if(distanceBetweenObjects(this, objTest.get()) > 100)
                 continue;
@@ -112,6 +111,29 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
     }
 }
 
+std::string&& Object::getStringTypeOfObject(Object* objPtr)
+{
+    switch(objPtr->typeOfObject)
+    {
+    case PIPE:
+        return std::string("PIPE");
+    case GOOMBA:
+        return std::string("GOOMBA");
+    case QUESTIONMARK:
+        return std::string("QUESTIONMARK");
+    case FLOWER_ENEMY:
+        return std::string("FLOWER_ENEMY");
+    case COIN:
+        return std::string("COIN");
+    case MARIO:
+        return std::string("MARIO");
+    case GROUND:
+        return std::string("GROUND");
+    default:
+        return std::string("unidentified object");
+    }
+}
+
 std::string&& Object::getStringTypeOfObject(std::shared_ptr<Object> obj)
 {
     switch(obj->typeOfObject)
@@ -145,45 +167,85 @@ void Object::draw(HDC hdcBuffer, HDC hdcMem)
     BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCPAINT);
 }
 
-bool Object::checkXRange() const
+bool Object::checkXRange(std::shared_ptr<Object> obj) const
 {
-    if((((this->x + this->leftSide) < (this->compareObj->x + this->compareObj->rightSide)) && ((this->x + this->leftSide) > (this->compareObj->x + this->compareObj->leftSide))) || (((this->x + this->rightSide) < (this->compareObj->x + this->compareObj->rightSide)) && ((this->x + this->rightSide) > (this->compareObj->x + this->compareObj->leftSide))))
+    if((((this->x + this->leftSide) < (obj->x + obj->rightSide)) && ((this->x + this->leftSide) > (obj->x + obj->leftSide))) || (((this->x + this->rightSide) < (obj->x + obj->rightSide)) && ((this->x + this->rightSide) > (obj->x + obj->leftSide))))
         return true;
     return false;
 }
 
-bool Object::checkYRange() const
+bool Object::checkYRange(std::shared_ptr<Object> obj) const
 {
-    if((((this->y + this->bottomSide) < (this->compareObj->y + this->compareObj->bottomSide)) && ((this->y + this->bottomSide) > (this->compareObj->y + this->compareObj->topSide))) || (((this->y + this->topSide) < (this->compareObj->y + this->compareObj->bottomSide)) && ((this->y + this->topSide) > (this->compareObj->y + this->compareObj->topSide))) )
+    if((((this->y + this->bottomSide) < (obj->y + obj->bottomSide)) && ((this->y + this->bottomSide) > (obj->y + obj->topSide))) || (((this->y + this->topSide) < (obj->y + obj->bottomSide)) && ((this->y + this->topSide) > (obj->y + obj->topSide))) )
         return true;
     return false;
 }
 
-bool Object::checkXLeft() const
+bool Object::checkXLeft(std::shared_ptr<Object> obj) const
 {
-    if((this->x + this->leftSide) == (this->compareObj->x + this->compareObj->rightSide))
+    if((this->x + this->leftSide) == (obj->x + obj->rightSide))
         return true;
     return false;
 }
 
-bool Object::checkXRight() const
+bool Object::checkXRight(std::shared_ptr<Object> obj) const
 {
-    if((this->x + this->rightSide) == (this->compareObj->x + this->compareObj->leftSide))
+    if((this->x + this->rightSide) == (obj->x + obj->leftSide))
         return true;
     return false;
 }
 
-bool Object::checkYTop() const
+bool Object::checkYTop(std::shared_ptr<Object> obj) const
 {
-    if((this->y + this->topSide) == (this->compareObj->y + this->compareObj->bottomSide))
+    if((this->y + this->topSide) == (obj->y + obj->bottomSide))
         return true;
     return false;
 
 }
 
-bool Object::checkYBottom() const
+bool Object::checkYBottom(std::shared_ptr<Object> obj) const
 {
-    if((this->y + this->bottomSide) == (this->compareObj->y + this->compareObj->topSide))
+    if((this->y + this->bottomSide) == (obj->y + obj->topSide))
         return true;
     return false;
+}
+
+bool Object::checkLeft(std::shared_ptr<Object> obj)
+{
+    if(checkXLeft(obj) && checkYRange(obj))
+    {
+        std::cout << "left side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool Object::checkRight(std::shared_ptr<Object> obj)
+{
+    if(checkXRight(obj) && checkYRange(obj))
+    {
+        std::cout << "right side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool Object::checkTop(std::shared_ptr<Object> obj)
+{
+    if(checkYTop(obj) && checkXRange(obj))
+    {
+        std::cout << "top side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool Object::checkBottom(std::shared_ptr<Object> obj)
+{
+    if(checkYBottom(obj) && checkXRange(obj))
+    {
+        std::cout << "bottom side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
+        return false;
+    }
+    return true;
 }

@@ -1,7 +1,9 @@
 #include "Pipe.hpp"
 
-Pipe::Pipe(int x, int y)
+Pipe::Pipe(int x, int y, vektorObjekata obj, vektorObjekata movObj)
 {
+    this->objects = obj;
+    this->movingObjects = movObj;
     this->typeOfObject = PIPE;
     this->x = x;
     this->startingY = this->y = y;

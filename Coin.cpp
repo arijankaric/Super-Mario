@@ -1,7 +1,9 @@
 #include "Coin.hpp"
 
-Coin::Coin(int x, int y, bool dying)
+Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
 {
+    this->objects = obj;
+    this->movingObjects = movObj;
     this->x = x;
     this->y = y;
     this->dy = -15;

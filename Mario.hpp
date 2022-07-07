@@ -14,14 +14,14 @@ public:
     HBITMAP hbmMarioWalkRightMask = (HBITMAP) LoadImage(NULL, "SmallMarioRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 //    BITMAP bitmap;
 
-    Mario(int x = 0, int y = 0);
-    bool checkBottom(std::shared_ptr<Object> obj) override;
-    bool checkTop(std::shared_ptr<Object> obj)override;
-    bool checkLeft(std::shared_ptr<Object> obj)override;
-    bool checkRight(std::shared_ptr<Object> obj)override;
+    Mario(vektorObjekata obj, vektorObjekata movObj, int x = 0, int y = 0);
+//    bool checkBottom(std::shared_ptr<Object> obj) override;
+//    bool checkTop(std::shared_ptr<Object> obj)override;
+//    bool checkLeft(std::shared_ptr<Object> obj)override;
+//    bool checkRight(std::shared_ptr<Object> obj)override;
     void setWalkRight();
     void setWalkLeft();
 };
 
-extern std::shared_ptr<Object> mario;
+//extern std::shared_ptr<Object> mario;
 

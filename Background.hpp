@@ -16,5 +16,5 @@ public:
 };
 
 //extern Background background;
-extern std::shared_ptr<Object> background;
-extern int initial_ground;
+//extern std::shared_ptr<Object> background;
+//extern int initial_ground;

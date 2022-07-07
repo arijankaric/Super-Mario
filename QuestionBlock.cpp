@@ -46,7 +46,7 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj)
             this->hbmMask_ = (HBITMAP) LoadImage(NULL, "emptyQuestionBlock.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
             this->max = 1;
 
-            objects.push_back(std::make_shared<Coin>(this->x, this->y, true));
+            objects->push_back(std::make_shared<Coin>(this->objects, this->movingObjects, this->x, this->y, true));
         }
 //                std::cout << "-------------------------------------------------------------\n";
 //                std::cout << "obj->y-obj->dy: " << obj->y-obj->dy << "\ntestMarioY: " << obj->testingY << std::endl;
@@ -82,7 +82,7 @@ bool QuestionBlock::checkTop(std::shared_ptr<Object> obj)
 
 bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj)
 {
-    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && (((obj->y + obj->bottomSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && ((((obj->y + obj->bottomSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide))) || (((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide)))))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of questionmark\n";
