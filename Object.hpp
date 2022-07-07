@@ -26,9 +26,9 @@ public:
     int Y = 0;
 
     int cyclesUntilDeath = -1; // cycles until the object is deleted
+    int cycles = 0; // death cycles
     int cyclesForChange = 1; // cycles counter requirement for change of current X to happen
     int changeCycles = 0; // cycles counter until change
-    int cycles = 0; // death cycles
 
     bool flag = false; // is object empty or not, questionBoxObject empty/without coin for example
 
@@ -58,16 +58,17 @@ public:
     bool outline = true;
     virtual bool checkX(std::shared_ptr<Object> obj, int dx); // more like checkXFuture
     virtual bool checkY(std::shared_ptr<Object> obj, int dy); // checkYFuture
-    virtual bool checkBottom(std::shared_ptr<Object> obj);
-    virtual bool checkTop(std::shared_ptr<Object> obj);
+    virtual bool checkBottom(std::shared_ptr<Object> obj, int dy);
+    virtual bool checkTop(std::shared_ptr<Object> obj, int dy);
     virtual bool checkLeft(std::shared_ptr<Object> obj);
     virtual bool checkRight(std::shared_ptr<Object> obj);
     virtual void draw(HDC hdcBuffer, HDC hdcMem);
     ~Object();
+    virtual void moveYX(std::shared_ptr<Object> obj, bool whosMoving);
     virtual void moveY(std::shared_ptr<Object> obj, bool whosMoving);
     virtual void moveX(std::shared_ptr<Object> obj, bool whosMoving);
-    std::string&& getStringTypeOfObject(std::shared_ptr<Object> obj);
-    std::string&& getStringTypeOfObject(Object* objPtr);
+    std::string getStringTypeOfObject(std::shared_ptr<Object> obj);
+    std::string getStringTypeOfObject(Object* objPtr);
     bool checkXRange(std::shared_ptr<Object> obj) const;
     bool checkYRange(std::shared_ptr<Object> obj) const;
     bool checkYTop(std::shared_ptr<Object> obj) const;

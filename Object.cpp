@@ -2,12 +2,12 @@
 
 bool Object::checkX(std::shared_ptr<Object> obj, int dx) // checkXFuture, napravi checkXCurrent(bez int dx)
 {
-    return (checkLeft(obj) && (dx < 0)) || (checkRight(obj) && (dx > 0));
+    return ((checkLeft(obj) && (dx > 0)) || (checkRight(obj) && (dx < 0)));
 }
 
 bool Object::checkY(std::shared_ptr<Object> obj, int dy) // checkYFuture, napravi checkYCurrent(bez int dy)
 {
-    return (checkTop(obj) && (dy < 0)) || (checkBottom(obj) && (dy > 0));
+    return ((checkTop(obj, dy)) || (checkBottom(obj, dy)));
 }
 
 Object::~Object()
@@ -81,9 +81,9 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
             int endPoint = this->y + this->dy;
             while(this->testingY != endPoint)
             {
-                if(checkBottom(obj))
+                if(checkBottom(obj, directionY))
                     break;
-                else if(checkTop(obj))
+                else if(checkTop(obj, directionY))
                     break;
                 this->testingY += directionY;
             }
@@ -101,9 +101,9 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
         int endPoint = obj->y + obj->dy;
         while(obj->testingY != endPoint)
         {
-            if(checkBottom(obj))
+            if(checkBottom(obj, directionY))
                 break;
-            else if(checkTop(obj))
+            else if(checkTop(obj, directionY))
                 break;
             obj->testingY += directionY;
         }
@@ -111,7 +111,7 @@ void Object::moveY(std::shared_ptr<Object> obj, bool whosMoving)
     }
 }
 
-std::string&& Object::getStringTypeOfObject(Object* objPtr)
+std::string Object::getStringTypeOfObject(Object* objPtr)
 {
     switch(objPtr->typeOfObject)
     {
@@ -134,7 +134,7 @@ std::string&& Object::getStringTypeOfObject(Object* objPtr)
     }
 }
 
-std::string&& Object::getStringTypeOfObject(std::shared_ptr<Object> obj)
+std::string Object::getStringTypeOfObject(std::shared_ptr<Object> obj)
 {
     switch(obj->typeOfObject)
     {
@@ -169,14 +169,14 @@ void Object::draw(HDC hdcBuffer, HDC hdcMem)
 
 bool Object::checkXRange(std::shared_ptr<Object> obj) const
 {
-    if((((this->x + this->leftSide) < (obj->x + obj->rightSide)) && ((this->x + this->leftSide) > (obj->x + obj->leftSide))) || (((this->x + this->rightSide) < (obj->x + obj->rightSide)) && ((this->x + this->rightSide) > (obj->x + obj->leftSide))))
+    if((((this->x + this->leftSide) < (obj->x + obj->rightSide)) && ((this->x + this->rightSide) > (obj->x + obj->leftSide))))
         return true;
     return false;
 }
 
 bool Object::checkYRange(std::shared_ptr<Object> obj) const
 {
-    if((((this->y + this->bottomSide) < (obj->y + obj->bottomSide)) && ((this->y + this->bottomSide) > (obj->y + obj->topSide))) || (((this->y + this->topSide) < (obj->y + obj->bottomSide)) && ((this->y + this->topSide) > (obj->y + obj->topSide))) )
+    if(((this->y + this->bottomSide) < (obj->y + obj->topSide)) && ((this->y + this->topSide) > (obj->y + obj->bottomSide)))
         return true;
     return false;
 }
@@ -215,9 +215,9 @@ bool Object::checkLeft(std::shared_ptr<Object> obj)
     if(checkXLeft(obj) && checkYRange(obj))
     {
         std::cout << "left side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool Object::checkRight(std::shared_ptr<Object> obj)
@@ -225,27 +225,33 @@ bool Object::checkRight(std::shared_ptr<Object> obj)
     if(checkXRight(obj) && checkYRange(obj))
     {
         std::cout << "right side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
-bool Object::checkTop(std::shared_ptr<Object> obj)
+bool Object::checkTop(std::shared_ptr<Object> obj, int dy)
 {
     if(checkYTop(obj) && checkXRange(obj))
     {
         std::cout << "top side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
-bool Object::checkBottom(std::shared_ptr<Object> obj)
+bool Object::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
     if(checkYBottom(obj) && checkXRange(obj))
     {
         std::cout << "bottom side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
-        return false;
+        return true;
     }
-    return true;
+    return false;
+}
+
+void Object::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
+{
+    this->moveY(obj, whosMoving);
+    this->moveX(obj, whosMoving);
 }

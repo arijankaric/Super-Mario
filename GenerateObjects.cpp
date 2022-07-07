@@ -167,37 +167,37 @@ bool outline = true;
 //    objects.push_back(newObj);
 //}
 
-void GenerateObjects()
-{
-//    GenerateQuestionMark(176, 201);
-//    GenerateQuestionMark(193, 201);
-//    GenerateQuestionMark(224, 153);
-//    GenerateQuestionMark(240, 153);
-//    GenerateQuestionMark(416, 169);
-//    GenerateQuestionMark(120, 201);
-//    void* p = GeneratePipe(335, 240);
-//    GenerateFlowerEnemy(359, 221, p);
-//    GenerateGround(25, 200);
+//void GenerateObjects()
+//{
+////    GenerateQuestionMark(176, 201);
+////    GenerateQuestionMark(193, 201);
+////    GenerateQuestionMark(224, 153);
+////    GenerateQuestionMark(240, 153);
+////    GenerateQuestionMark(416, 169);
+////    GenerateQuestionMark(120, 201);
+////    void* p = GeneratePipe(335, 240);
+////    GenerateFlowerEnemy(359, 221, p);
+////    GenerateGround(25, 200);
+////
+////
+////    objects.push_back(initial_ground_first);
+////    objects.push_back(initial_ground_second);
+////    objects.push_back(initial_ground_third);
+////    objects.push_back(death_ground);
 //
 //
-//    objects.push_back(initial_ground_first);
-//    objects.push_back(initial_ground_second);
-//    objects.push_back(initial_ground_third);
-//    objects.push_back(death_ground);
-
-
-
-//    newObj = new Object();
-//    newObj->typeOfObject = GROUND;
-//    newObj->x = 30;
-//    newObj->startingY = newObj->y = 263;
-//    newObj->dy = 0;
-//    newObj->hbm_ = (HBITMAP) LoadImage(NULL, "ground.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-//    newObj->hbmMask_ = (HBITMAP) LoadImage(NULL, "groundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-//    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
-//    newObj->width = bitmap.bmWidth;
-//    newObj->height = bitmap.bmHeight;
-//    newObj->max = 0;
-//    newObj->X = 0;
-//    objects.push_back(newObj);
-}
+//
+////    newObj = new Object();
+////    newObj->typeOfObject = GROUND;
+////    newObj->x = 30;
+////    newObj->startingY = newObj->y = 263;
+////    newObj->dy = 0;
+////    newObj->hbm_ = (HBITMAP) LoadImage(NULL, "ground.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+////    newObj->hbmMask_ = (HBITMAP) LoadImage(NULL, "groundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+////    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
+////    newObj->width = bitmap.bmWidth;
+////    newObj->height = bitmap.bmHeight;
+////    newObj->max = 0;
+////    newObj->X = 0;
+////    objects.push_back(newObj);
+//}

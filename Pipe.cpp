@@ -25,9 +25,9 @@ bool Pipe::checkLeft(std::shared_ptr<Object> obj)
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of pipe\n";
         std::cout << "----------------------------------\n";
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool Pipe::checkRight(std::shared_ptr<Object> obj)
@@ -37,17 +37,46 @@ bool Pipe::checkRight(std::shared_ptr<Object> obj)
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit right side of pipe\n";
         std::cout << "----------------------------------\n";
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
-bool Pipe::checkTop(std::shared_ptr<Object> obj)
+bool Pipe::checkTop(std::shared_ptr<Object> obj, int dy)
 {
-    return true;
+    if(checkYTop(obj) && checkXRange(obj))
+    {
+        std::cout << "----------------------------------\n";
+        std::cout << getStringTypeOfObject(obj) << " hit top side of pipe\n";
+        std::cout << "----------------------------------\n";
+        return true;
+    }
+    return false;
 }
 
-bool Pipe::checkBottom(std::shared_ptr<Object> obj)
+bool Pipe::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
-    return true;
+    if(checkYBottom(obj) && checkXRange(obj))
+    {
+        std::cout << "----------------------------------\n";
+        std::cout << getStringTypeOfObject(obj) << " hit bottom side of pipe\n";
+        std::cout << "----------------------------------\n";
+        return true;
+    }
+    return false;
+}
+
+void Pipe::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
+{
+    // pipe se ne krece
+}
+
+void Pipe::moveY(std::shared_ptr<Object> obj, bool whosMoving)
+{
+
+}
+
+void Pipe::moveX(std::shared_ptr<Object> obj, bool whosMoving)
+{
+
 }

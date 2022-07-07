@@ -21,13 +21,15 @@ bool Background::checkRight(std::shared_ptr<Object> obj)
     return true;
 }
 
-bool Background::checkTop(std::shared_ptr<Object> obj)
+bool Background::checkTop(std::shared_ptr<Object> obj, int dy)
 {
+    std::cout << "why is this being called\n";
     return true;
 }
 
-bool Background::checkBottom(std::shared_ptr<Object> obj)
+bool Background::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
+    std::cout << "why is this being called\n";
     return true;
 
 }

@@ -9,8 +9,12 @@ private:
 
 public:
     QuestionBlock(int x, int y);
-    bool checkBottom(std::shared_ptr<Object> obj) override;
-    bool checkTop(std::shared_ptr<Object> obj)override;
+    bool checkBottom(std::shared_ptr<Object> obj, int dy) override;
+    bool checkTop(std::shared_ptr<Object> obj, int dy)override;
     bool checkLeft(std::shared_ptr<Object> obj)override;
     bool checkRight(std::shared_ptr<Object> obj)override;
+
+    void moveYX(std::shared_ptr<Object> obj, bool whosMoving)override;
+    void moveY(std::shared_ptr<Object> obj, bool whosMoving)override;
+    void moveX(std::shared_ptr<Object> obj, bool whosMoving)override;
 };

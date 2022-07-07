@@ -2,6 +2,9 @@
 
 Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
 {
+    this->Y = 0;
+    this->cyclesForChange = 3;
+    this->max = 2;
     this->objects = obj;
     this->movingObjects = movObj;
     this->hbm_ = hbmMarioWalkRight;
@@ -10,7 +13,7 @@ Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
     this->typeOfObject = MARIO;
     this->width = bitmap.bmWidth/3;
     this->height = bitmap.bmHeight/10;
-    this->y = VISINAPROZORA - 80;
+    this->y = 239;
     this->x = SIRINAPROZORA/2-this->width/2;
     this->dx = 5;
     this->dy = 0;
@@ -18,7 +21,10 @@ Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
     this->leftSide = 12;
     this->rightSide = 24;
     this->topSide = 10;
+    this->ground = 320;
     this->outline = true;
+    this->objectY = 1;
+    this->objectX = 0;
 }
 
 //bool Mario::checkLeft(std::shared_ptr<Object> obj)

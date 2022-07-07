@@ -18,9 +18,10 @@ QuestionBlock::QuestionBlock(int x, int y)
     this->rightSide = 14;
     this->topSide = 0;
     this->bottomSide = 16;
+    this->cyclesForChange = 3;
 }
 
-bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj)
+bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
     static bool hit = false;
     if((obj->stateY == UP) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->topSide) == (this->y + this->bottomSide)) && (!hit))
@@ -53,29 +54,29 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj)
 //            Render(hwnd);
 
 //            obj->dy = -12;
-        return false;
+        return true;
     }
     else if(hit)
     {
         hit = false;
         obj->dy = -12;
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
-bool QuestionBlock::checkTop(std::shared_ptr<Object> obj)
+bool QuestionBlock::checkTop(std::shared_ptr<Object> obj, int dy)
 {
-    if((obj->stateY != UP) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->bottomSide) == (this->y + this->topSide)))
+    if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
     {
-        std::cout << getStringTypeOfObject(obj) << " hit new(questionMark) ground\n";
+        std::cout << getStringTypeOfObject(obj) << " hit QuestionBlock top\n";
         obj->stateY = NEUTRAL;
-        obj->dy = obj->y - obj->testingY;
+        obj->dy = obj->testingY - obj->y;
         obj->ground = obj->testingY;
         obj->objectY = 1;
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj)
@@ -85,9 +86,9 @@ bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj)
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of questionmark\n";
         std::cout << "----------------------------------\n";
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool QuestionBlock::checkRight(std::shared_ptr<Object> obj)
@@ -97,7 +98,33 @@ bool QuestionBlock::checkRight(std::shared_ptr<Object> obj)
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit right side of questionmark\n";
         std::cout << "----------------------------------\n";
-        return false;
+        return true;
     }
-    return true;
+    return false;
+}
+
+void QuestionBlock::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
+{
+    if((this->y < this->startingY) && (this->flag))
+    {
+//            std::cout << this->dy << std::endl;
+        this->dy += 3;
+        if((this->y + this->dy) >= this->startingY)
+        {
+            this->dy = 0;
+            this->y = this->startingY;
+        }
+    }
+    this->moveY(obj, whosMoving);
+    this->moveX(obj, whosMoving);
+}
+
+void QuestionBlock::moveY(std::shared_ptr<Object> obj, bool whosMoving)
+{
+    this->y += this->dy;
+}
+
+void QuestionBlock::moveX(std::shared_ptr<Object> obj, bool whosMoving)
+{
+    this->x += this->dx;
 }

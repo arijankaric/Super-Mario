@@ -3,6 +3,10 @@
 #include <memory>
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <math.h>
+#include <memory>
+#include <iterator>
 
 #define PRITISNUTO(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 

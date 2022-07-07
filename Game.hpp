@@ -7,10 +7,6 @@
 #include "Coin.hpp"
 #include "FlowerEnemy.hpp"
 #include "Ground.hpp"
-#include <math.h>
-#include <memory>
-#include <iterator>
-#include <algorithm>
 #define PRITISNUTO(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 
 class Game
@@ -21,7 +17,7 @@ private:
     vektorObjekata movingObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // for example Mario and Goombas/Turtles
     std::shared_ptr<Object> mario = std::make_shared<Mario>(objects, movingObjects);
     std::shared_ptr<Object> background = std::make_shared<Background>();
-    int initial_ground = 240;
+    int initial_ground = 164;
 //    friend class Object;
 
 //    const int ID_TIMER = 1; // moramo razmislit kako cemo i sta cemo sa timera, da li cemo ih ubacit u ovu klasu ili?
