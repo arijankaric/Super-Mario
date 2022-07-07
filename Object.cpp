@@ -162,7 +162,6 @@ void Object::draw(HDC hdcBuffer, HDC hdcMem)
     SelectObject(hdcMem, hbm_);
     BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCAND);
 
-
     SelectObject(hdcMem, hbmMask_);
     BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCPAINT);
 }
@@ -183,21 +182,21 @@ bool Object::checkYRange(std::shared_ptr<Object> obj) const
 
 bool Object::checkXLeft(std::shared_ptr<Object> obj) const
 {
-    if((this->x + this->leftSide) == (obj->x + obj->rightSide))
+    if((this->x + this->leftSide) == (obj->testingX + obj->rightSide))
         return true;
     return false;
 }
 
 bool Object::checkXRight(std::shared_ptr<Object> obj) const
 {
-    if((this->x + this->rightSide) == (obj->x + obj->leftSide))
+    if((this->x + this->rightSide) == (obj->testingX + obj->leftSide))
         return true;
     return false;
 }
 
 bool Object::checkYTop(std::shared_ptr<Object> obj) const
 {
-    if((this->y + this->topSide) == (obj->y + obj->bottomSide))
+    if((this->y + this->topSide) == (obj->testingY + obj->bottomSide))
         return true;
     return false;
 
@@ -205,7 +204,7 @@ bool Object::checkYTop(std::shared_ptr<Object> obj) const
 
 bool Object::checkYBottom(std::shared_ptr<Object> obj) const
 {
-    if((this->y + this->bottomSide) == (obj->y + obj->topSide))
+    if((this->y + this->bottomSide) == (obj->testingY + obj->topSide))
         return true;
     return false;
 }

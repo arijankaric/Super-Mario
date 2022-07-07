@@ -99,7 +99,7 @@ void FlowerEnemy::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
 //    std::cout << "piranha->dy: " << this->dy << std::endl;
     if(this->y < this->startingY - 38)
     {
-        std::cout << "flower_enemy reached peak" << std::endl;
+        std::cout << "flower_enemy reached peak " << obj->y << std::endl;
         HWND hwnd = GetForegroundWindow();
         this->dy = 0;
         this->y = this->startingY - 38;
@@ -113,7 +113,7 @@ void FlowerEnemy::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
     }
     else if(this->y > this->startingY)
     {
-        std::cout << "flower_enemy reached through" << std::endl;
+        std::cout << "flower_enemy reached through " << obj->y << std::endl;
         HWND hwnd = GetForegroundWindow();
         this->dy = 0;
         this->y = this->startingY;

@@ -17,7 +17,8 @@ void Game::DrawObjekat(HDC hdc)
 
     for(std::shared_ptr<Object>& el : *objects)
     {
-        if(el->hbm_ == NULL || el->hbmMask_ == NULL)
+
+        if((el->hbm_ == nullptr) || (el->hbmMask_ == nullptr))
             continue;
 
         el->draw(hdcBuffer, hdcMem);
@@ -28,7 +29,7 @@ void Game::DrawObjekat(HDC hdc)
             el->changeCycles = 0;
         }
 
-        if(el->X == el->max)
+        if(el->X >= el->max)
         {
             el->X = 0;
         }

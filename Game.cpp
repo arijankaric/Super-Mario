@@ -8,7 +8,7 @@ Game::Game()
 
 void Game::CheckInput(void)
 {
-    std::cout << "mario->x: " << mario->x << " mario->y: " << mario->y << std::endl;
+//    std::cout << "mario->x: " << mario->x << " mario->y: " << mario->y << std::endl;
     mario->Y = 0;
 //    mario->state = UNKNOWN;
     if(PRITISNUTO(VK_ESCAPE))
@@ -18,12 +18,13 @@ void Game::CheckInput(void)
     }
 
 //    std::cout << mario->stateY << std::endl;
-    if(PRITISNUTO(VK_UP) && mario->objectY != 3 && mario->objectY != 4)
+// && mario->objectY != 3 && mario->objectY != 4
+    if(PRITISNUTO(VK_UP) &&  (mario->y + mario->bottomSide == mario->ground))
     {
         mario->stateY = UP;
         mario->Y = 3;
         mario->X = 0;
-        mario->dy = -15;
+        mario->dy = -22;
 //        if(mario->y <= (VISINAPROZORA/2-mario->height/2 - 10) && ((initial_ground.y - background->y + 211) >= VISINAPROZORA))
 //        {
 //            std::cout << "camera jumped up\n";
@@ -213,12 +214,12 @@ bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for examp
 void Game::GenerateObjects()
 {
     std::shared_ptr<Object> objPtr = nullptr;
-    objects->push_back(std::make_shared<QuestionBlock>(176, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(193, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(224, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(240, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(416, 169));
-    objects->push_back(std::make_shared<QuestionBlock>(120, 201));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 176, 201));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 193, 201));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 224, 153));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 240, 153));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 416, 169));
+    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 120, 201));
     objPtr = std::make_shared<Pipe>(335, 240, objects, movingObjects);
     objects->push_back(objPtr);
     objects->push_back(std::make_shared<Ground>(25, 200));

@@ -17,6 +17,7 @@ Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
     if(dying)
         this->cyclesUntilDeath = 10;
     this->typeOfObject = COIN;
+    std::cout << "ovdje\n";
 }
 
 
@@ -61,7 +62,7 @@ void Coin::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
         objects->erase(partition(std::begin(*objects), end(*objects),
                                  [this](const std::shared_ptr<Object> &x)
         {
-            return x.get() == this;
+            return (x.get() != this);
         }),
         std::end(*objects));
 //            objects->erase(std::remove(objects->begin(), objects->end(), *this), objects->end());

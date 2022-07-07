@@ -1,8 +1,10 @@
 #include "QuestionBlock.hpp"
 #include "Coin.hpp"
 
-QuestionBlock::QuestionBlock(int x, int y)
+QuestionBlock::QuestionBlock(vektorObjekata obj, vektorObjekata movingObj, int x, int y)
 {
+    this->objects = obj;
+    this->movingObjects = movingObj;
     this->typeOfObject = QUESTIONMARK;
     this->x = x;
     this->startingY = this->y = y;
@@ -24,11 +26,11 @@ QuestionBlock::QuestionBlock(int x, int y)
 bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
     static bool hit = false;
-    if((obj->stateY == UP) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->topSide) == (this->y + this->bottomSide)) && (!hit))
+    if(checkYBottom(obj) && checkXRange(obj))
     {
         hit = true;
         obj->stateY = DOWN;
-        obj->dy = (obj->y - obj->testingY - 1);
+        obj->dy = (obj->testingY - obj->y + 1);
 //                std::cout << "obj->dy: " << obj->dy << std::endl;
 //                std::cout << "-------------------------------------------------------------\n";
 //                std::cout << "hit question mark\n";
@@ -41,10 +43,9 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
             this->dy = -8;
             this->flag = true;
 //                    this->startingY = this->y;
-            this->hbm_ = (HBITMAP) LoadImage(NULL, "emptyQuestionBlockBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-            this->hbmMask_ = (HBITMAP) LoadImage(NULL, "emptyQuestionBlock.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+            this->hbm_ = emptyQuestionMark;
+            this->hbmMask_ = emptyQuestionMarkMask;
             this->max = 1;
-
             objects->push_back(std::make_shared<Coin>(this->objects, this->movingObjects, this->x, this->y, true));
         }
 //                std::cout << "-------------------------------------------------------------\n";
@@ -56,12 +57,12 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
 //            obj->dy = -12;
         return true;
     }
-    else if(hit)
-    {
-        hit = false;
-        obj->dy = -12;
-        return true;
-    }
+//    else if(hit)
+//    {
+////        hit = false;
+////        obj->dy = 12;
+//        return true;
+//    }
     return false;
 }
 
@@ -69,10 +70,10 @@ bool QuestionBlock::checkTop(std::shared_ptr<Object> obj, int dy)
 {
     if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
     {
-        std::cout << getStringTypeOfObject(obj) << " hit QuestionBlock top\n";
+//        std::cout << getStringTypeOfObject(obj) << " hit QuestionBlock top\n";
         obj->stateY = NEUTRAL;
         obj->dy = obj->testingY - obj->y;
-        obj->ground = obj->testingY;
+        obj->ground = obj->testingY + obj->bottomSide;
         obj->objectY = 1;
         return true;
     }

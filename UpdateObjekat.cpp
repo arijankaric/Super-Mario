@@ -66,8 +66,8 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
     {
         if(mario->y < (VISINAPROZORA/2 - mario->height/2))
         {
-//            mario->ground += testDY;
-//            initial_ground += testDY;
+//            mario->ground -= testDY;
+//            initial_ground -= testDY;
 //            if(mario->y >= mario->ground)
 //            {
 //                int dist = mario->y - mario->ground;
@@ -78,19 +78,19 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //                if(test)
 //                    break;
 //            }
+//            initial_ground += testDY;
             UpdatePositionOfObjects(0, testDY);
-//            if((background->height - background->y - initial_ground) < VISINAPROZORA)
-//            {
-//                int dist = VISINAPROZORA + initial_ground - background->height + background->y;
-//                initial_ground += -dist/2;
-//                if(testDY > 0)
-//                {
-////                    std::cout << "mario nanize\n";
-//                    mario->y += 1;
-//                }
-//                if(!UpdatePositionOfObjects(0, -dist/2))
-//                    break;
-//            }
+            if((background->height - background->y - initial_ground) < VISINAPROZORA)
+            {
+                int dist = VISINAPROZORA + initial_ground - background->height + background->y;
+                if(testDY > 0)
+                {
+                    std::cout << "mario nanize\n";
+                    mario->y += 1;
+                }
+                if(!UpdatePositionOfObjects(0, -dist))
+                    break;
+            }
         }
         else if((mario->y + mario->height/2) >= (VISINAPROZORA/2))
         {
@@ -109,18 +109,17 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //            system("pause");
 //            std::cout << "initial_ground - background->y" << initial_ground - background->y << std::endl;
 //            this->y = this->height - VISINAPROZORA - 155;
-//            if((background->height - background->y - initial_ground) < (VISINAPROZORA))
-//            {
-//                int dist;
-//                dist = VISINAPROZORA - background->height + background->y + initial_ground;
-//                std::cout << "dist: " << dist << " mario->y: " << mario->y << std::endl;
-//                mario->y += -dist/2;
-////                initial_ground += dist;
-//                std::cout << "dist: " << dist << " mario->y: " << mario->y << std::endl;
-//                if(!UpdatePositionOfObjects(0, -(dist/2)))
-//                    break;
-////                return;
-//            }
+            if((background->height - background->y - initial_ground) != (VISINAPROZORA))
+            {
+                int dist;
+                dist = VISINAPROZORA - background->height + background->y + initial_ground;
+//                initial_ground += dist/2;
+//                mario->ground += -dist;
+                std::cout << "dist: " << dist << std::endl;
+                if(!UpdatePositionOfObjects(0, -dist))
+                    break;
+//                return;
+            }
 //            std::cout << "mario->y: " << mario->y << std::endl;
             mario->y += testDY;
 //            std::cout << "mario->y: " << mario->y << std::endl;
@@ -142,13 +141,6 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
         totalDY += testDY;
     }
     mario->dy += 3;
-    if(mario->y > mario->ground)
-    {
-        std::cout << "mario->dy: " << mario->dy << std::endl;
-        std::cout << "mario->y: " << mario->y << std::endl;
-
-        system("pause");
-    }
 
     if(mario->dy < 0)
         mario->stateY = UP;
