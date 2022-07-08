@@ -12,8 +12,8 @@ public:
     FlowerEnemy(vektorObjekata obj, vektorObjekata movObj, int x, int y, TIMERPROC upFunc, TIMERPROC downFunc);
     bool checkBottom(std::shared_ptr<Object> obj, int dy) override;
     bool checkTop(std::shared_ptr<Object> obj, int dy)override;
-    bool checkLeft(std::shared_ptr<Object> obj)override;
-    bool checkRight(std::shared_ptr<Object> obj)override;
+    bool checkLeft(std::shared_ptr<Object> obj, int dx)override;
+    bool checkRight(std::shared_ptr<Object> obj, int dx)override;
     void draw(HDC hdcBuffer, HDC hdcMem)override;
 
     void moveYX(std::shared_ptr<Object> obj, bool whosMoving)override;

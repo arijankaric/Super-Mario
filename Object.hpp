@@ -45,9 +45,6 @@ public:
     int topSide;
     int bottomSide;
 
-    int stateY = NEUTRAL;
-    int stateX = NEUTRAL;
-
     void* parent = NULL;
 
     int ground;
@@ -60,8 +57,8 @@ public:
     virtual bool checkY(std::shared_ptr<Object> obj, int dy); // checkYFuture
     virtual bool checkBottom(std::shared_ptr<Object> obj, int dy);
     virtual bool checkTop(std::shared_ptr<Object> obj, int dy);
-    virtual bool checkLeft(std::shared_ptr<Object> obj);
-    virtual bool checkRight(std::shared_ptr<Object> obj);
+    virtual bool checkLeft(std::shared_ptr<Object> obj, int dx);
+    virtual bool checkRight(std::shared_ptr<Object> obj, int dx);
     virtual void draw(HDC hdcBuffer, HDC hdcMem);
     ~Object();
     virtual void moveYX(std::shared_ptr<Object> obj, bool whosMoving);
@@ -79,4 +76,20 @@ public:
     using vektorObjekata = std::shared_ptr<std::vector<std::shared_ptr<Object>>>;
     vektorObjekata objects;
     vektorObjekata movingObjects;
+
+
+
+    enum class stateY { Up, Down, Neutral};
+    enum class stateX { Left, Right, Neutral};
+    stateY stY_ = stateY::Neutral;
+    stateX stX_ = stateX::Neutral;
+    virtual void setYState(stateY st);
+    virtual void setXState(stateX st);
+
+//    virtual void nextY(void) = 0;
+    virtual void nextDY(void);
+
+
+    virtual void setDX(int DX);
+    virtual void setDY(int DY);
 };

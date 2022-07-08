@@ -42,7 +42,7 @@ bool FlowerEnemy::checkBottom(std::shared_ptr<Object> obj, int dy)
 
 bool FlowerEnemy::checkTop(std::shared_ptr<Object> obj, int dy)
 {
-    if((this->flag == true) && (obj->stateY != UP) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->bottomSide) == (this->y + this->topSide)))
+    if((this->flag == true) && (obj->stY_ != Object::stateY::Up) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->bottomSide) == (this->y + this->topSide)))
     {
         obj->dy = obj->y - obj->testingY;
         std::cout << getStringTypeOfObject(obj) << " hit flower_enemy top side" << std::endl;
@@ -54,9 +54,9 @@ bool FlowerEnemy::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj)
+bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && (((obj->y + obj->bottomSide) < (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of flower_enemy\n";
@@ -68,9 +68,9 @@ bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj)
 
 }
 
-bool FlowerEnemy::checkRight(std::shared_ptr<Object> obj)
+bool FlowerEnemy::checkRight(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->leftSide) == (this->x + this->rightSide)) && (((obj->y + obj->bottomSide) < (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit right side of flower_enemy\n";
@@ -136,7 +136,7 @@ void FlowerEnemy::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
     int endPointY = this->y + this->dy;
     while(this->testingY != endPointY)
     {
-        if((this->flag == true) && (obj->stateY != UP) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->y + obj->bottomSide) == (this->testingY + this->topSide)))
+        if((this->flag == true) && (obj->stY_ != stateY::Up) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->y + obj->bottomSide) == (this->testingY + this->topSide)))
         {
             std::cout << "Mario hit flower_enemy top side: " << obj->y << " " << (this->testingY + this->topSide) << std::endl;
             obj->flag = true;

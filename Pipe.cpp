@@ -18,9 +18,9 @@ Pipe::Pipe(int x, int y, vektorObjekata obj, vektorObjekata movObj)
     this->bottomSide = 25;
 }
 
-bool Pipe::checkLeft(std::shared_ptr<Object> obj)
+bool Pipe::checkLeft(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && (((obj->y + obj->bottomSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of pipe\n";
@@ -30,9 +30,9 @@ bool Pipe::checkLeft(std::shared_ptr<Object> obj)
     return false;
 }
 
-bool Pipe::checkRight(std::shared_ptr<Object> obj)
+bool Pipe::checkRight(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->leftSide) == (this->x + this->rightSide)) && (((obj->y + obj->bottomSide) < (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit right side of pipe\n";

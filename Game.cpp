@@ -3,28 +3,23 @@
 Game::Game()
 {
     movingObjects->push_back(mario);
+    // dodaj samo goombe u movingObjects?
     GenerateObjects();
 }
 
 void Game::CheckInput(void)
 {
-//    std::cout << "mario->x: " << mario->x << " mario->y: " << mario->y << std::endl;
-    mario->Y = 0;
-//    mario->state = UNKNOWN;
+//    std::cout << "mario->dx: " << mario->dx << " mario->y: " << mario->y << std::endl;
     if(PRITISNUTO(VK_ESCAPE))
     {
         // implementirati pause mehaniku
         exit(0);
     }
 
-//    std::cout << mario->stateY << std::endl;
-// && mario->objectY != 3 && mario->objectY != 4
     if(PRITISNUTO(VK_UP) &&  (mario->y + mario->bottomSide == mario->ground))
     {
-        mario->stateY = UP;
-        mario->Y = 3;
-        mario->X = 0;
-        mario->dy = -22;
+        mario->setYState(Object::stateY::Up);
+//        mario->dy = -22;
 //        if(mario->y <= (VISINAPROZORA/2-mario->height/2 - 10) && ((initial_ground.y - background->y + 211) >= VISINAPROZORA))
 //        {
 //            std::cout << "camera jumped up\n";
@@ -50,98 +45,102 @@ void Game::CheckInput(void)
 
     if(PRITISNUTO(VK_RIGHT))
     {
-//        std::shared_ptr<Mario> mario1 = std::dynamic_pointer_cast<Mario>(mario);
-//        mario1->setWalkRight();
-        mario->Y = 1;
-        mario->stateX = RIGHT;
-        (std::dynamic_pointer_cast<Mario>(mario))->setWalkRight();
+        mario->setXState(Object::stateX::Right);
+        mario->moveX(mario, true);
         if(background->x < (background->width - SIRINAPROZORA) && mario->x == (SIRINAPROZORA/2-mario->width/2))
         {
-            uint16_t totalDX = 0;
-            uint16_t testDX = 1;
-            while(totalDX != mario->dx)
-            {
-                if(UpdatePositionOfObjects(testDX, 0))
-                    mario->startingX += - testDX; // more like mario->startingDX
-                else
-                    break;
-                totalDX += testDX;
-            }
+            UpdatePositionOfObjects(mario->dx, 0);
+//            uint16_t totalDX = 0;
+//            uint16_t testDX = 1;
+//            std::cout << "pokusava se kretati desno ali " << mario->dx << std::endl;
+//            while(totalDX != mario->dx)
+//            {
+//                if(UpdatePositionOfObjects(testDX, 0))
+//                    mario->startingX += - testDX; // more like mario->startingDX
+//                else
+//                    break;
+//                totalDX += testDX;
+//            }
         }
-        else if(mario->x < (SIRINAPROZORA / 2 - mario->width / 2)) // kad ode skroz na desno
+        else if(mario->x + mario->rightSide < SIRINAPROZORA) // kad ode skroz na desno
         {
-            uint16_t totalDX = 0;
-            uint16_t testDX = 1; // smoother walking("more precise")/updating
-            while(totalDX != mario->dx)
-            {
-                if(mario->x + testDX <= (SIRINAPROZORA / 2 - mario->width / 2))
-                    mario->x += testDX;
-                else
-                    break;
-                totalDX += testDX;
-            }
+            mario->x += mario->dx;
+//            uint16_t totalDX = 0;
+//            uint16_t testDX = 1; // smoother walking("more precise")/updating
+//            while(totalDX != mario->dx)
+//            {
+//                if(mario->x + mario->rightSide + testDX < SIRINAPROZORA)
+//                    mario->x += testDX;
+//                else
+//                    break;
+//                totalDX += testDX;
+//            }
         }
         else
         {
-            std::cout << "walking in place on the right\n";
-            // walk in place
+            std::cout << "walking in place on the right\nudaras u zid\n";
         }
-//        mario->setWalkRight();
     }
     else if(PRITISNUTO(VK_LEFT))
     {
-        (std::dynamic_pointer_cast<Mario>(mario))->setWalkLeft();
-        mario->stateX = LEFT;
-        mario->Y = 1;
+        mario->setXState(Object::stateX::Left);
+        mario->moveX(mario, true);
+//        (std::dynamic_pointer_cast<Mario>(mario))->setWalkLeft();
+//        mario->stX_ = Object::stateX::Left;
+//        mario->Y = 1;
         if(background->x > 0 && mario->x == (SIRINAPROZORA / 2 - mario->width / 2))
         {
-            int totalDX = 0;
-            int testDX = -1;
-            while(totalDX != -mario->dx)
-            {
-                if(UpdatePositionOfObjects(testDX, 0))
-                    mario->startingX += -testDX; // za koliko revertati u slucaju da treba da se reverta
-                else
-                    break;
-                totalDX += testDX;
-            }
+            UpdatePositionOfObjects(mario->dx, 0);
+//            int totalDX = 0;
+//            int testDX = -1;
+//            while(totalDX != mario->dx)
+//            {
+//                if(UpdatePositionOfObjects(testDX, 0))
+//                    mario->startingX += -testDX; // za koliko revertati u slucaju da treba da se reverta
+//                else
+//                    break;
+//                totalDX += testDX;
+//            }
 //            foreground.x -= mario->dx;
         }
-        else if(mario->x + 10 > 0)
+        else if(mario->x + mario->leftSide > 0)
         {
-            int totalDX = 0;
-            int testDX = -1;
-            while(totalDX != -mario->dx)
-            {
-                if(mario->x + testDX + 10 > 0)
-                    mario->x += testDX;
-                else
-                    break;
-                totalDX += testDX;
-            }
+            mario->x += mario->dx;
+//            int totalDX = 0;
+//            int testDX = -1;
+//            while(totalDX != -mario->dx)
+//            {
+//                if(mario->x + testDX + 10 > 0)
+//                    mario->x += testDX;
+//                else
+//                    break;
+//                totalDX += testDX;
+//            }
         }
         else
         {
+            std::cout << "Mario is colliding with left end point\n";
             //just walk in place
         }
 //        mario->setWalkLeft();
 
-        if(mario->objectY != 3)
-        {
-            mario->objectX++;
-            if(mario->objectX == 2)
-                mario->objectX = 0;
-        }
+//        if(mario->objectY != 3)
+//        {
+//            mario->objectX++;
+//            if(mario->objectX == 2)
+//                mario->objectX = 0;
+//        }
     }
     else
     {
-        mario->stateX = NEUTRAL;
-        mario->objectX = 0;
+        mario->setXState(Object::stateX::Neutral);
+//        mario->stX_ = ;
+//        mario->objectX = 0;
     }
 
     if(PRITISNUTO(VK_SHIFT))
     {
-        // mario ubrzav/trci
+        // mario ubrzava/trci
     }
 }
 
@@ -162,53 +161,66 @@ void Game::Update(void)
 
 bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for example Mario)
 {
-
-
-    bool X = false;
-    bool Y = false;
-    for(const std::shared_ptr<Object>& el : *objects) // provjerava za sve objekte da li ce se mario sudariti sa nima ukoliko se pomjeri za dx, dy
-    {
-        if(el->checkX(mario, dx)) // ako ce se sudariti sa nekim govorimo pozivaocu da ne mozemo odraditi pomjeranje
-        {
-            X = true;
-        }
-        if(el->checkY(mario, dy))
-        {
-            Y = true;
-        }
-        if(X && Y)
-            break;
-    }
-
-    if(!X)
-    {
-//        std::cout << "UpdatePositionOfObjects dx: " << dx << std::endl;
-        background->x += dx;
-    }
-    if(!Y)
-    {
-//        std::cout << "UpdatePositionOfObjects dy: " << dy << std::endl;
-        background->y += dy;
-    }
-
+    background->x += dx;
+    background->y += dy;
 
     for(const auto& el : *objects)
     {
-        if(!X)
-        {
-            el->x -= dx;
-            el->startingX -= dx;
-        }
-        if(!Y)
-        {
-            el->y -= dy;
-            el->startingY -= dy;
-        }
+        el->x -= dx;
+        el->startingX -= dx;
+        el->y -= dy;
+        el->startingY -= dy;
     }
-    if(X && Y)
-        return false;
 
-    return true;
+//    bool X = false;
+//    bool Y = false;
+//    for(const std::shared_ptr<Object>& el : *objects) // provjerava za sve objekte da li ce se mario sudariti sa nima ukoliko se pomjeri za dx, dy
+//    {
+//        if(el->checkX(mario, dx)) // ako ce se sudariti sa nekim govorimo pozivaocu da ne mozemo odraditi pomjeranje
+//        {
+//            std::cout << "Mario se sudara po x-u\n";
+//            X = true;
+//        }
+//        if(el->checkY(mario, dy))
+//        {
+//            std::cout << "Mario se sudara po y-u\n";
+//            Y = true;
+//        }
+//        if(X && Y)
+//        {
+//            return false;
+//        }
+//    }
+//
+//    if(!X)
+//    {
+////        std::cout << "UpdatePositionOfObjects dx: " << dx << std::endl;
+//        background->x += dx;
+//    }
+//    if(!Y)
+//    {
+////        std::cout << "UpdatePositionOfObjects dy: " << dy << std::endl;
+//        background->y += dy;
+//    }
+//
+//
+//    for(const auto& el : *objects)
+//    {
+//        if(!X)
+//        {
+//            el->x -= dx;
+//            el->startingX -= dx;
+//        }
+//        if(!Y)
+//        {
+//            el->y -= dy;
+//            el->startingY -= dy;
+//        }
+//    }
+//    if(X && Y)
+//        return false;
+//
+//    return true;
 }
 
 void Game::GenerateObjects()
@@ -227,7 +239,6 @@ void Game::GenerateObjects()
     objPtr->rightSide = 500;
     objPtr->leftSide = 0;
     objPtr->hbm_ = nullptr;
-    std::cout << "ground topSide: " << objPtr->y + objPtr->topSide << std::endl;
     objects->push_back(objPtr);
 
     objects->push_back(std::make_shared<FlowerEnemy>(objects, movingObjects, 359, 221, (TIMERPROC)&PiranhaTimerUp, (TIMERPROC)&PiranhaTimerDown));

@@ -23,11 +23,13 @@ Ground::Ground(int x, int y)
 
 bool Ground::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
+//    std::cout << "Ground::checkBottom obj->dy: " << obj->dy << " proslijedjeni dy: " << dy << std::endl;
     if(checkYBottom(obj) && checkXRange(obj) && (dy < 0))
     {
 //        std::cout << getStringTypeOfObject(obj) << " hit bottom of ground" << std::endl;
-        obj->stateY = DOWN;
-        obj->dy = (obj->testingY - obj->y + 2);
+        obj->setYState(stateY::Down);
+        --(obj->testingY);
+//        obj->dy = (obj->testingY - obj->y + 1);
 //                praviUpdate(hwnd);
 //                Render(hwnd);
 //                obj->dy = -5;
@@ -40,24 +42,23 @@ bool Ground::checkBottom(std::shared_ptr<Object> obj, int dy)
 bool Ground::checkTop(std::shared_ptr<Object> obj, int dy)
 {
 //    std::cout << obj->y + obj->bottomSide << " " << this->y + this->topSide << " " << checkYTop(obj) << checkXRange(obj) << std::endl;
-//    std::cout << dy << std::endl;
+//    std::cout << "Ground::checkTop obj->dy: " << obj->dy << " proslijedjeni dy: " << dy << std::endl;
 
 //    std::cout << getStringTypeOfObject(this) << " " << this->y << " " << getStringTypeOfObject(obj) << obj->testingY << std::endl;
     if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
     {
 //        std::cout << getStringTypeOfObject(obj) << " hit top of ground " << obj->dy << std::endl;
-        obj->dy = obj->testingY - obj->y;
+        obj->setYState(stateY::Neutral);
+//        obj->dy = obj->testingY - obj->y;
         obj->ground = obj->testingY + obj->bottomSide;
-        obj->objectY = 1;
-        obj->stateY = NEUTRAL;
         return true;
     }
     return false;
 }
 
-bool Ground::checkLeft(std::shared_ptr<Object> obj)
+bool Ground::checkLeft(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && (((obj->y + obj->bottomSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
     {
 //        std::cout << "----------------------------------\n";
 //        std::cout << getStringTypeOfObject(obj) << " hit left side of ground\n";
@@ -67,13 +68,13 @@ bool Ground::checkLeft(std::shared_ptr<Object> obj)
     return false;
 }
 
-bool Ground::checkRight(std::shared_ptr<Object> obj)
+bool Ground::checkRight(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->leftSide) == (this->x + this->rightSide)) && (((obj->y + obj->bottomSide) < (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
     {
-        std::cout << "----------------------------------\n";
-        std::cout << getStringTypeOfObject(obj) << " hit right side of ground\n";
-        std::cout << "----------------------------------\n";
+//        std::cout << "----------------------------------\n";
+//        std::cout << getStringTypeOfObject(obj) << " hit right side of ground\n";
+//        std::cout << "----------------------------------\n";
         return true;
     }
     return false;

@@ -26,10 +26,10 @@ QuestionBlock::QuestionBlock(vektorObjekata obj, vektorObjekata movingObj, int x
 bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
     static bool hit = false;
-    if(checkYBottom(obj) && checkXRange(obj))
+    if(checkYBottom(obj) && checkXRange(obj) && (dy < 0))
     {
         hit = true;
-        obj->stateY = DOWN;
+        obj->stY_ = stateY::Down;
         obj->dy = (obj->testingY - obj->y + 1);
 //                std::cout << "obj->dy: " << obj->dy << std::endl;
 //                std::cout << "-------------------------------------------------------------\n";
@@ -71,7 +71,7 @@ bool QuestionBlock::checkTop(std::shared_ptr<Object> obj, int dy)
     if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
     {
 //        std::cout << getStringTypeOfObject(obj) << " hit QuestionBlock top\n";
-        obj->stateY = NEUTRAL;
+        obj->stY_ = stateY::Neutral;
         obj->dy = obj->testingY - obj->y;
         obj->ground = obj->testingY + obj->bottomSide;
         obj->objectY = 1;
@@ -80,9 +80,9 @@ bool QuestionBlock::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj)
+bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->rightSide) == (this->x + this->leftSide)) && ((((obj->y + obj->bottomSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide))) || (((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide)))))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit left side of questionmark\n";
@@ -92,9 +92,9 @@ bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj)
     return false;
 }
 
-bool QuestionBlock::checkRight(std::shared_ptr<Object> obj)
+bool QuestionBlock::checkRight(std::shared_ptr<Object> obj, int dx)
 {
-    if(((obj->x + obj->leftSide) == (this->x + this->rightSide)) && (((obj->y + obj->bottomSide) < (this->y + this->bottomSide)) && ((obj->y + obj->bottomSide) > (this->y + this->topSide)) || ((obj->y + obj->topSide) <= (this->y + this->bottomSide)) && ((obj->y + obj->topSide) > (this->y + this->topSide))))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << getStringTypeOfObject(obj) << " hit right side of questionmark\n";

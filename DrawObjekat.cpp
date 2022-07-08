@@ -42,7 +42,7 @@ void Game::DrawObjekat(HDC hdc)
 
         el->draw(hdcBuffer, hdcMem);
 
-        if(mario->stateX != NEUTRAL)
+        if(mario->stX_ != Object::stateX::Neutral)
         {
             mario->max = 2;
         }

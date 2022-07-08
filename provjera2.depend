@@ -12,7 +12,7 @@
 	<math.h>
 	<algorithm>
 
-1657191298 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
+1657282451 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
 	<tchar.h>
 	<windows.h>
 	<iostream>
@@ -26,7 +26,7 @@
 	<vector>
 	"Background.hpp"
 
-1657206557 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
+1657297569 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
 	<windows.h>
 	<iostream>
 	"Global.hpp"
@@ -90,19 +90,19 @@
 1656852727 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.hpp
 	"GlobalObjects.hpp"
 
-1657228120 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.cpp
+1657281639 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.cpp
 	"Game.hpp"
 
-1657196442 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.hpp
+1657285625 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.hpp
 	"Background.hpp"
 	<windows.h>
 	<iostream>
 	<vector>
 
-1657209842 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.cpp
+1657297910 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.cpp
 	"Background.hpp"
 
-1657206571 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.hpp
+1657297913 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.hpp
 	"distanceBetweenObjects.hpp"
 
 1657181308 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.cpp
@@ -111,44 +111,44 @@
 1657181268 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.hpp
 	"Object.hpp"
 
-1657227444 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.cpp
+1657298217 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.cpp
 	"FlowerEnemy.hpp"
 
-1657206686 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.hpp
+1657298157 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.hpp
 	"Mario.hpp"
 
-1657224534 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.cpp
+1657298361 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.cpp
 	"Ground.hpp"
 
-1657206676 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.hpp
+1657297580 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.hpp
 	"Mario.hpp"
 
-1657213871 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
+1657298475 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
 	"Mario.hpp"
 
-1657206710 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
+1657300278 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
 	"Pipe.hpp"
 
-1657206657 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.hpp
+1657297959 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.hpp
 	"Mario.hpp"
 
-1657227701 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
+1657300267 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
 	"distanceBetweenObjects.hpp"
 
-1657226578 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp
+1657297943 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp
 	"Coin.hpp"
 
-1657206622 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.hpp
+1657297930 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.hpp
 	"Background.hpp"
 
-1657228151 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.cpp
+1657298436 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.cpp
 	"QuestionBlock.hpp"
 	"Coin.hpp"
 
-1657226693 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.hpp
+1657298053 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.hpp
 	"Mario.hpp"
 
-1657220430 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.hpp
+1657282087 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.hpp
 	"Mario.hpp"
 	"Pipe.hpp"
 	"Goomba.hpp"
@@ -157,9 +157,9 @@
 	"FlowerEnemy.hpp"
 	"Ground.hpp"
 
-1657226242 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.cpp
+1657298683 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.cpp
 	"Game.hpp"
 
-1657227237 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\updateobjekat.cpp
+1657298749 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\updateobjekat.cpp
 	"Game.hpp"
 

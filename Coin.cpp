@@ -21,12 +21,12 @@ Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
 }
 
 
-bool Coin::checkLeft(std::shared_ptr<Object> obj)
+bool Coin::checkLeft(std::shared_ptr<Object> obj, int dx)
 {
     return false;
 }
 
-bool Coin::checkRight(std::shared_ptr<Object> obj)
+bool Coin::checkRight(std::shared_ptr<Object> obj, int dx)
 {
     return false;
 }

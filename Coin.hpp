@@ -9,8 +9,8 @@ public:
     Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying = false);
     bool checkBottom(std::shared_ptr<Object> obj, int dy) override;
     bool checkTop(std::shared_ptr<Object> obj, int dy)override;
-    bool checkLeft(std::shared_ptr<Object> obj)override;
-    bool checkRight(std::shared_ptr<Object> obj)override;
+    bool checkLeft(std::shared_ptr<Object> obj, int dx)override;
+    bool checkRight(std::shared_ptr<Object> obj, int dx)override;
 
     void moveYX(std::shared_ptr<Object> obj, bool whosMoving)override;
     void moveY(std::shared_ptr<Object> obj, bool whosMoving)override;
