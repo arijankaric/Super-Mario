@@ -1,30 +1,29 @@
 #include "Mario.hpp"
 
-Mario::Mario(vektorObjekata obj, vektorObjekata movObj, int x, int y)
+Mario::Mario(int x, int y)
 {
     this->Y = 0;
     this->cyclesForChange = 3;
     this->max = 2;
-    this->objects = obj;
-    this->movingObjects = movObj;
+//    this->objects = obj;
+//    this->movingObjects = movObj;
     this->hbm_ = hbmMarioWalkRight;
     this->hbmMask_ = hbmMarioWalkRightMask;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
-    this->typeOfObject = MARIO;
+    this->typeOfObject = objectType::Mario;
     this->width = bitmap.bmWidth/3;
     this->height = bitmap.bmHeight/10;
     this->y = 239;
     this->x = SIRINAPROZORA/2-this->width/2;
-    this->dx = 5;
+    this->dx = 0;
     this->dy = 0;
     this->bottomSide = 25;
     this->leftSide = 12;
     this->rightSide = 24;
     this->topSide = 10;
     this->ground = 320;
-    this->outline = true;
-    this->objectY = 1;
-    this->objectX = 0;
+    this->life_ = 1;
+    this->moveable = true;
 }
 
 //bool Mario::checkLeft(std::shared_ptr<Object> obj)
@@ -81,8 +80,10 @@ void Mario::setWalkRight()
 
 void Mario::setYState(stateY st)
 {
+    static bool hit = false;
     if(stateY::Neutral == st)
     {
+        hit = false;
         if(stX_ == stateX::Neutral)
         {
             Y = 0;
@@ -93,10 +94,17 @@ void Mario::setYState(stateY st)
     {
         if(stY_ == stateY::Neutral)
         {
-            dy = -22;
+            std::cout << "inicijalni skok\n";
+            dy = -16;
         }
         else
         {
+            if((dy < 0) && (dy > -8) && !hit)
+            {
+                hit = true;
+                std::cout << "sekundarni skok: " << y + bottomSide << " " << ground << std::endl;
+                dy -= 10;
+            }
             return;
         }
         Y = 3;
@@ -150,3 +158,123 @@ void Mario::nextDY(void)
 //{
 //    if()
 //}
+
+void Mario::decreaseLife()
+{
+    std::cout << "Mario lifes before: " << life_ << std::endl;
+    if(--life_ == 0)
+    {
+        this->X = 0;
+        this->Y = 0;
+        this->max = 1;
+        hbm_ = hbmMarioDead_;
+        hbmMask_ = hbmMarioDeadMask_;
+        GetObject(hbm_, sizeof(BITMAP), &bitmap);
+        this->width = bitmap.bmWidth;
+        this->height = bitmap.bmHeight;
+        this->x += 10;
+//        this->y -= 3;
+        this->dy = -14;
+        this->leftSide -= 13;
+        this->rightSide -= 8;
+        this->bottomSide -= 9;
+        this->topSide -= 11;
+        this->cyclesUntilDeath = -2;
+    }
+    std::cout << "Mario lifes after: " << life_ << std::endl;
+}
+
+void Mario::decreaseMarioState(void)
+{
+    if(st_ == marioState::small)
+    {
+        decreaseLife();
+    }
+    else if(st_ == marioState::super)
+    {
+        st_ = marioState::small;
+    }
+    else if(st_ == marioState::raccoon)
+    {
+        st_ = marioState::super;
+    }
+}
+
+void Mario::setMarioState(marioState st)
+{
+    if(st ==  marioState::super)
+    {
+        st_ = st;
+    }
+    else if(st == marioState::raccoon)
+    {
+        st_ = st;
+    }
+    else if(st == marioState::sparkling)
+    {
+        st_ = st;
+    }
+}
+
+const std::string Mario::getStringTypeOfObject() const
+{
+    return std::string("Mario");
+}
+
+void Mario::collideX(std::shared_ptr<Object> obj)
+{
+    if(deadly(obj))
+        decreaseMarioState();
+}
+
+const bool Mario::deadly(const std::shared_ptr<Object> obj) const
+{
+    switch(obj->typeOfObject)
+    {
+    case objectType::Goomba:
+        return true;
+        break;
+    case objectType::Turtle:
+        return true;
+        break;
+    case objectType::Fireball:
+        return true;
+        break;
+    case objectType::FlowerEnemy:
+        return true;
+        break;
+    default:
+        return false;
+    }
+}
+
+void Mario::projectY()
+{
+    if(life_ != 0)
+    {
+        Object::projectY();
+        return;
+    }
+
+//    if(this->cycles == (5))
+//    {
+//        std::cout << "Mario has changed direction, even in his death Mario remains agile. AGILE ENVIRONMENTS FTW!! : D\n";
+//        this->dy = -this->dy;
+//    }
+
+
+    if(this->cyclesUntilDeath != -1)
+    {
+        ++this->cycles;
+//        std::cout << "Only dying Mario should print this: " << this->cycles << std::endl;
+    }
+
+//    std::cout << "marioTop: " << this->getTop() << std::endl;
+//    std::cout << "VISINAPROZORA: " << VISINAPROZORA << std::endl;
+
+    if(this->getTop() > VISINAPROZORA)
+    {
+//        this->removeDeadObject(shared_from_this());
+    }
+}
+

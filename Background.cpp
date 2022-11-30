@@ -32,3 +32,8 @@ Background::Background()
 //    std::cout << "why is this being called\n";
 //    return true;
 //}
+
+const std::string Background::getStringTypeOfObject() const
+{
+    return std::string("Background");
+}

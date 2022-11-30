@@ -5,6 +5,7 @@ void Game::DrawObjekat(HDC hdc)
 //    std::cout << "-----------------------------------------------------------\n";
 //    std::cout << "Drawing\n";
 //    std::cout << "-----------------------------------------------------------\n";
+
     HDC hdcBuffer = CreateCompatibleDC(hdc);
     HBITMAP hbmBuffer = CreateCompatibleBitmap(hdc, clientRect->right, clientRect->bottom);
     HBITMAP hbmOldBuffer = (HBITMAP) SelectObject(hdcBuffer, hbmBuffer);
@@ -17,26 +18,16 @@ void Game::DrawObjekat(HDC hdc)
 
     for(std::shared_ptr<Object>& el : *objects)
     {
-
         if((el->hbm_ == nullptr) || (el->hbmMask_ == nullptr))
             continue;
 
         el->draw(hdcBuffer, hdcMem);
-
-        if(++el->changeCycles == el->cyclesForChange)
-        {
-            ++el->X;
-            el->changeCycles = 0;
-        }
-
-        if(el->X >= el->max)
-        {
-            el->X = 0;
-        }
+        el->afterDraw();
     }
 
     for(std::shared_ptr<Object>& el : *movingObjects)
     {
+        std::cout << "Moving objects exist!\n";
         if(el->hbm_ == NULL || el->hbmMask_ == NULL)
             continue;
 

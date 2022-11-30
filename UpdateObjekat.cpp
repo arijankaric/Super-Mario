@@ -59,7 +59,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 
 //    static bool marioFocus = false;
 //    mario->testingY = mario->y;
-    mario->moveY(mario, TRUE);
+    mario->projectY();
 //    std::cout << mario->y << " " << mario->dy << std::endl;
     int totalDY = mario->dy;
     int testDY = 0;
@@ -95,8 +95,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //                    mario->changeY(1);
                     mario->y += 1;
                 }
-                if(!UpdatePositionOfObjects(0, -dist))
-                    break;
+                UpdatePositionOfObjects(0, -dist);
             }
         }
         else if((mario->y + mario->height/2) >= (VISINAPROZORA/2))
@@ -123,11 +122,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //                initial_ground += dist/2;
 //                mario->ground += -dist;
                 std::cout << "dist: " << dist << std::endl;
-                if(!UpdatePositionOfObjects(0, -dist))
-                {
-                    std::cout << "Ne bi trebao ovdje brekati jer je uradjen precheck\n";
-                    break;
-                }
+                UpdatePositionOfObjects(0, -dist);
 //                return;
             }
 //            std::cout << "mario->y: " << mario->y << std::endl;
@@ -172,7 +167,18 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //    std::cout << "-------------------------------------------------------------\n";
     for(const std::shared_ptr<Object>& el : *objects)
     {
-        el->moveYX(mario, true);
+        if((el == mario) || (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
+        {
+            continue;
+        }
+
+        if((el->cyclesUntilDeath == -2) && (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
+        {
+            el->removeDeadObject(el);
+            return;
+        }
+
+        el->moveYX();
 //        int testingObjectY = el->y;
 //        int directionY = el->dy/abs(el->dy);
 //        int endPointY = el->y + el->dy;

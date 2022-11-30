@@ -1,9 +1,9 @@
 #include "Coin.hpp"
 
-Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
+Coin::Coin(int x, int y, bool dying)
 {
-    this->objects = obj;
-    this->movingObjects = movObj;
+//    this->objects = obj;
+//    this->movingObjects = movObj;
     this->x = x;
     this->y = y;
     this->dy = -15;
@@ -16,8 +16,7 @@ Coin::Coin(vektorObjekata obj, vektorObjekata movObj, int x, int y, bool dying)
     this->X = 0;
     if(dying)
         this->cyclesUntilDeath = 10;
-    this->typeOfObject = COIN;
-    std::cout << "ovdje\n";
+    this->typeOfObject = objectType::Coin;
 }
 
 
@@ -41,15 +40,31 @@ bool Coin::checkBottom(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-void Coin::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
+void Coin::moveYX()
+{
+    this->moveY();
+    this->moveX();
+}
+void Coin::moveY()
+{
+    this->y += this->dy;
+}
+void Coin::moveX()
+{
+    this->x += this->dx;
+}
+
+const std::string Coin::getStringTypeOfObject() const
+{
+    return std::string("Coin");
+}
+
+void Coin::afterDraw()
 {
     if(this->cycles == (this->cyclesUntilDeath/2))
     {
         this->dy = -this->dy;
     }
-
-    this->moveY(obj, whosMoving);
-    this->moveX(obj, whosMoving);
 
     if(this->cyclesUntilDeath != -1)
     {
@@ -59,20 +74,13 @@ void Coin::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
 
     if(this->cyclesUntilDeath == this->cycles)
     {
-        objects->erase(partition(std::begin(*objects), end(*objects),
-                                 [this](const std::shared_ptr<Object> &x)
-        {
-            return (x.get() != this);
-        }),
-        std::end(*objects));
+        this->removeDeadObject(shared_from_this());
+//        objects->erase(partition(std::begin(*objects), end(*objects),
+//                                 [this](const std::shared_ptr<Object> &x)
+//        {
+//            return (x.get() != this);
+//        }),
+//        std::end(*objects));
 //            objects->erase(std::remove(objects->begin(), objects->end(), *this), objects->end());
     }
-}
-void Coin::moveY(std::shared_ptr<Object> obj, bool whosMoving)
-{
-    this->y += this->dy;
-}
-void Coin::moveX(std::shared_ptr<Object> obj, bool whosMoving)
-{
-    this->x += this->dx;
 }

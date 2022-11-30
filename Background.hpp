@@ -13,4 +13,5 @@ public:
 //    bool checkTop(std::shared_ptr<Object> obj, int dy)override;
 //    bool checkLeft(std::shared_ptr<Object> obj, int dx)override;
 //    bool checkRight(std::shared_ptr<Object> obj, int dx)override;
+    const std::string getStringTypeOfObject() const override;
 };

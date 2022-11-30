@@ -1,11 +1,11 @@
 #include "QuestionBlock.hpp"
 #include "Coin.hpp"
 
-QuestionBlock::QuestionBlock(vektorObjekata obj, vektorObjekata movingObj, int x, int y)
+QuestionBlock::QuestionBlock(int x, int y)
 {
-    this->objects = obj;
-    this->movingObjects = movingObj;
-    this->typeOfObject = QUESTIONMARK;
+//    this->objects = obj;
+//    this->movingObjects = movingObj;
+    this->typeOfObject = objectType::QuestionBlock;
     this->x = x;
     this->startingY = this->y = y;
     this->dy = 0;
@@ -25,10 +25,10 @@ QuestionBlock::QuestionBlock(vektorObjekata obj, vektorObjekata movingObj, int x
 
 bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
 {
-    static bool hit = false;
+//    static bool hit = false;
     if(checkYBottom(obj) && checkXRange(obj) && (dy < 0))
     {
-        hit = true;
+//        hit = true;
         obj->stY_ = stateY::Down;
         obj->dy = (obj->testingY - obj->y + 1);
 //                std::cout << "obj->dy: " << obj->dy << std::endl;
@@ -46,7 +46,7 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy)
             this->hbm_ = emptyQuestionMark;
             this->hbmMask_ = emptyQuestionMarkMask;
             this->max = 1;
-            objects->push_back(std::make_shared<Coin>(this->objects, this->movingObjects, this->x, this->y, true));
+            objects->push_back(std::make_shared<Coin>(this->x, this->y, true));
         }
 //                std::cout << "-------------------------------------------------------------\n";
 //                std::cout << "obj->y-obj->dy: " << obj->y-obj->dy << "\ntestMarioY: " << obj->testingY << std::endl;
@@ -71,10 +71,11 @@ bool QuestionBlock::checkTop(std::shared_ptr<Object> obj, int dy)
     if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
     {
 //        std::cout << getStringTypeOfObject(obj) << " hit QuestionBlock top\n";
-        obj->stY_ = stateY::Neutral;
+        obj->setYState(stateY::Neutral);
+//        obj->stY_ = stateY::Neutral;
         obj->dy = obj->testingY - obj->y;
         obj->ground = obj->testingY + obj->bottomSide;
-        obj->objectY = 1;
+//        obj->objectY = 1;
         return true;
     }
     return false;
@@ -85,7 +86,7 @@ bool QuestionBlock::checkLeft(std::shared_ptr<Object> obj, int dx)
     if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
     {
         std::cout << "----------------------------------\n";
-        std::cout << getStringTypeOfObject(obj) << " hit left side of questionmark\n";
+        std::cout << Object::getStringTypeOfObject(obj) << " hit left side of questionmark\n";
         std::cout << "----------------------------------\n";
         return true;
     }
@@ -97,14 +98,14 @@ bool QuestionBlock::checkRight(std::shared_ptr<Object> obj, int dx)
     if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
     {
         std::cout << "----------------------------------\n";
-        std::cout << getStringTypeOfObject(obj) << " hit right side of questionmark\n";
+        std::cout << Object::getStringTypeOfObject(obj) << " hit right side of questionmark\n";
         std::cout << "----------------------------------\n";
         return true;
     }
     return false;
 }
 
-void QuestionBlock::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
+void QuestionBlock::moveYX()
 {
     if((this->y < this->startingY) && (this->flag))
     {
@@ -116,16 +117,21 @@ void QuestionBlock::moveYX(std::shared_ptr<Object> obj, bool whosMoving)
             this->y = this->startingY;
         }
     }
-    this->moveY(obj, whosMoving);
-    this->moveX(obj, whosMoving);
+    this->moveY();
+    this->moveX();
 }
 
-void QuestionBlock::moveY(std::shared_ptr<Object> obj, bool whosMoving)
+void QuestionBlock::moveY()
 {
     this->y += this->dy;
 }
 
-void QuestionBlock::moveX(std::shared_ptr<Object> obj, bool whosMoving)
+void QuestionBlock::moveX()
 {
     this->x += this->dx;
+}
+
+const std::string QuestionBlock::getStringTypeOfObject() const
+{
+    return std::string("QuestionBlock");
 }

@@ -7,15 +7,15 @@
 #include "Coin.hpp"
 #include "FlowerEnemy.hpp"
 #include "Ground.hpp"
-#define PRITISNUTO(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
+#include "Turtle.hpp"
 
 class Game
 {
 private:
-    using vektorObjekata = std::shared_ptr<std::vector<std::shared_ptr<Object>>>;
-    vektorObjekata objects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // static or soon to die objects that we don't care if they collide or not
-    vektorObjekata movingObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // for example Mario and Goombas/Turtles
-    std::shared_ptr<Object> mario = std::make_shared<Mario>(objects, movingObjects);
+//    using vektorObjekata = std::shared_ptr<std::vector<std::shared_ptr<Object>>>;
+    Object::vektorObjekata objects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // static or soon to die objects that we don't care if they collide or not
+    Object::vektorObjekata movingObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // for example Mario and Goombas/Turtles
+    std::shared_ptr<Object> mario = std::make_shared<Mario>();
     std::shared_ptr<Object> background = std::make_shared<Background>();
     int initial_ground = 164;
 //    friend class Object;

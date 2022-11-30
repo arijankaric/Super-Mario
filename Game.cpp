@@ -2,21 +2,40 @@
 
 Game::Game()
 {
-    movingObjects->push_back(mario);
+//    movingObjects->push_back(mario);
+    objects->push_back(mario);
     // dodaj samo goombe u movingObjects?
+    Object::mario = mario;
+    Object::objects = objects;
     GenerateObjects();
 }
 
 void Game::CheckInput(void)
 {
 //    std::cout << "mario->dx: " << mario->dx << " mario->y: " << mario->y << std::endl;
+
+
+
     if(PRITISNUTO(VK_ESCAPE))
     {
         // implementirati pause mehaniku
         exit(0);
     }
 
-    if(PRITISNUTO(VK_UP) &&  (mario->y + mario->bottomSide == mario->ground))
+    if(mario->life_ == 0)
+    {
+//        if(mario->cyclesUntilDeath > 6/2)
+//        {
+//            mario->y -= 1;
+//        }
+//        else
+//        {
+//            mario->y += 1;
+//        }
+        return;
+    }
+
+    if(PRITISNUTO(VK_UP))
     {
         mario->setYState(Object::stateY::Up);
 //        mario->dy = -22;
@@ -46,9 +65,10 @@ void Game::CheckInput(void)
     if(PRITISNUTO(VK_RIGHT))
     {
         mario->setXState(Object::stateX::Right);
-        mario->moveX(mario, true);
-        if(background->x < (background->width - SIRINAPROZORA) && mario->x == (SIRINAPROZORA/2-mario->width/2))
+        mario->projectX();
+        if(background->x < (background->width - SIRINAPROZORA) && (mario->centerX() >= SIRINAPROZORA/2))
         {
+//            mario->x = (SIRINAPROZORA / 2);
             UpdatePositionOfObjects(mario->dx, 0);
 //            uint16_t totalDX = 0;
 //            uint16_t testDX = 1;
@@ -84,12 +104,13 @@ void Game::CheckInput(void)
     else if(PRITISNUTO(VK_LEFT))
     {
         mario->setXState(Object::stateX::Left);
-        mario->moveX(mario, true);
+        mario->projectX();
 //        (std::dynamic_pointer_cast<Mario>(mario))->setWalkLeft();
 //        mario->stX_ = Object::stateX::Left;
 //        mario->Y = 1;
-        if(background->x > 0 && mario->x == (SIRINAPROZORA / 2 - mario->width / 2))
+        if(background->x > 0 && (mario->centerX() <= (SIRINAPROZORA / 2)))
         {
+//            mario->x = (SIRINAPROZORA / 2);
             UpdatePositionOfObjects(mario->dx, 0);
 //            int totalDX = 0;
 //            int testDX = -1;
@@ -151,6 +172,14 @@ void Game::Render(void)
 
     DrawObjekat(hdc);
     ReleaseDC(hwnd, hdc);
+
+    if((mario->life_ == 0) && (mario->getTop() > VISINAPROZORA))
+    {
+        std::cout << "Game Over. Mario dead\n";
+        system("pause");
+        // izgubio zivot - vraca na last checkpoint ili pocetak mape
+        // izgubio sve zivote - vraca na meni/map selector ili nesto
+    }
 }
 
 void Game::Update(void)
@@ -164,8 +193,12 @@ bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for examp
     background->x += dx;
     background->y += dy;
 
+    mario->ground -= dy;
+
     for(const auto& el : *objects)
     {
+        if(el == mario)
+            continue;
         el->x -= dx;
         el->startingX -= dx;
         el->y -= dy;
@@ -226,21 +259,41 @@ bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for examp
 void Game::GenerateObjects()
 {
     std::shared_ptr<Object> objPtr = nullptr;
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 176, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 193, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 224, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 240, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 416, 169));
-    objects->push_back(std::make_shared<QuestionBlock>(objects, movingObjects, 120, 201));
-    objPtr = std::make_shared<Pipe>(335, 240, objects, movingObjects);
+    objects->push_back(std::make_shared<QuestionBlock>(176, 201));
+    objects->push_back(std::make_shared<QuestionBlock>(193, 201));
+    objects->push_back(std::make_shared<QuestionBlock>(224, 153));
+    objects->push_back(std::make_shared<QuestionBlock>(240, 153));
+    objects->push_back(std::make_shared<QuestionBlock>(416, 169));
+    objects->push_back(std::make_shared<QuestionBlock>(120, 201));
+    objPtr = std::make_shared<Pipe>(335, 240);
+    objects->push_back(std::make_shared<FlowerEnemy>(359, 221, objPtr, FlowerEnemy::flowerType::thrower));
     objects->push_back(objPtr);
     objects->push_back(std::make_shared<Ground>(25, 200));
+
     objPtr = std::make_shared<Ground>(0, 264);
-    objPtr->rightSide = 500;
+    objPtr->rightSide = 600;
     objPtr->leftSide = 0;
-    objPtr->hbm_ = nullptr;
+    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
     objects->push_back(objPtr);
 
-    objects->push_back(std::make_shared<FlowerEnemy>(objects, movingObjects, 359, 221, (TIMERPROC)&PiranhaTimerUp, (TIMERPROC)&PiranhaTimerDown));
+    objPtr = std::make_shared<Ground>(272, 185, true);
+    objPtr->rightSide = 47;
+    objPtr->leftSide = 0;
+    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
+    objects->push_back(objPtr);
+
+    objPtr = std::make_shared<Ground>(240, 215, true);
+    objPtr->rightSide = 47;
+    objPtr->leftSide = 0;
+    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
+    objects->push_back(objPtr);
+
+//    objects->push_back(std::make_shared<Turtle>(245, 170));
+
+//    objects->push_back(std::make_shared<FlowerEnemy>(objects, movingObjects, 359, 221, (TIMERPROC)&PiranhaTimerUp, (TIMERPROC)&PiranhaTimerDown));
+
+    objects->push_back(std::make_shared<Goomba>(300, 250));
+    objects->push_back(std::make_shared<Turtle>(40, 235));
+//    objects->push_back(std::make_shared<Fireball>(mario->x, mario->y, -1, -1));
 }
 

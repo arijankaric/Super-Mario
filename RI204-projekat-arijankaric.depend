@@ -1,0 +1,303 @@
+# depslib dependency file v1.0
+1638818336 source:c:\users\arija\desktop\provjera2\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+
+1645897358 source:c:\users\arija\desktop\wp\arijan_karic_provjera2\main.cpp
+	<tchar.h>
+	<vector>
+	<windows.h>
+	<iostream>
+	<math.h>
+	<algorithm>
+
+1663668780 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+	"Game.hpp"
+
+1657025636 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\generateobjects.cpp
+	"GenerateObjects.hpp"
+	<iostream>
+
+1657026355 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\generateobjects.hpp
+	<vector>
+	"Background.hpp"
+
+1663930362 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.hpp
+	<windows.h>
+	<iostream>
+	"Global.hpp"
+
+1663672523 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\global.hpp
+	<memory>
+	<iostream>
+	<vector>
+	<algorithm>
+	<math.h>
+	<memory>
+	<iterator>
+	<utility>
+
+1652737782 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\global.cpp
+
+1652738665 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimer.cpp
+	"PiranhaTimer.hpp"
+
+1652737928 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimer.hpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+
+1657027624 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerup.hpp
+	<windows.h>
+	<iostream>
+	"Mario.hpp"
+
+1657027621 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerdown.hpp
+	<windows.h>
+	<iostream>
+	"Mario.hpp"
+
+1657184023 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerdown.cpp
+	"Game.hpp"
+
+1657213467 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\piranhatimerup.cpp
+	"Game.hpp"
+
+1656842306 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\praviupdate.hpp
+	"GlobalObjects.hpp"
+	<iostream>
+
+1657027971 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\globalobjects.hpp
+	"Mario.hpp"
+	"PiranhaTimerDown.hpp"
+	"PiranhaTimerUp.hpp"
+	<vector>
+	<algorithm>
+
+1657032368 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\praviupdate.cpp
+	"praviUpdate.hpp"
+
+1663795256 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.hpp
+	"Object.hpp"
+	<math.h>
+
+1663799731 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\distancebetweenobjects.cpp
+	"distanceBetweenObjects.hpp"
+
+1656852727 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.hpp
+	"GlobalObjects.hpp"
+
+1663824825 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\drawobjekat.cpp
+	"Game.hpp"
+
+1663821762 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.hpp
+	"Background.hpp"
+	<windows.h>
+	<iostream>
+	<vector>
+
+1663671142 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.cpp
+	"Background.hpp"
+
+1663671061 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\background.hpp
+	"distanceBetweenObjects.hpp"
+
+1663939221 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.cpp
+	"Goomba.hpp"
+
+1663825167 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\goomba.hpp
+	"Object.hpp"
+
+1663938918 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.cpp
+	"FlowerEnemy.hpp"
+
+1663799428 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\flowerenemy.hpp
+	"Mario.hpp"
+	"Fireball.hpp"
+	"Pipe.hpp"
+
+1663934227 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.cpp
+	"Ground.hpp"
+
+1663933561 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\ground.hpp
+	"Mario.hpp"
+
+1663938856 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\mario.cpp
+	"Mario.hpp"
+
+1663930815 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.cpp
+	"Pipe.hpp"
+
+1663930804 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\pipe.hpp
+	"Mario.hpp"
+
+1663939564 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\object.cpp
+	"distanceBetweenObjects.hpp"
+
+1663935905 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.cpp
+	"Coin.hpp"
+
+1663935859 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\coin.hpp
+	"Background.hpp"
+
+1663671365 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.cpp
+	"QuestionBlock.hpp"
+	"Coin.hpp"
+
+1663671254 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\questionblock.hpp
+	"Mario.hpp"
+
+1657480387 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.hpp
+	"Mario.hpp"
+	"Pipe.hpp"
+	"Goomba.hpp"
+	"QuestionBlock.hpp"
+	"Coin.hpp"
+	"FlowerEnemy.hpp"
+	"Ground.hpp"
+	"Turtle.hpp"
+
+1663940016 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\game.cpp
+	"Game.hpp"
+
+1663934249 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\updateobjekat.cpp
+	"Game.hpp"
+
+1663939261 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\turtle.cpp
+	"Turtle.hpp"
+
+1663929334 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\turtle.hpp
+	"Object.hpp"
+
+1663672717 c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\fireball.hpp
+	"Object.hpp"
+
+1663800025 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\fireball.cpp
+	"Fireball.hpp"
+
+1663671142 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.cpp
+	"Background.hpp"
+
+1663671061 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.hpp
+	"distanceBetweenObjects.hpp"
+
+1663795256 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.hpp
+	"Object.hpp"
+	<math.h>
+
+1663930362 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.hpp
+	<windows.h>
+	<iostream>
+	"Global.hpp"
+
+1663672523 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\global.hpp
+	<memory>
+	<iostream>
+	<vector>
+	<algorithm>
+	<math.h>
+	<memory>
+	<iterator>
+	<utility>
+
+1663935905 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.cpp
+	"Coin.hpp"
+
+1663935859 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.hpp
+	"Background.hpp"
+
+1663799731 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.cpp
+	"distanceBetweenObjects.hpp"
+
+1663824825 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\drawobjekat.cpp
+	"Game.hpp"
+
+1657480387 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.hpp
+	"Mario.hpp"
+	"Pipe.hpp"
+	"Goomba.hpp"
+	"QuestionBlock.hpp"
+	"Coin.hpp"
+	"FlowerEnemy.hpp"
+	"Ground.hpp"
+	"Turtle.hpp"
+
+1663821762 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.hpp
+	"Background.hpp"
+	<windows.h>
+	<iostream>
+	<vector>
+
+1663930804 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.hpp
+	"Mario.hpp"
+
+1663825167 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.hpp
+	"Object.hpp"
+
+1663671254 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.hpp
+	"Mario.hpp"
+
+1663799428 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.hpp
+	"Mario.hpp"
+	"Fireball.hpp"
+	"Pipe.hpp"
+
+1663672717 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.hpp
+	"Object.hpp"
+
+1663933561 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.hpp
+	"Mario.hpp"
+
+1663929334 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.hpp
+	"Object.hpp"
+
+1663800025 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.cpp
+	"Fireball.hpp"
+
+1663942375 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.cpp
+	"FlowerEnemy.hpp"
+
+1663940016 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.cpp
+	"Game.hpp"
+
+1663939221 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.cpp
+	"Goomba.hpp"
+
+1663934227 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.cpp
+	"Ground.hpp"
+
+1663668780 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+	"Game.hpp"
+
+1663941629 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.cpp
+	"Mario.hpp"
+
+1663940207 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.cpp
+	"distanceBetweenObjects.hpp"
+
+1663930815 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.cpp
+	"Pipe.hpp"
+
+1657184023 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerdown.cpp
+	"Game.hpp"
+
+1657213467 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerup.cpp
+	"Game.hpp"
+
+1663671365 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.cpp
+	"QuestionBlock.hpp"
+	"Coin.hpp"
+
+1663939261 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.cpp
+	"Turtle.hpp"
+
+1663934249 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\updateobjekat.cpp
+	"Game.hpp"
+
