@@ -10,6 +10,7 @@ Project is created with:
 ## Video Demonstration
 
 Mario eliminates enemies by jumping on top of them
+The turtle can roll sideways if jumped on twice and eliminate enemies such as other goombas and turtles for Mario
 
 https://user-images.githubusercontent.com/106106584/219587838-6a40e580-6bcd-4e6c-8cba-1e4c3f04c429.mp4
 
