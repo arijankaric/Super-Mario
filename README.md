@@ -24,3 +24,7 @@ What constitutes initial ground? A ground under which there's no possibility of 
 
 https://user-images.githubusercontent.com/106106584/219587874-e2169f7d-f41e-4917-9a80-6f26dae16a97.mp4
 
+Flower enemy shoots fireballs at Mario in 1 of 4 possible quadrants that is unless Mario is hiding nearby the flower enemies pipe in which case the flower enemy waits for Mario to come out of hiding
+
+https://user-images.githubusercontent.com/106106584/219591211-69cbc210-4805-4067-9f6b-7ab3ed6e59f3.mp4
+
