@@ -28,3 +28,7 @@ Flower enemy shoots fireballs at Mario in 1 of 4 possible quadrants that is unle
 
 https://user-images.githubusercontent.com/106106584/219591211-69cbc210-4805-4067-9f6b-7ab3ed6e59f3.mp4
 
+If Mario hits the question box from underneath while in the process of jumping upwards the player receives a coin and the question box becomes empty if that was it's only coin
+
+https://user-images.githubusercontent.com/106106584/219591822-fc1a9af9-1f6d-4181-b36b-fe0c5d2d3383.mp4
+
