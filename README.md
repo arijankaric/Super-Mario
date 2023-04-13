@@ -1,4 +1,4 @@
-## General info
+## Summary
 
 * Developed a Super Mario game using modern C++, the Standard Template Library (STL), and the Win32 API for Windows platform.
 * Implemented various game mechanics, such as player movement, jumping, collision detection, and physics, using modern C++ features like smart pointers, lambda * expressions, and range-based loops.
