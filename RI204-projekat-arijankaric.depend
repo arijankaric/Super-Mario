@@ -179,22 +179,22 @@
 1663800025 source:c:\users\arija\desktop\faks\wp\arijan_karic_provjera2\fireball.cpp
 	"Fireball.hpp"
 
-1663671142 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.cpp
+1663667542 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.cpp
 	"Background.hpp"
 
-1663671061 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.hpp
+1663667461 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\background.hpp
 	"distanceBetweenObjects.hpp"
 
-1663795256 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.hpp
+1663791656 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.hpp
 	"Object.hpp"
 	<math.h>
 
-1663930362 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.hpp
+1663926762 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.hpp
 	<windows.h>
 	<iostream>
 	"Global.hpp"
 
-1663672523 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\global.hpp
+1663668923 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\global.hpp
 	<memory>
 	<iostream>
 	<vector>
@@ -204,19 +204,19 @@
 	<iterator>
 	<utility>
 
-1663935905 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.cpp
+1663932305 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.cpp
 	"Coin.hpp"
 
-1663935859 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.hpp
+1663932259 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\coin.hpp
 	"Background.hpp"
 
-1663799731 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.cpp
+1663796131 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\distancebetweenobjects.cpp
 	"distanceBetweenObjects.hpp"
 
-1663824825 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\drawobjekat.cpp
+1663821225 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\drawobjekat.cpp
 	"Game.hpp"
 
-1657480387 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.hpp
+1657476787 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.hpp
 	"Mario.hpp"
 	"Pipe.hpp"
 	"Goomba.hpp"
@@ -226,78 +226,78 @@
 	"Ground.hpp"
 	"Turtle.hpp"
 
-1663821762 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.hpp
+1663818162 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.hpp
 	"Background.hpp"
 	<windows.h>
 	<iostream>
 	<vector>
 
-1663930804 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.hpp
+1663927204 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.hpp
 	"Mario.hpp"
 
-1663825167 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.hpp
+1663821567 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.hpp
 	"Object.hpp"
 
-1663671254 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.hpp
+1663667654 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.hpp
 	"Mario.hpp"
 
-1663799428 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.hpp
+1663795828 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.hpp
 	"Mario.hpp"
 	"Fireball.hpp"
 	"Pipe.hpp"
 
-1663672717 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.hpp
+1663669117 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.hpp
 	"Object.hpp"
 
-1663933561 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.hpp
+1663929961 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.hpp
 	"Mario.hpp"
 
-1663929334 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.hpp
+1663925734 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.hpp
 	"Object.hpp"
 
-1663800025 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.cpp
+1663796425 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\fireball.cpp
 	"Fireball.hpp"
 
-1663942375 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.cpp
+1663938977 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\flowerenemy.cpp
 	"FlowerEnemy.hpp"
 
-1663940016 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.cpp
+1663936416 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\game.cpp
 	"Game.hpp"
 
-1663939221 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.cpp
+1663935621 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\goomba.cpp
 	"Goomba.hpp"
 
-1663934227 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.cpp
+1663930627 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\ground.cpp
 	"Ground.hpp"
 
-1663668780 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\main.cpp
+1663665180 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\main.cpp
 	<tchar.h>
 	<windows.h>
 	<iostream>
 	"Game.hpp"
 
-1663941629 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.cpp
+1663938029 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\mario.cpp
 	"Mario.hpp"
 
-1663940207 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.cpp
+1663936607 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\object.cpp
 	"distanceBetweenObjects.hpp"
 
-1663930815 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.cpp
+1663927215 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\pipe.cpp
 	"Pipe.hpp"
 
-1657184023 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerdown.cpp
+1657180423 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerdown.cpp
 	"Game.hpp"
 
-1657213467 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerup.cpp
+1657209867 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\piranhatimerup.cpp
 	"Game.hpp"
 
-1663671365 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.cpp
+1663667765 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\questionblock.cpp
 	"QuestionBlock.hpp"
 	"Coin.hpp"
 
-1663939261 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.cpp
+1663935661 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\turtle.cpp
 	"Turtle.hpp"
 
-1663934249 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\updateobjekat.cpp
+1663930649 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\updateobjekat.cpp
 	"Game.hpp"
 
