@@ -1,11 +1,21 @@
 ## General info
-This project is a simple Win32 application that implements the first map of Super Mario Bros 3.
-It was the final project for course Windows Programming
+
+Developed a Super Mario game using modern C++, the Standard Template Library (STL), and the Win32 API for Windows platform.
+Implemented various game mechanics, such as player movement, jumping, collision detection, and physics, using modern C++ features like smart pointers, lambda expressions, and range-based loops.
+Utilized the Standard Template Library (STL) to efficiently manage game objects, including dynamic arrays, lists, and maps, for storing game state, game objects, and game assets.
+Implemented platformer game elements such as platforms, enemies, power-ups, and coins, with physics-based interactions and animations.
+Utilized the Win32 API for Windows platform to handle user input, display graphics, and manage game window, utilizing features such as input handling for player control.
+Employed object-oriented programming (OOP) principles for modular and maintainable code, including encapsulation, inheritance, and polymorphism, to achieve clean and efficient game logic.
+Implemented game logic and mechanics with a focus on performance optimization, leveraging C++17 features, STL algorithms, and efficient data structures to ensure smooth gameplay experience.
+Conducted thorough testing and debugging to identify and fix issues, ensuring a stable and bug-free game.
+Demonstrated proficiency in moden C++ programming, STL, and Win32 API, as well as game development concepts, including physics, collision detection, and game design principles.
+Contributed to all aspects of the game development process, including coding, testing, debugging, and performance optimization, showcasing a strong aptitude for game development with C++ and Windows programming.
+This summary highlights the use of modern C++, the Standard Template Library (STL), and the Win32 API in the development of a Super Mario game, along with various game mechanics, optimizations, and contributions made during the development process, showcasing the skills and expertise demonstrated in game development using C++ and Windows programming.
 	
 ## Technologies
 Project is created with:
 * Win32 API
-* C++
+* C++(17, STL)
 
 ## Video Demonstration
 
