@@ -16,6 +16,7 @@
 Project is created with:
 * Win32 API
 * C++(17, STL)
+* GoogleTest (Unit Tests, Mocking)
 
 ## Video Demonstration
 
