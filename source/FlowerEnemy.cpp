@@ -1,4 +1,4 @@
-#include "FlowerEnemy.hpp"
+#include "../include/FlowerEnemy.hpp"
 
 FlowerEnemy::FlowerEnemy(int x, int y, TIMERPROC upFunc, TIMERPROC downFunc)
 {
@@ -9,14 +9,14 @@ FlowerEnemy::FlowerEnemy(int x, int y, TIMERPROC upFunc, TIMERPROC downFunc)
     this->typeOfObject = objectType::FlowerEnemy;
     this->x = x;
     this->startingY = this->y = y;
-    this->dy = -3;
+    this->dy_ = -3;
     this->hbm_ = left;
     this->hbmMask_ = leftMask;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/6;
     this->height = bitmap.bmHeight;
-    this->max = 2;
-    this->X = 0;
+    this->maxCycles_ = 2;
+    this->X_ = 0;
     this->leftSide = -1;
     this->rightSide = 17;
     this->topSide = -1;
@@ -36,14 +36,14 @@ FlowerEnemy::FlowerEnemy(int x, int y, std::shared_ptr<Object> parentPipe, flowe
     this->typeOfObject = objectType::FlowerEnemy;
     this->x = x;
     this->startingY = this->y = y;
-    this->dy = -3;
+    this->dy_ = -3;
     this->hbm_ = left;
     this->hbmMask_ = leftMask;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/6;
     this->height = bitmap.bmHeight;
-    this->max = 2;
-    this->X = 0;
+    this->maxCycles_ = 2;
+    this->X_ = 0;
     this->leftSide = -1;
     this->rightSide = 17;
     this->topSide = -1;
@@ -55,7 +55,7 @@ FlowerEnemy::FlowerEnemy(int x, int y, std::shared_ptr<Object> parentPipe, flowe
 //    this->changeCycles = 0;
 }
 
-bool FlowerEnemy::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool FlowerEnemy::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
 
     if((this->flag == true) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->topSide) == (this->y + this->bottomSide)))
@@ -69,11 +69,11 @@ bool FlowerEnemy::checkBottom(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool FlowerEnemy::checkTop(std::shared_ptr<Object> obj, int dy)
+bool FlowerEnemy::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
     if((this->flag == true) && (obj->stY_ != Object::stateY::Up) && ((obj->x + obj->leftSide) < (this->x + this->rightSide)) && ((obj->x + obj->rightSide) > (this->x + this->leftSide)) && ((obj->testingY + obj->bottomSide) == (this->y + this->topSide)))
     {
-        obj->dy = obj->y - obj->testingY;
+        obj->dy_ = obj->y - obj->testingY;
         std::cout << Object::getStringTypeOfObject(obj) << " hit flower_enemy top side" << std::endl;
 //        praviUpdate(hwnd);
 //        Render(hwnd);
@@ -84,9 +84,9 @@ bool FlowerEnemy::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0) && obj->typeOfObject == objectType::Mario)
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx_ > 0) && obj->typeOfObject == objectType::Mario)
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit left side of flower_enemy\n";
@@ -98,9 +98,9 @@ bool FlowerEnemy::checkLeft(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool FlowerEnemy::checkRight(std::shared_ptr<Object> obj, int dx)
+bool FlowerEnemy::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0) && obj->typeOfObject == objectType::Mario)
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx_ < 0) && obj->typeOfObject == objectType::Mario)
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit right side of flower_enemy\n";
@@ -117,10 +117,10 @@ void FlowerEnemy::draw(HDC hdcBuffer, HDC hdcMem)
     int height = this->startingY - this->y;
 
     SelectObject(hdcMem, this->hbm_);
-    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X*this->width, 0, SRCAND);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X_*this->width, 0, SRCAND);
 
     SelectObject(hdcMem, this->hbmMask_);
-    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X*this->width, 0, SRCPAINT);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, height, hdcMem, this->X_*this->width, 0, SRCPAINT);
 
     return;
 }
@@ -140,12 +140,12 @@ void FlowerEnemy::afterDraw()
 void FlowerEnemy::moveYX()
 {
     static DWORD vrijeme_pocetak;
-//    std::cout << "piranha->dy: " << this->dy << std::endl;
+//    std::cout << "piranha->dy_: " << this->dy_ << std::endl;
     if(this->y < this->startingY - 38)
     {
         std::cout << "flower_enemy reached peak " << mario->y << std::endl;
 //        HWND hwnd = GetForegroundWindow();
-        this->dy = 0;
+        this->dy_ = 0;
         this->y = this->startingY - 38;
         vrijeme_pocetak = GetTickCount();
 //        SetTimer(hwnd, (UINT_PTR)this, 3000, upFunc_);
@@ -161,13 +161,13 @@ void FlowerEnemy::moveYX()
 
     else if((this->y == this->startingY - 38) && ((GetTickCount() - vrijeme_pocetak) > 3000))
     {
-        this->dy = 3;
+        this->dy_ = 3;
     }
     else if(this->y > this->startingY)
     {
         std::cout << "flower_enemy reached through " << mario->y << std::endl;
 //        HWND hwnd = GetForegroundWindow();
-        this->dy = 0;
+        this->dy_ = 0;
         this->y = this->startingY;
         this->flag = false; // piranha is not active
         vrijeme_pocetak = GetTickCount();
@@ -184,17 +184,17 @@ void FlowerEnemy::moveYX()
             const unsigned int quadrant = this->determineQuadrant();
             this->getDirection(quadrant);
         }
-        this->dy = -3;
+        this->dy_ = -3;
     }
 
 
     this->testingY = this->y;
     int directionY;
-    if(this->dy == 0)
+    if(this->dy_ == 0)
         directionY = 0;
     else
-        directionY = this->dy/abs(this->dy);
-    int endPointY = this->y + this->dy;
+        directionY = this->dy_/abs(this->dy_);
+    int endPointY = this->y + this->dy_;
     while(this->testingY != endPointY)
     {
         if((this->flag == true) && (mario->stY_ != stateY::Down) && ((mario->x + mario->leftSide) < (this->x + this->rightSide)) && ((mario->x + mario->rightSide) > (this->x + this->leftSide)) && ((mario->y + mario->bottomSide) == (this->testingY + this->topSide)))
@@ -224,7 +224,7 @@ void FlowerEnemy::moveY()
 }
 void FlowerEnemy::moveX()
 {
-    this->x += this->dx;
+    this->x += this->dx_;
 }
 
 const std::string FlowerEnemy::getStringTypeOfObject() const
@@ -237,25 +237,25 @@ void FlowerEnemy::getDirection(int quadrant)
     switch(quadrant)
     {
     case 1:
-        this->X = 5;
+        this->X_ = 5;
         this->hbm_ = right;
         this->hbmMask_ = right;
         this->direction_ = std::pair<int, int>(1, -1);
         break;
     case 2:
-        this->X = 5;
+        this->X_ = 5;
         this->hbm_ = left;
         this->hbmMask_ = left;
         this->direction_ = std::pair<int, int>(-1, -1);
         break;
     case 3:
-        this->X = 3;
+        this->X_ = 3;
         this->hbm_ = left;
         this->hbmMask_ = leftMask;
         this->direction_ = std::pair<int, int>(-1, 1);
         break;
     case 4:
-        this->X = 3;
+        this->X_ = 3;
         this->hbm_ = right;
         this->hbmMask_ = rightMask;
         this->direction_ = std::pair<int, int>(1, 1);

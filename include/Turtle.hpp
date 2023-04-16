@@ -12,10 +12,10 @@ public:
 
     Turtle(int x, int y);
 
-    bool checkBottom(std::shared_ptr<Object> obj, int dy) override;
-    bool checkTop(std::shared_ptr<Object> obj, int dy) override;
-    bool checkLeft(std::shared_ptr<Object> obj, int dx) override;
-    bool checkRight(std::shared_ptr<Object> obj, int dx) override;
+    bool checkBottom(std::shared_ptr<Object> obj, int dy_) override;
+    bool checkTop(std::shared_ptr<Object> obj, int dy_) override;
+    bool checkLeft(std::shared_ptr<Object> obj, int dx_) override;
+    bool checkRight(std::shared_ptr<Object> obj, int dx_) override;
     const std::string getStringTypeOfObject(void) const override;
     void decreaseLife() override;
     void increaseLife() override;

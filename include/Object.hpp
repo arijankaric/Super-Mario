@@ -25,12 +25,12 @@ public:
     HBITMAP hbm_;
     HBITMAP hbmMask_;
 
-    int dx = 0;
-    int dy = 0;
+    int dx_ = 0;
+    int dy_ = 0;
 
-    int max; // max X cycles through bmp
-    int X; // current X cycle through bmp
-    int Y = 0;
+    int maxCycles_; // maxCycles_ X cycles through bmp
+    int X_; // current X cycle through bmp
+    int Y_ = 0;
 
     int cyclesUntilDeath = -1; // cycles until the object is deleted
     int cycles = 0; // death cycles
@@ -60,12 +60,12 @@ public:
     int testingX;
 
     bool outline = true;
-    virtual bool checkX(std::shared_ptr<Object> obj, int dx); // more like checkXFuture
-    virtual bool checkY(std::shared_ptr<Object> obj, int dy); // checkYFuture
-    virtual bool checkBottom(std::shared_ptr<Object> obj, int dy);
-    virtual bool checkTop(std::shared_ptr<Object> obj, int dy);
-    virtual bool checkLeft(std::shared_ptr<Object> obj, int dx);
-    virtual bool checkRight(std::shared_ptr<Object> obj, int dx);
+    virtual bool checkX(std::shared_ptr<Object> obj, int dx_); // more like checkXFuture
+    virtual bool checkY(std::shared_ptr<Object> obj, int dy_); // checkYFuture
+    virtual bool checkBottom(std::shared_ptr<Object> obj, int dy_);
+    virtual bool checkTop(std::shared_ptr<Object> obj, int dy_);
+    virtual bool checkLeft(std::shared_ptr<Object> obj, int dx_);
+    virtual bool checkRight(std::shared_ptr<Object> obj, int dx_);
     virtual void draw(HDC hdcBuffer, HDC hdcMem);
     ~Object();
     virtual void projectY();
@@ -97,15 +97,15 @@ public:
     virtual void setXState(stateX st);
 
 //    virtual void nextY(void) = 0;
-    virtual void nextDY(void);
+    virtual void nextdy_(void);
 
 
-    virtual void setDX(int DX);
-    virtual void setDY(int DY);
+    virtual void setdx_(int dx_);
+    virtual void setdy_(int dy_);
 
     static std::shared_ptr<Object> mario;
 
-    bool collidedX = false;
+    bool collidedx_ = false;
     virtual void collideX(std::shared_ptr<Object> obj);
     virtual void stompY(std::shared_ptr<Object> obj);
 

@@ -1,3 +1,3 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 

@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 Game::Game()
 {
@@ -12,7 +12,7 @@ Game::Game()
 
 void Game::CheckInput(void)
 {
-//    std::cout << "mario->dx: " << mario->dx << " mario->y: " << mario->y << std::endl;
+//    std::cout << "mario->dx_: " << mario->dx_ << " mario->y: " << mario->y << std::endl;
 
 
 
@@ -38,18 +38,18 @@ void Game::CheckInput(void)
     if(PRITISNUTO(VK_UP))
     {
         mario->setYState(Object::stateY::Up);
-//        mario->dy = -22;
+//        mario->dy_ = -22;
 //        if(mario->y <= (VISINAPROZORA/2-mario->height/2 - 10) && ((initial_ground.y - background->y + 211) >= VISINAPROZORA))
 //        {
 //            std::cout << "camera jumped up\n";
-//            ground.y += mario->dy;
-//            initial_ground.y += mario->dy;
-//            UpdatePositionOfObjects(0, mario->dy);
+//            ground.y += mario->dy_;
+//            initial_ground.y += mario->dy_;
+//            UpdatePositionOfObjects(0, mario->dy_);
 //        }
 //        else if(mario->y + mario->height/2  >= VISINAPROZORA/2 - 10)
 //        {
 //            std::cout << "mario jumped up\n";
-//            mario->y -= mario->dy;
+//            mario->y -= mario->dy_;
 //        }
 //        else
 //        {
@@ -69,31 +69,31 @@ void Game::CheckInput(void)
         if(background->x < (background->width - SIRINAPROZORA) && (mario->centerX() >= SIRINAPROZORA/2))
         {
 //            mario->x = (SIRINAPROZORA / 2);
-            UpdatePositionOfObjects(mario->dx, 0);
-//            uint16_t totalDX = 0;
-//            uint16_t testDX = 1;
-//            std::cout << "pokusava se kretati desno ali " << mario->dx << std::endl;
-//            while(totalDX != mario->dx)
+            UpdatePositionOfObjects(mario->dx_, 0);
+//            uint16_t totaldx_ = 0;
+//            uint16_t testdx_ = 1;
+//            std::cout << "pokusava se kretati desno ali " << mario->dx_ << std::endl;
+//            while(totaldx_ != mario->dx_)
 //            {
-//                if(UpdatePositionOfObjects(testDX, 0))
-//                    mario->startingX += - testDX; // more like mario->startingDX
+//                if(UpdatePositionOfObjects(testdx_, 0))
+//                    mario->startingX += - testdx_; // more like mario->startingdx_
 //                else
 //                    break;
-//                totalDX += testDX;
+//                totaldx_ += testdx_;
 //            }
         }
         else if(mario->x + mario->rightSide < SIRINAPROZORA) // kad ode skroz na desno
         {
-            mario->x += mario->dx;
-//            uint16_t totalDX = 0;
-//            uint16_t testDX = 1; // smoother walking("more precise")/updating
-//            while(totalDX != mario->dx)
+            mario->x += mario->dx_;
+//            uint16_t totaldx_ = 0;
+//            uint16_t testdx_ = 1; // smoother walking("more precise")/updating
+//            while(totaldx_ != mario->dx_)
 //            {
-//                if(mario->x + mario->rightSide + testDX < SIRINAPROZORA)
-//                    mario->x += testDX;
+//                if(mario->x + mario->rightSide + testdx_ < SIRINAPROZORA)
+//                    mario->x += testdx_;
 //                else
 //                    break;
-//                totalDX += testDX;
+//                totaldx_ += testdx_;
 //            }
         }
         else
@@ -105,37 +105,37 @@ void Game::CheckInput(void)
     {
         mario->setXState(Object::stateX::Left);
         mario->projectX();
-//        (std::dynamic_pointer_cast<Mario>(mario))->setWalkLeft();
+//        (std::dy_namic_pointer_cast<Mario>(mario))->setWalkLeft();
 //        mario->stX_ = Object::stateX::Left;
 //        mario->Y = 1;
         if(background->x > 0 && (mario->centerX() <= (SIRINAPROZORA / 2)))
         {
 //            mario->x = (SIRINAPROZORA / 2);
-            UpdatePositionOfObjects(mario->dx, 0);
-//            int totalDX = 0;
-//            int testDX = -1;
-//            while(totalDX != mario->dx)
+            UpdatePositionOfObjects(mario->dx_, 0);
+//            int totaldx_ = 0;
+//            int testdx_ = -1;
+//            while(totaldx_ != mario->dx_)
 //            {
-//                if(UpdatePositionOfObjects(testDX, 0))
-//                    mario->startingX += -testDX; // za koliko revertati u slucaju da treba da se reverta
+//                if(UpdatePositionOfObjects(testdx_, 0))
+//                    mario->startingX += -testdx_; // za koliko revertati u slucaju da treba da se reverta
 //                else
 //                    break;
-//                totalDX += testDX;
+//                totaldx_ += testdx_;
 //            }
-//            foreground.x -= mario->dx;
+//            foreground.x -= mario->dx_;
         }
         else if(mario->x + mario->leftSide > 0)
         {
-            mario->x += mario->dx;
-//            int totalDX = 0;
-//            int testDX = -1;
-//            while(totalDX != -mario->dx)
+            mario->x += mario->dx_;
+//            int totaldx_ = 0;
+//            int testdx_ = -1;
+//            while(totaldx_ != -mario->dx_)
 //            {
-//                if(mario->x + testDX + 10 > 0)
-//                    mario->x += testDX;
+//                if(mario->x + testdx_ + 10 > 0)
+//                    mario->x += testdx_;
 //                else
 //                    break;
-//                totalDX += testDX;
+//                totaldx_ += testdx_;
 //            }
         }
         else
@@ -188,33 +188,33 @@ void Game::Update(void)
     UpdateObjekat();
 }
 
-bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for example Mario)
+bool Game::UpdatePositionOfObjects(int dx_, int dy_) // relative to obj (for example Mario)
 {
-    background->x += dx;
-    background->y += dy;
+    background->x += dx_;
+    background->y += dy_;
 
-    mario->ground -= dy;
+    mario->ground -= dy_;
 
     for(const auto& el : *objects)
     {
         if(el == mario)
             continue;
-        el->x -= dx;
-        el->startingX -= dx;
-        el->y -= dy;
-        el->startingY -= dy;
+        el->x -= dx_;
+        el->startingX -= dx_;
+        el->y -= dy_;
+        el->startingY -= dy_;
     }
 
 //    bool X = false;
 //    bool Y = false;
-//    for(const std::shared_ptr<Object>& el : *objects) // provjerava za sve objekte da li ce se mario sudariti sa nima ukoliko se pomjeri za dx, dy
+//    for(const std::shared_ptr<Object>& el : *objects) // provjerava za sve objekte da li ce se mario sudariti sa nima ukoliko se pomjeri za dx_, dy_
 //    {
-//        if(el->checkX(mario, dx)) // ako ce se sudariti sa nekim govorimo pozivaocu da ne mozemo odraditi pomjeranje
+//        if(el->checkX(mario, dx_)) // ako ce se sudariti sa nekim govorimo pozivaocu da ne mozemo odraditi pomjeranje
 //        {
 //            std::cout << "Mario se sudara po x-u\n";
 //            X = true;
 //        }
-//        if(el->checkY(mario, dy))
+//        if(el->checkY(mario, dy_))
 //        {
 //            std::cout << "Mario se sudara po y-u\n";
 //            Y = true;
@@ -227,13 +227,13 @@ bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for examp
 //
 //    if(!X)
 //    {
-////        std::cout << "UpdatePositionOfObjects dx: " << dx << std::endl;
-//        background->x += dx;
+////        std::cout << "UpdatePositionOfObjects dx_: " << dx_ << std::endl;
+//        background->x += dx_;
 //    }
 //    if(!Y)
 //    {
-////        std::cout << "UpdatePositionOfObjects dy: " << dy << std::endl;
-//        background->y += dy;
+////        std::cout << "UpdatePositionOfObjects dy_: " << dy_ << std::endl;
+//        background->y += dy_;
 //    }
 //
 //
@@ -241,13 +241,13 @@ bool Game::UpdatePositionOfObjects(int dx, int dy) // relative to obj (for examp
 //    {
 //        if(!X)
 //        {
-//            el->x -= dx;
-//            el->startingX -= dx;
+//            el->x -= dx_;
+//            el->startingX -= dx_;
 //        }
 //        if(!Y)
 //        {
-//            el->y -= dy;
-//            el->startingY -= dy;
+//            el->y -= dy_;
+//            el->startingY -= dy_;
 //        }
 //    }
 //    if(X && Y)

@@ -1,16 +1,16 @@
-#include "Fireball.hpp"
+#include "../include/Fireball.hpp"
 
-Fireball::Fireball(int x, int y, int dx, int dy)
+Fireball::Fireball(int x, int y, int dx_, int dy_)
 {
 //    std::cout << "Making of fireball!!\n";
 //    std::cout << "x: " << x << std::endl;
 //    std::cout << "y: " << y << std::endl;
-//    std::cout << "dx: " << dx << std::endl;
-//    std::cout << "dy: " << dy << std::endl;
+//    std::cout << "dx_: " << dx_ << std::endl;
+//    std::cout << "dy_: " << dy_ << std::endl;
 //    system("pause");
     this->hbm_ = (HBITMAP) LoadImage(NULL, "fireball.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     this->hbmMask_ = (HBITMAP) LoadImage(NULL, "fireballBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    this->max = 4;
+    this->maxCycles_ = 4;
     this->cyclesForChange = 3;
     this->typeOfObject = objectType::Fireball;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
@@ -19,8 +19,8 @@ Fireball::Fireball(int x, int y, int dx, int dy)
     this->height = bitmap.bmHeight;
     this->y = y;
     this->x = x;
-    this->dx = dx;
-    this->dy = dy;
+    this->dx_ = dx_;
+    this->dy_ = dy_;
     this->bottomSide = 12;
     this->leftSide = 0;
     this->rightSide = 7;
@@ -30,9 +30,9 @@ Fireball::Fireball(int x, int y, int dx, int dy)
 //    this->deadly = true;
 }
 
-bool Fireball::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool Fireball::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx_ > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit left side of fireball\n";
@@ -43,9 +43,9 @@ bool Fireball::checkLeft(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Fireball::checkRight(std::shared_ptr<Object> obj, int dx)
+bool Fireball::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx_ < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit right side of fireball\n";
@@ -56,7 +56,7 @@ bool Fireball::checkRight(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Fireball::checkTop(std::shared_ptr<Object> obj, int dy)
+bool Fireball::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
     if(checkYTop(obj) && checkXRange(obj))
     {
@@ -68,7 +68,7 @@ bool Fireball::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool Fireball::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool Fireball::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
     if(checkYBottom(obj) && checkXRange(obj))
     {

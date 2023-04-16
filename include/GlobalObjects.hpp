@@ -23,8 +23,8 @@ extern const int IDT_TIMER3;
 extern const int ID_TIMER_PIRANHA_UP;
 extern const int ID_TIMER_PIRANHA_DOWN;
 
-extern const int DX;
-extern const int DY;
+extern const int dx_;
+extern const int dy_;
 
 void CheckInput();
 void Update(HWND);
@@ -32,4 +32,4 @@ void UpdateObjekat(HWND hwnd, RECT* rect);
 void praviUpdate(HWND);
 void Render(HWND);
 void Initalize(HWND);
-bool UpdatePositionOfObjects(int dx, int dy);
+bool UpdatePositionOfObjects(int dx_, int dy_);

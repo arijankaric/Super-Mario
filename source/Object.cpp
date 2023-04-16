@@ -1,13 +1,13 @@
-#include "distanceBetweenObjects.hpp"
+#include "../include/distanceBetweenObjects.hpp"
 
-bool Object::checkX(std::shared_ptr<Object> obj, int dx) // checkXFuture, napravi checkXCurrent(bez int dx)
+bool Object::checkX(std::shared_ptr<Object> obj, int dx_) // checkXFuture, napravi checkXCurrent(bez int dx_)
 {
-    return ((checkLeft(obj, dx)) || (checkRight(obj, dx)));
+    return ((checkLeft(obj, dx_)) || (checkRight(obj, dx_)));
 }
 
-bool Object::checkY(std::shared_ptr<Object> obj, int dy) // checkYFuture, napravi checkYCurrent(bez int dy)
+bool Object::checkY(std::shared_ptr<Object> obj, int dy_) // checkYFuture, napravi checkYCurrent(bez int dy_)
 {
-    return ((checkTop(obj, dy)) || (checkBottom(obj, dy)));
+    return ((checkTop(obj, dy_)) || (checkBottom(obj, dy_)));
 }
 
 Object::~Object()
@@ -18,15 +18,15 @@ Object::~Object()
 void Object::projectX()
 {
     //            std::cout << getStringTypeOfObject(this) << " is moving on X " << whosMoving << std::endl;
-    int endPointX = this->x + this->dx;
+    int endPointX = this->x + this->dx_;
     int directionX;
-    if(this->dx == 0)
+    if(this->dx_ == 0)
     {
         return;
         directionX = 0;
     }
     else
-        directionX = this->dx/abs(this->dx);
+        directionX = this->dx_/abs(this->dx_);
     for(const auto& objTest : *objects)
     {
 //            if(distanceBetweenObjects(this, objTest.get()) > 100)
@@ -62,40 +62,40 @@ void Object::projectX()
 //            std::cout << "shorted/cut\n";
             endPointX = this->testingX;
         }
-        if(collidedX && this->typeOfObject != objectType::Mario)
+        if(collidedx_ && this->typeOfObject != objectType::Mario)
         {
 //            std::cout << "collided in projectX\n";
-            endPointX = this->x + this->dx;
+            endPointX = this->x + this->dx_;
 
-//            this->dx = (endPointX - this->x);
-            collidedX = false;
+//            this->dx_ = (endPointX - this->x);
+            collidedx_ = false;
 
-            if(this->dx == 0)
+            if(this->dx_ == 0)
             {
                 return;
                 directionX = 0;
             }
             else
-                directionX = this->dx/abs(this->dx);
-//            std::cout << "endPointX: " << endPointX << " dx: " << this->dx << " testingX: " << this->testingX << " directionX: " << directionX << std::endl;
+                directionX = this->dx_/abs(this->dx_);
+//            std::cout << "endPointX: " << endPointX << " dx_: " << this->dx_ << " testingX: " << this->testingX << " directionX: " << directionX << std::endl;
 //            system("pause");
         }
     }
-    this->dx = (endPointX - this->x);
+    this->dx_ = (endPointX - this->x);
 }
 
 void Object::moveX()
 {
     projectX();
-    x += dx;
+    x += dx_;
 //    std::cout << this->x << " " << getStringTypeOfObject(shared_from_this()) << std::endl;
 //    this->testingX = this->x;
 //    int directionX;
-//    if(this->dx == 0)
+//    if(this->dx_ == 0)
 //        directionX = 0;
 //    else
-//        directionX = this->dx/abs(this->dx);
-//    int endPoint = this->x + this->dx;
+//        directionX = this->dx_/abs(this->dx_);
+//    int endPoint = this->x + this->dx_;
 //    while(this->testingX != endPoint)
 //    {
 //        if(checkLeft(obj, directionX))
@@ -104,7 +104,7 @@ void Object::moveX()
 //            break;
 //        this->testingX += directionX;
 //    }
-//    this->x += this->dx;
+//    this->x += this->dx_;
 }
 
 void Object::projectY()
@@ -112,15 +112,15 @@ void Object::projectY()
     //        std::cout << getStringTypeOfObject(this) << " is moving on Y " << whosMoving << std::endl;
 
     int directionY;
-    if(this->dy == 0)
+    if(this->dy_ == 0)
     {
         return;
         directionY = 0;
     }
     else
-        directionY = this->dy/abs(this->dy);
+        directionY = this->dy_/abs(this->dy_);
 
-    int endPointY = this->y + this->dy;
+    int endPointY = this->y + this->dy_;
     for(const auto& objTest : *objects)
     {
 //            if(distanceBetweenObjects(this, objTest.get()) > 100)
@@ -139,7 +139,7 @@ void Object::projectY()
             {
 //                std::cout << "testingY < 0\n";
 //                std::cout << "this->y: " << this->y << std::endl;
-//                std::cout << "this->dy: " << this->dy << std::endl;
+//                std::cout << "this->dy_: " << this->dy_ << std::endl;
 //                std::cout << this->getStringTypeOfObject() << std::endl;
 //                system("pause");
             }
@@ -158,22 +158,22 @@ void Object::projectY()
             endPointY = this->testingY;
         }
     }
-    this->dy = (endPointY - this->y);
-//        this->y += this->dy;
+    this->dy_ = (endPointY - this->y);
+//        this->y += this->dy_;
 }
 
-void Object::moveY() // limits dy, so it doesn't go too far
+void Object::moveY() // limits dy_, so it doesn't go too far
 {
     projectY();
-    y += dy;
+    y += dy_;
 //    std::cout << getStringTypeOfObject(obj) << " is moving on Y " << whosMoving << std::endl;
 //    this->testingY = this->y;
 //    int directionY;
-//    if(this->dy == 0)
+//    if(this->dy_ == 0)
 //        directionY = 0;
 //    else
-//        directionY = this->dy/abs(this->dy);
-//    int endPoint = this->y + this->dy;
+//        directionY = this->dy_/abs(this->dy_);
+//    int endPoint = this->y + this->dy_;
 //    while(this->testingY != endPoint)
 //    {
 //        if(checkBottom(obj, directionY))
@@ -182,7 +182,7 @@ void Object::moveY() // limits dy, so it doesn't go too far
 //            break;
 //        this->testingY += directionY;
 //    }
-//    this->y += this->dy;
+//    this->y += this->dy_;
 }
 
 const std::string Object::getStringTypeOfObject(Object* objPtr)
@@ -251,15 +251,15 @@ void Object::draw(HDC hdcBuffer, HDC hdcMem)
 {
 //    if(this->typeOfObject == objectType::Turtle && this->life_ == 1)
 //    {
-//        this->Y = 1;
-//        std::cout << "turtle->Y: " << this->Y << std::endl;
+//        this->Y_ = 1;
+//        std::cout << "turtle->Y: " << this->Y_ << std::endl;
 //    }
 
     SelectObject(hdcMem, hbm_);
-    BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCAND);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X_ * this->width, this->Y_ * this->height, SRCAND);
 
     SelectObject(hdcMem, hbmMask_);
-    BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X * this->width, this->Y * this->height, SRCPAINT);
+    BitBlt(hdcBuffer, this->x, this->y, this->width, this->height, hdcMem, this->X_ * this->width, this->Y_ * this->height, SRCPAINT);
 
 }
 
@@ -306,9 +306,9 @@ bool Object::checkYBottom(std::shared_ptr<Object> obj) const
     return false;
 }
 
-bool Object::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool Object::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkXLeft(obj) && checkYRange(obj) && (obj->dx > 0))
+    if(checkXLeft(obj) && checkYRange(obj) && (obj->dx_ > 0))
     {
         std::cout << "left side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
 //        obj->collideX(shared_from_this());
@@ -327,14 +327,14 @@ bool Object::checkLeft(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Object::checkRight(std::shared_ptr<Object> obj, int dx)
+bool Object::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
 //    if((this->typeOfObject == objectType::Mario) && (obj->typeOfObject == objectType::Goomba))
 //    {
 //        std::cout << this->x + this->rightSide << " " << obj->testingX + obj->leftSide << std::endl;
-//        std::cout << checkXRight(obj) << " " << checkYRange(obj) << " " << dx << " " << obj->dx << std::endl;
+//        std::cout << checkXRight(obj) << " " << checkYRange(obj) << " " << dx_ << " " << obj->dx_ << std::endl;
 //    }
-    if(checkXRight(obj) && checkYRange(obj) && (obj->dx < 0))
+    if(checkXRight(obj) && checkYRange(obj) && (obj->dx_ < 0))
     {
         std::cout << "right side " << getStringTypeOfObject(this) << " collided with " << getStringTypeOfObject(obj) << std::endl;
         if(this->typeOfObject == objectType::Mario)
@@ -351,9 +351,9 @@ bool Object::checkRight(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Object::checkTop(std::shared_ptr<Object> obj, int dy)
+bool Object::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
-    if(checkYTop(obj) && checkXRange(obj) && (dy > 0))
+    if(checkYTop(obj) && checkXRange(obj) && (dy_ > 0))
     {
         std::cout << "topSide of " << getStringTypeOfObject(this) << " collided with bottomSide of " << getStringTypeOfObject(obj) << std::endl;
         return true;
@@ -361,9 +361,9 @@ bool Object::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool Object::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool Object::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
-    if(checkYBottom(obj) && checkXRange(obj) && (dy < 0))
+    if(checkYBottom(obj) && checkXRange(obj) && (dy_ < 0))
     {
         std::cout << "bottomSide of " << getStringTypeOfObject(this) << " collided with topSide of " << getStringTypeOfObject(obj) << std::endl;
         return true;
@@ -391,17 +391,17 @@ void Object::setXState(stateX st)
     stX_ = st;
 }
 
-void Object::nextDY(void)
+void Object::nextdy_(void)
 {
     // samo za goombe i maria za sada
 }
 
-void Object::setDX(int DX)
+void Object::setdx_(int dx_)
 {
 
 }
 
-void Object::setDY(int DY)
+void Object::setdy_(int dy_)
 {
 
 }
@@ -414,8 +414,8 @@ void Object::collideX(std::shared_ptr<Object> obj)
         this->decreaseLife();
         return;
     }
-    this->collidedX = true;
-    this->dx = -this->dx;
+    this->collidedx_ = true;
+    this->dx_ = -this->dx_;
     return;
 }
 
@@ -423,7 +423,7 @@ const bool Object::deadly(const std::shared_ptr<Object> obj) const // better fun
 {
     if(this->typeOfObject != objectType::Mario)
     {
-        return (obj->typeOfObject == objectType::Mario) || ((obj->typeOfObject == objectType::Turtle) && (obj->life_ == 1) && (obj->dx != 0));
+        return (obj->typeOfObject == objectType::Mario) || ((obj->typeOfObject == objectType::Turtle) && (obj->life_ == 1) && (obj->dx_ != 0));
     }
     else
     {
@@ -457,7 +457,7 @@ void Object::increaseLife()
 //        std::cout << "leftSide of " << getStringTypeOfObject(this) << " reached leftSide of " << getStringTypeOfObject(obj) << std::endl;
 //        if(this->fall)
 //        {
-//            this->dx = - this->dx;
+//            this->dx_ = - this->dx_;
 //        }
 //        return true;
 //    }
@@ -466,7 +466,7 @@ void Object::increaseLife()
 //        std::cout << "rightSide of " << getStringTypeOfObject(this) << " reached rightSide of " << getStringTypeOfObject(obj) << std::endl;
 //        if(this->fall)
 //        {
-//            this->dx = - this->dx;
+//            this->dx_ = - this->dx_;
 //        }
 //        return true;
 //    }
@@ -475,7 +475,7 @@ void Object::increaseLife()
 
 bool Object::checkLeftEdge(std::shared_ptr<Object> obj) const
 {
-//    if((this->typeOfObject == Object::objectType::Fireball) && (this->leftSide + this->x) == (obj->leftSide + obj->x) && (this->dx < 0))
+//    if((this->typeOfObject == Object::objectType::Fireball) && (this->leftSide + this->x) == (obj->leftSide + obj->x) && (this->dx_ < 0))
 //    {
 //        std::cout << this->getStringTypeOfObject() << " y: " << this->y << std::endl;
 //        std::cout << obj->getStringTypeOfObject() << " y: " << obj->y << std::endl;
@@ -490,7 +490,7 @@ bool Object::checkLeftEdge(std::shared_ptr<Object> obj) const
 
 bool Object::checkRightEdge(std::shared_ptr<Object> obj) const
 {
-//    if((this->typeOfObject == Object::objectType::Fireball) && (this->rightSide + this->x) == (obj->rightSide + obj->x) && (this->dx > 0))
+//    if((this->typeOfObject == Object::objectType::Fireball) && (this->rightSide + this->x) == (obj->rightSide + obj->x) && (this->dx_ > 0))
 //    {
 //        std::cout << this->getStringTypeOfObject() << " y: " << this->y << std::endl;
 //        std::cout << obj->getStringTypeOfObject() << " y: " << obj->y << std::endl;
@@ -591,12 +591,12 @@ void Object::afterDraw()
 {
     if(++this->changeCycles == this->cyclesForChange)
     {
-        ++this->X;
+        ++this->X_;
         this->changeCycles = 0;
     }
 
-    if(this->X >= this->max)
+    if(this->X_ >= this->maxCycles_)
     {
-        this->X = 0;
+        this->X_ = 0;
     }
 }

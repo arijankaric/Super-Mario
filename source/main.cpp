@@ -7,15 +7,15 @@
 #include <tchar.h>
 #include <windows.h>
 #include <iostream>
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 const int ID_TIMER = 1;
 const int IDT_TIMER3 = 50;
 const int ID_TIMER_PIRANHA_UP = 0;
 const int ID_TIMER_PIRANHA_DOWN = 1;
 
-const int DX = 1;
-const int DY = 1;
+const int dx_ = 1;
+const int dy_ = 1;
 
 std::shared_ptr<Object> Object::mario = nullptr;
 Object::vektorObjekata Object::objects = nullptr;

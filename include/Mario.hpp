@@ -8,10 +8,10 @@
 class Mario : public Object
 {
 private:
-    HBITMAP hbmMarioWalkLeft = (HBITMAP) LoadImage(NULL, "SmallMarioLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkLeftMask = (HBITMAP) LoadImage(NULL, "SmallMarioLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkRight = (HBITMAP) LoadImage(NULL, "SmallMarioRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkRightMask = (HBITMAP) LoadImage(NULL, "SmallMarioRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    HBITMAP hbmMarioWalkLeft_ = (HBITMAP) LoadImage(NULL, "SmallMarioLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    HBITMAP hbmMarioWalkLeftMask_ = (HBITMAP) LoadImage(NULL, "SmallMarioLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    HBITMAP hbmMarioWalkRight_ = (HBITMAP) LoadImage(NULL, "SmallMarioRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    HBITMAP hbmMarioWalkRightMask_ = (HBITMAP) LoadImage(NULL, "SmallMarioRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     HBITMAP hbmMarioDead_ = (HBITMAP) LoadImage(NULL, "marioDead.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     HBITMAP hbmMarioDeadMask_ = (HBITMAP) LoadImage(NULL, "marioDeadBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     HBITMAP hbmSuperMarioWalkLeft_ = (HBITMAP) LoadImage(NULL, "superMarioLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
@@ -37,8 +37,8 @@ public:
     void setXState(stateX st) override;
 
 //    void nextY(void);
-    void nextDY(void) override;
-//    void changeY(int dy);
+    void nextdy_(void) override;
+//    void changeY(int dy_);
 
     const std::string getStringTypeOfObject() const override;
 
@@ -48,4 +48,15 @@ public:
     const bool deadly(const std::shared_ptr<Object> obj) const override;
 //    void moveYX() override;
     void projectY() override;
+
+    HBITMAP getHbmMarioWalkLeft();
+    HBITMAP getHbmMarioWalkLeftMask();
+    HBITMAP getHbmMarioWalkRight();
+    HBITMAP getHbmMarioWalkRightMask();
+    HBITMAP getHbmMarioDead();
+    HBITMAP getHbmMarioDeadMask();
+    HBITMAP getHbmSuperMarioWalkLeft();
+    HBITMAP getHbmSuperMarioWalkLeftMask();
+    HBITMAP getHbmSuperMarioWalkRight();
+    HBITMAP getHbmSuperMarioWalkRightMask();
 };

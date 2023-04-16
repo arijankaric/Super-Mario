@@ -1,4 +1,4 @@
-#include "Turtle.hpp"
+#include "../include/Turtle.hpp"
 
 Turtle::Turtle(int x, int y)
 {
@@ -9,7 +9,7 @@ Turtle::Turtle(int x, int y)
     this->hbmMask_ = leftMask;
     std::cout << "hbm: " << hbm_ << std::endl;
     std::cout << "hbmMask_: " << hbmMask_ << std::endl;
-    this->max = 2;
+    this->maxCycles_ = 2;
     this->cyclesForChange = 3;
     this->typeOfObject = objectType::Turtle;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
@@ -18,8 +18,8 @@ Turtle::Turtle(int x, int y)
     this->height = bitmap.bmHeight;
     this->y = y;
     this->x = x;
-    this->dx = 1;
-    this->dy = 0;
+    this->dx_ = 1;
+    this->dy_ = 0;
     this->bottomSide = 28;
     this->leftSide = 0;
     this->rightSide = 15;
@@ -29,9 +29,9 @@ Turtle::Turtle(int x, int y)
 //    this->deadly = true;
 }
 
-bool Turtle::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool Turtle::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx_ > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit left side of turtle\n";
@@ -70,9 +70,9 @@ bool Turtle::checkLeft(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Turtle::checkRight(std::shared_ptr<Object> obj, int dx)
+bool Turtle::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx_ < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit right side of turtle\n";
@@ -110,11 +110,11 @@ bool Turtle::checkRight(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Turtle::checkTop(std::shared_ptr<Object> obj, int dy)
+bool Turtle::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
     static bool hit = false;
     static DWORD timeOfHit = GetTickCount();
-    if(checkYTop(obj) && checkXRange(obj) && (obj->dy >= 0))
+    if(checkYTop(obj) && checkXRange(obj) && (obj->dy_ >= 0))
     {
         if(hit || (GetTickCount() - timeOfHit) < 100)
         {
@@ -144,9 +144,9 @@ bool Turtle::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool Turtle::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool Turtle::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
-    if(checkYBottom(obj) && checkXRange(obj) && (obj->dy < 0))
+    if(checkYBottom(obj) && checkXRange(obj) && (obj->dy_ < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit bottom side of turtle\n";
@@ -167,10 +167,10 @@ void Turtle::increaseLife()
     if(life_ == 2)
     {
         this->height = this->height * 2;
-        this->Y = 0;
-        this->X = 0;
-        this->max = 2;
-        this->dx = 1;
+        this->Y_ = 0;
+        this->X_ = 0;
+        this->maxCycles_ = 2;
+        this->dx_ = 1;
         this->y -= 13;
         this->bottomSide += 13;
         this->topSide += 3;
@@ -183,12 +183,12 @@ void Turtle::decreaseLife()
     {
         --life_;
         this->height = this->height / 2;
-        this->Y = 0;
-        this->X = 2;
-        this->max = 6;
+        this->Y_ = 0;
+        this->X_ = 2;
+        this->maxCycles_ = 6;
         this->y += 13;
         this->bottomSide -= 13;
-        this->dx = 0;
+        this->dx_ = 0;
         this->topSide -= 3;
         this->timeOfDeath = GetTickCount();
     }
@@ -201,19 +201,19 @@ void Turtle::decreaseLife()
 
 void Turtle::draw(HDC hdcBuffer, HDC hdcMem)
 {
-    if(this->dx > 0)
+    if(this->dx_ > 0)
     {
         hbm_ = right;
         hbmMask_ = rightMask;
     }
-    else if(this->dx < 0)
+    else if(this->dx_ < 0)
     {
         hbm_ = left;
         hbmMask_ = leftMask;
     }
     else
     {
-//        std::cout << "Turtle dx = 0, why? Because life == 1, that's why\n";
+//        std::cout << "Turtle dx_ = 0, why? Because life == 1, that's why\n";
     }
 
     Object::draw(hdcBuffer, hdcMem);
@@ -234,7 +234,7 @@ void Turtle::afterDraw()
     }
     else if((this->life_ == 1))
     {
-        if(this->dx == 0)
+        if(this->dx_ == 0)
         {
             if((GetTickCount() - this->timeOfDeath) > 2500)
             {
@@ -242,27 +242,27 @@ void Turtle::afterDraw()
             }
             else if((GetTickCount() - this->timeOfDeath) > 1500)
             {
-//                std::cout << "turtle->Y: " << this->Y << std::endl;
+//                std::cout << "turtle->Y: " << this->Y_ << std::endl;
                 if(++this->changeCycles == this->cyclesForChange)
                 {
-                    ++this->Y;
+                    ++this->Y_;
                     this->changeCycles = 0;
                 }
-                this->Y = this->Y%2;
+                this->Y_ = this->Y_%2;
             }
         }
         else
         {
-            this->Y = 0;
+            this->Y_ = 0;
             if(++this->changeCycles == this->cyclesForChange)
             {
-                ++this->X;
+                ++this->X_;
                 this->changeCycles = 0;
             }
 
-            if(this->X >= this->max)
+            if(this->X_ >= this->maxCycles_)
             {
-                this->X = 2;
+                this->X_ = 2;
             }
         }
     }
@@ -274,22 +274,22 @@ void Turtle::afterDraw()
 
 void Turtle::stompY(std::shared_ptr<Object> obj)
 {
-    if((life_ == 1) && (obj->typeOfObject == objectType::Mario) && (this->dx == 0))
+    if((life_ == 1) && (obj->typeOfObject == objectType::Mario) && (this->dx_ == 0))
     {
         std::cout << "Turte go on rampage\n";
         if(this->centerX() < obj->centerX())
         {
-            this->dx = -7;
+            this->dx_ = -7;
         }
         else
         {
-            this->dx = 7;
+            this->dx_ = 7;
         }
     }
-    else if((life_ == 1) && (obj->typeOfObject == objectType::Mario) && (this->dx != 0))
+    else if((life_ == 1) && (obj->typeOfObject == objectType::Mario) && (this->dx_ != 0))
     {
         std::cout << "Turte stop rampaging\n";
-        this->dx = 0;
+        this->dx_ = 0;
     }
 
     Object::stompY(obj);
@@ -298,7 +298,7 @@ void Turtle::stompY(std::shared_ptr<Object> obj)
 void Turtle::collideX(std::shared_ptr<Object> obj)
 {
     std::cout << "Turtle collided with: " << obj->getStringTypeOfObject() << std::endl;
-    if(life_ == 1 && this->dx != 0 && obj->moveable)
+    if(life_ == 1 && this->dx_ != 0 && obj->moveable)
     {
         std::cout << "Turtle killed " << obj->getStringTypeOfObject() << std::endl;
         return;

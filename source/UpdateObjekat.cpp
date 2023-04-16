@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 void Game::UpdateObjekat() // Checking for interactions
 {
@@ -12,15 +12,15 @@ void Game::UpdateObjekat() // Checking for interactions
 //
 //        int marioDirectionY;
 //        mario->testingY = mario->y;
-//        int marioEndPoint = mario->y + mario->dy; // endPoint in this iteration of verifying if and where Mario is going to hit
-//        if(mario->dy == 0)
+//        int marioEndPoint = mario->y + mario->dy_; // endPoint in this iteration of verifying if and where Mario is going to hit
+//        if(mario->dy_ == 0)
 //        {
 //            break;
 //            marioDirectionY = 0; // more like marioYDirection
 //        }
 //        else
 //        {
-//            marioDirection = mario->dy/abs(mario->dy); // -1 or +1, normirani vektor
+//            marioDirection = mario->dy_/abs(mario->dy_); // -1 or +1, normirani vektor
 //        }
 //
 //        do
@@ -54,26 +54,26 @@ void Game::UpdateObjekat() // Checking for interactions
 void Game::praviUpdate() // Updating position of objects relative to Mario and Mario
 {
 //    std::cout << "-----------------------------------------------------------\n";
-//    std::cout << "praviUpdate\nmario.dy: " << mario->dy << std::endl;
+//    std::cout << "praviUpdate\nmario.dy_: " << mario->dy_ << std::endl;
 //    std::cout << "-----------------------------------------------------------\n";
 
 //    static bool marioFocus = false;
 //    mario->testingY = mario->y;
     mario->projectY();
-//    std::cout << mario->y << " " << mario->dy << std::endl;
-    int totalDY = mario->dy;
-    int testDY = 0;
+//    std::cout << mario->y << " " << mario->dy_ << std::endl;
+    int totaldy_ = mario->dy_;
+    int testdy_ = 0;
     int directionY;
-    if(mario->dy == 0)
+    if(mario->dy_ == 0)
         directionY = 0;
     else
-        directionY = mario->dy/abs(mario->dy);
-    while(totalDY != testDY)
+        directionY = mario->dy_/abs(mario->dy_);
+    while(totaldy_ != testdy_)
     {
         if(mario->y < (VISINAPROZORA/2 - mario->height/2))
         {
-//            mario->ground -= testDY;
-//            initial_ground -= testDY;
+//            mario->ground -= testdy_;
+//            initial_ground -= testdy_;
 //            if(mario->y >= mario->ground)
 //            {
 //                int dist = mario->y - mario->ground;
@@ -84,7 +84,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //                if(test)
 //                    break;
 //            }
-//            initial_ground += testDY;
+//            initial_ground += testdy_;
             UpdatePositionOfObjects(0, directionY);
             if((background->height - background->y - initial_ground) < VISINAPROZORA)
             {
@@ -134,7 +134,7 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //                std::cout << "mario ne propada kroz zemlju\n";
 //                mario->y = mario->ground;
 //                mario->objectY = 1;
-//                mario->dy = 0;
+//                mario->dy_ = 0;
 //                break;
 //            }
         }
@@ -143,15 +143,15 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
             std::cout << "SOMETHIHG WENT WRONG!! opcija 3\n";
             system("pause");
         }
-        testDY += directionY;
+        testdy_ += directionY;
     }
-//    mario->dy += 3;
-    mario->nextDY();
-//    if(mario->dy < 0)
+//    mario->dy_ += 3;
+    mario->nextdy_();
+//    if(mario->dy_ < 0)
 //    {
 //        mario->setYState(Object::stateY::Up);
 //    }
-//    else if(mario->dy > 0)
+//    else if(mario->dy_ > 0)
 //    {
 //        mario->setYState(Object::stateY::Down);
 //    }
@@ -180,18 +180,18 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 
         el->moveYX();
 //        int testingObjectY = el->y;
-//        int directionY = el->dy/abs(el->dy);
-//        int endPointY = el->y + el->dy;
+//        int directionY = el->dy_/abs(el->dy_);
+//        int endPointY = el->y + el->dy_;
 //        while(testingObjectY != endPointY)
 //        {
 //            if((el->typeOfObject == QUESTIONMARK) && (el->y < el->startingY) && (el->flag))
 //            {
-//                el->dy += 2;
+//                el->dy_ += 2;
 //            }
 //            if((el->typeOfObject == QUESTIONMARK) && (el->y > el->startingY) && (el->flag))
 //            {
 ////            std::cout << "stop\n";
-//                el->dy = 0;
+//                el->dy_ = 0;
 //                el->y = el->startingY;
 //            }
 //            testingObjectY += directionY;
@@ -201,5 +201,5 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //        if(el->typeOfObject == FLOWER_ENEMY)
 //            std::cout << "flower_enemy.y: " << el->y << std::endl;
     }
-//    std::cout << "mario->y: " << mario->y << " mario->dy: " << mario->dy << std::endl;
+//    std::cout << "mario->y: " << mario->y << " mario->dy_: " << mario->dy_ << std::endl;
 }

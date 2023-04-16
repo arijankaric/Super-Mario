@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 void CALLBACK Game::PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime)
 {
@@ -12,6 +12,6 @@ void CALLBACK Game::PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWOR
         return;
     }
     std::cout << "PiranhaTimerDown/piranha is now going up" << std::endl;
-    flowerEnemy->dy = -3;
+    flowerEnemy->dy_ = -3;
     flowerEnemy->flag = true; // piranha is active
 }

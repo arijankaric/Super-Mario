@@ -1,4 +1,4 @@
-#include "Background.hpp"
+#include "../include/Background.hpp"
 
 Background::Background()
 {
@@ -21,13 +21,13 @@ Background::Background()
 //    return true;
 //}
 //
-//bool Background::checkTop(std::shared_ptr<Object> obj, int dy)
+//bool Background::checkTop(std::shared_ptr<Object> obj, int dy_)
 //{
 //    std::cout << "why is this being called\n";
 //    return true;
 //}
 //
-//bool Background::checkBottom(std::shared_ptr<Object> obj, int dy)
+//bool Background::checkBottom(std::shared_ptr<Object> obj, int dy_)
 //{
 //    std::cout << "why is this being called\n";
 //    return true;

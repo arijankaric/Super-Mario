@@ -301,3 +301,381 @@
 1663930649 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\updateobjekat.cpp
 	"Game.hpp"
 
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\background.cpp
+	"../include/Background.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\background.hpp
+	"distanceBetweenObjects.hpp"
+
+1663795256 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\distancebetweenobjects.hpp
+	"Object.hpp"
+	<math.h>
+
+1681641568 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\object.hpp
+	<windows.h>
+	<iostream>
+	"Global.hpp"
+
+1663672523 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\global.hpp
+	<memory>
+	<iostream>
+	<vector>
+	<algorithm>
+	<math.h>
+	<memory>
+	<iterator>
+	<utility>
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\coin.cpp
+	"../include/Coin.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\coin.hpp
+	"Background.hpp"
+
+1681637650 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\distancebetweenobjects.cpp
+	"../include/distanceBetweenObjects.hpp"
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\drawobjekat.cpp
+	"../include/Game.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\game.hpp
+	"Mario.hpp"
+	"Pipe.hpp"
+	"Goomba.hpp"
+	"QuestionBlock.hpp"
+	"Coin.hpp"
+	"FlowerEnemy.hpp"
+	"Ground.hpp"
+	"Turtle.hpp"
+
+1681642782 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\mario.hpp
+	"Background.hpp"
+	<windows.h>
+	<iostream>
+	<vector>
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\pipe.hpp
+	"Mario.hpp"
+
+1681641423 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\goomba.hpp
+	"Object.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\questionblock.hpp
+	"Mario.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\flowerenemy.hpp
+	"Mario.hpp"
+	"Fireball.hpp"
+	"Pipe.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\fireball.hpp
+	"Object.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\ground.hpp
+	"Mario.hpp"
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\turtle.hpp
+	"Object.hpp"
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\fireball.cpp
+	"../include/Fireball.hpp"
+
+1681641526 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\generateobjects.cpp
+	"../include/GenerateObjects.hpp"
+	<iostream>
+
+1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\generateobjects.hpp
+	<vector>
+	"Background.hpp"
+
+1652737782 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\global.cpp
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\flowerenemy.cpp
+	"../include/FlowerEnemy.hpp"
+
+1681641500 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\game.cpp
+	"../include/Game.hpp"
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\goomba.cpp
+	"../include/Goomba.hpp"
+
+1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\ground.cpp
+	"../include/Ground.hpp"
+
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+	"../include/Game.hpp"
+
+1681642940 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\mario.cpp
+	"../include/Mario.hpp"
+
+1681641680 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\object.cpp
+	"../include/distanceBetweenObjects.hpp"
+
+1681641656 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\pipe.cpp
+	"../include/Pipe.hpp"
+
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhatimerdown.cpp
+	"../include/Game.hpp"
+
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhatimerup.cpp
+	"../include/Game.hpp"
+
+1681637769 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\praviupdate.cpp
+	"../include/Game.hpp"
+
+1681641656 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\questionblock.cpp
+	"../include/QuestionBlock.hpp"
+	"../include/Coin.hpp"
+
+1681641680 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\turtle.cpp
+	"../include/Turtle.hpp"
+
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\updateobjekat.cpp
+	"../include/Game.hpp"
+
+1681639932 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\sampletest.cpp
+	"../tests/include/gtest/gtest.h"
+
+1681642373 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest.h
+	<cstddef>
+	<cstdint>
+	<iomanip>
+	<limits>
+	<memory>
+	<ostream>
+	<set>
+	<sstream>
+	<string>
+	<type_traits>
+	<vector>
+	"./gtest-assertion-result.h"
+	"./gtest-death-test.h"
+	"./gtest-matchers.h"
+	"./gtest-message.h"
+	"./gtest-param-test.h"
+	"./gtest-printers.h"
+	"./gtest-test-part.h"
+	"./gtest-typed-test.h"
+	"./gtest_pred_impl.h"
+	"./gtest_prod.h"
+	"./internal/gtest-internal.h"
+	"./internal/gtest-string.h"
+
+1681642058 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-assertion-result.h
+	<memory>
+	<ostream>
+	<string>
+	<type_traits>
+	"./gtest-message.h"
+	"./internal/gtest-port.h"
+
+1681642065 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-message.h
+	<limits>
+	<memory>
+	<ostream>
+	<sstream>
+	<string>
+	"./internal/gtest-port.h"
+
+1681642149 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-port.h
+	<ctype.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<cerrno>
+	<cstdint>
+	<iostream>
+	<limits>
+	<locale>
+	<memory>
+	<ostream>
+	<string>
+	<tuple>
+	<type_traits>
+	<vector>
+	<sys/stat.h>
+	<sys/types.h>
+	<AvailabilityMacros.h>
+	<TargetConditionals.h>
+	"./custom/gtest-port.h"
+	"./gtest-port-arch.h"
+	"absl/flags/declare.h"
+	"absl/flags/flag.h"
+	"absl/flags/reflection.h"
+	<direct.h>
+	<io.h>
+	<unistd.h>
+	<strings.h>
+	<unistd.h>
+	<android/api-level.h>
+	"absl/strings/string_view.h"
+	"re2/re2.h"
+	<regex.h>
+	<typeinfo>
+	<pthread.h>
+	<time.h>
+	<condition_variable>
+	<mutex>
+	"absl/types/any.h"
+	<any>
+	"absl/types/optional.h"
+	<optional>
+	"absl/strings/string_view.h"
+	<string_view>
+	"absl/types/variant.h"
+	<variant>
+
+1681313337 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\custom\gtest-port.h
+
+1681313337 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-port-arch.h
+	<winapifamily.h>
+	<TargetConditionals.h>
+
+1681642159 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-death-test.h
+	"./internal/gtest-death-test-internal.h"
+
+1681642183 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-death-test-internal.h
+	<stdio.h>
+	<memory>
+	<string>
+	"../gtest-matchers.h"
+	"./gtest-internal.h"
+
+1681642196 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-matchers.h
+	<atomic>
+	<functional>
+	<memory>
+	<ostream>
+	<string>
+	<type_traits>
+	"./gtest-printers.h"
+	"./internal/gtest-internal.h"
+	"./internal/gtest-port.h"
+
+1681642276 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-printers.h
+	<functional>
+	<memory>
+	<ostream>
+	<sstream>
+	<string>
+	<tuple>
+	<type_traits>
+	<typeinfo>
+	<utility>
+	<vector>
+	"./internal/gtest-internal.h"
+	"./internal/gtest-port.h"
+	"./internal/custom/gtest-printers.h"
+
+1681642242 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-internal.h
+	"./gtest-port.h"
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<stdexcept>
+	<ctype.h>
+	<float.h>
+	<string.h>
+	<cstdint>
+	<functional>
+	<iomanip>
+	<limits>
+	<map>
+	<set>
+	<string>
+	<type_traits>
+	<utility>
+	<vector>
+	"../gtest-message.h"
+	"./gtest-filepath.h"
+	"./gtest-string.h"
+	"./gtest-type-util.h"
+
+1681642251 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-filepath.h
+	<string>
+	"./gtest-port.h"
+	"./gtest-string.h"
+
+1681642260 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-string.h
+	<mem.h>
+	<string.h>
+	<cstdint>
+	<sstream>
+	<string>
+	"./gtest-port.h"
+
+1681642267 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-type-util.h
+	<string>
+	<type_traits>
+	<typeinfo>
+	"./gtest-port.h"
+	<cxxabi.h>
+	<acxx_demangle.h>
+
+1681313337 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\custom\gtest-printers.h
+
+1681642301 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-param-test.h
+	<iterator>
+	<utility>
+	"./internal/gtest-internal.h"
+	"./internal/gtest-param-util.h"
+	"./internal/gtest-port.h"
+
+1681642318 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\internal\gtest-param-util.h
+	<ctype.h>
+	<cassert>
+	<iterator>
+	<map>
+	<memory>
+	<ostream>
+	<set>
+	<string>
+	<tuple>
+	<type_traits>
+	<utility>
+	<vector>
+	"../gtest-printers.h"
+	"../gtest-test-part.h"
+	"./gtest-internal.h"
+	"./gtest-port.h"
+
+1681642329 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-test-part.h
+	<iosfwd>
+	<ostream>
+	<string>
+	<vector>
+	"./internal/gtest-internal.h"
+	"./internal/gtest-string.h"
+
+1681642340 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest-typed-test.h
+	"./internal/gtest-internal.h"
+	"./internal/gtest-port.h"
+	"./internal/gtest-type-util.h"
+
+1681642351 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest_pred_impl.h
+	"./gtest-assertion-result.h"
+	"./internal/gtest-internal.h"
+	"./internal/gtest-port.h"
+
+1681313337 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest_prod.h
+
+1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhattimerup.cpp
+	"../include/PiranhaTimerUp.hpp"
+
+1657027624 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\piranhatimerup.hpp
+	<windows.h>
+	<iostream>
+	"Mario.hpp"
+
+1681638737 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_main.cpp
+	"../tests/include/gtest/gtest.h"
+
+1681643190 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_mario.cpp
+	"../tests/include/gtest/gtest.h"
+	"../include/Mario.hpp"
+

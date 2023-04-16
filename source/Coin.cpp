@@ -1,41 +1,41 @@
-#include "Coin.hpp"
+#include "../include/Coin.hpp"
 
-Coin::Coin(int x, int y, bool dying)
+Coin::Coin(int x, int y, bool dy_ing)
 {
 //    this->objects = obj;
 //    this->movingObjects = movObj;
     this->x = x;
     this->y = y;
-    this->dy = -15;
+    this->dy_ = -15;
     this->hbm_ = coin;
     this->hbmMask_ = coinMask;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/5;
     this->height = bitmap.bmHeight;
-    this->max = 5;
-    this->X = 0;
-    if(dying)
+    this->maxCycles_ = 5;
+    this->X_ = 0;
+    if(dy_ing)
         this->cyclesUntilDeath = 10;
     this->typeOfObject = objectType::Coin;
 }
 
 
-bool Coin::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool Coin::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
     return false;
 }
 
-bool Coin::checkRight(std::shared_ptr<Object> obj, int dx)
+bool Coin::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
     return false;
 }
 
-bool Coin::checkTop(std::shared_ptr<Object> obj, int dy)
+bool Coin::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
     return false;
 }
 
-bool Coin::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool Coin::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
     return false;
 }
@@ -47,11 +47,11 @@ void Coin::moveYX()
 }
 void Coin::moveY()
 {
-    this->y += this->dy;
+    this->y += this->dy_;
 }
 void Coin::moveX()
 {
-    this->x += this->dx;
+    this->x += this->dx_;
 }
 
 const std::string Coin::getStringTypeOfObject() const
@@ -63,13 +63,13 @@ void Coin::afterDraw()
 {
     if(this->cycles == (this->cyclesUntilDeath/2))
     {
-        this->dy = -this->dy;
+        this->dy_ = -this->dy_;
     }
 
     if(this->cyclesUntilDeath != -1)
     {
         ++this->cycles;
-        std::cout << "Only dying coin should print this: " << this->cycles << std::endl;
+        std::cout << "Only dy_ing coin should print this: " << this->cycles << std::endl;
     }
 
     if(this->cyclesUntilDeath == this->cycles)

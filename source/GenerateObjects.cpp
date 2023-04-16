@@ -1,4 +1,4 @@
-#include "GenerateObjects.hpp"
+#include "../include/GenerateObjects.hpp"
 #include <iostream>
 
 bool outline = true;
@@ -10,13 +10,13 @@ bool outline = true;
 //    newObj->typeOfObject = QUESTIONMARK;
 //    newObj->x = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = 0;
+//    newObj->dy_ = 0;
 //    newObj->hbm_ = questionMark;
 //    newObj->hbmMask_ = questionMarkMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth/4;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 4;
+//    newObj->maxCycles_ = 4;
 //    newObj->X = 0;
 //    newObj->leftSide = 0;
 //    newObj->rightSide = 14;
@@ -34,10 +34,10 @@ bool outline = true;
 //    newObj->typeOfObject = PIPE;
 //    newObj->x = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = 0;
+//    newObj->dy_ = 0;
 //    newObj->hbm_ = NULL; // don't animate, implement no animation
 //    newObj->hbmMask_ = NULL;
-//    newObj->max = 1;
+//    newObj->maxCycles_ = 1;
 //    newObj->X = 0;
 //    newObj->leftSide = 17;
 //    newObj->rightSide = 48;
@@ -50,21 +50,21 @@ bool outline = true;
 //    return newObj;
 //}
 //
-//void GenerateCoin(int x, int y, bool dying)
+//void GenerateCoin(int x, int y, bool dy_ing)
 //{
 //    BITMAP bitmap;
 //    Object* newObj = new Object();
 //    newObj->x = x;
 //    newObj->y = y;
-//    newObj->dy = -15;
+//    newObj->dy_ = -15;
 //    newObj->hbm_ = coin;
 //    newObj->hbmMask_ = coinMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth/5;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 5;
+//    newObj->maxCycles_ = 5;
 //    newObj->X = 0;
-//    if(dying)
+//    if(dy_ing)
 //        newObj->cyclesUntilDeath = 10;
 //    if(outline)
 //        newObj->outline = true;
@@ -79,13 +79,13 @@ bool outline = true;
 //    newObj->typeOfObject = FLOWER_ENEMY;
 //    newObj->x = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = -3;
+//    newObj->dy_ = -3;
 //    newObj->hbm_ = enemy;
 //    newObj->hbmMask_ = enemyMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth/6;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 2;
+//    newObj->maxCycles_ = 2;
 //    newObj->X = 0;
 //    newObj->leftSide = -1;
 //    newObj->rightSide = 17;
@@ -106,14 +106,14 @@ bool outline = true;
 //    newObj->typeOfObject = GOOMBA;
 //    newObj->x = newObj->startingX = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = 0;
-//    newObj->dx = -3;
+//    newObj->dy_ = 0;
+//    newObj->dx_ = -3;
 //    newObj->hbm_ = goomba;
 //    newObj->hbmMask_ = goombaMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth/4;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 2;
+//    newObj->maxCycles_ = 2;
 //    newObj->X = 0;
 //    if(outline)
 //        newObj->outline = true;
@@ -128,14 +128,14 @@ bool outline = true;
 //    newObj->typeOfObject = HILL;
 //    newObj->x = newObj->startingX = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = 0;
-//    newObj->dx = 0;
+//    newObj->dy_ = 0;
+//    newObj->dx_ = 0;
 //    newObj->hbm_ = goomba;
 //    newObj->hbmMask_ = goombaMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 0;
+//    newObj->maxCycles_ = 0;
 //    newObj->X = 0;
 //    newObj->cyclesForChange = 0;
 //    objects.push_back(newObj);
@@ -148,14 +148,14 @@ bool outline = true;
 //    newObj->typeOfObject = GROUND;
 //    newObj->x = newObj->startingX = x;
 //    newObj->startingY = newObj->y = y;
-//    newObj->dy = 0;
-//    newObj->dx = 0;
+//    newObj->dy_ = 0;
+//    newObj->dx_ = 0;
 //    newObj->hbm_ = ground;
 //    newObj->hbmMask_ = groundMask;
 //    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 //    newObj->width = bitmap.bmWidth;
 //    newObj->height = bitmap.bmHeight;
-//    newObj->max = 1;
+//    newObj->maxCycles_ = 1;
 //    newObj->X = 0;
 //    newObj->bottomSide = 20;
 //    newObj->topSide = 0;
@@ -191,13 +191,13 @@ bool outline = true;
 ////    newObj->typeOfObject = GROUND;
 ////    newObj->x = 30;
 ////    newObj->startingY = newObj->y = 263;
-////    newObj->dy = 0;
+////    newObj->dy_ = 0;
 ////    newObj->hbm_ = (HBITMAP) LoadImage(NULL, "ground.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 ////    newObj->hbmMask_ = (HBITMAP) LoadImage(NULL, "groundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 ////    GetObject(newObj->hbm_, sizeof(BITMAP), &bitmap);
 ////    newObj->width = bitmap.bmWidth;
 ////    newObj->height = bitmap.bmHeight;
-////    newObj->max = 0;
+////    newObj->maxCycles_ = 0;
 ////    newObj->X = 0;
 ////    objects.push_back(newObj);
 //}

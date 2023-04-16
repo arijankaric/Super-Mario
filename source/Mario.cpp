@@ -1,22 +1,22 @@
-#include "Mario.hpp"
+#include "../include/Mario.hpp"
 
 Mario::Mario(int x, int y)
 {
-    this->Y = 0;
+    this->Y_ = 0;
     this->cyclesForChange = 3;
-    this->max = 2;
+    this->maxCycles_ = 2;
 //    this->objects = obj;
 //    this->movingObjects = movObj;
-    this->hbm_ = hbmMarioWalkRight;
-    this->hbmMask_ = hbmMarioWalkRightMask;
+    this->hbm_ = hbmMarioWalkRight_;
+    this->hbmMask_ = hbmMarioWalkRightMask_;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
     this->typeOfObject = objectType::Mario;
     this->width = bitmap.bmWidth/3;
     this->height = bitmap.bmHeight/10;
     this->y = 239;
     this->x = SIRINAPROZORA/2-this->width/2;
-    this->dx = 0;
-    this->dy = 0;
+    this->dx_ = 0;
+    this->dy_ = 0;
     this->bottomSide = 25;
     this->leftSide = 12;
     this->rightSide = 24;
@@ -68,14 +68,14 @@ Mario::Mario(int x, int y)
 
 void Mario::setWalkLeft()
 {
-    this->hbm_ = this->hbmMarioWalkLeft;
-    this->hbmMask_ = this->hbmMarioWalkLeftMask;
+    this->hbm_ = this->hbmMarioWalkLeft_;
+    this->hbmMask_ = this->hbmMarioWalkLeftMask_;
 }
 
 void Mario::setWalkRight()
 {
-    this->hbm_ = this->hbmMarioWalkRight;
-    this->hbmMask_ = this->hbmMarioWalkRightMask;
+    this->hbm_ = this->hbmMarioWalkRight_;
+    this->hbmMask_ = this->hbmMarioWalkRightMask_;
 }
 
 void Mario::setYState(stateY st)
@@ -86,8 +86,8 @@ void Mario::setYState(stateY st)
         hit = false;
         if(stX_ == stateX::Neutral)
         {
-            Y = 0;
-            max = 1;
+            this->Y_ = 0;
+            this->maxCycles_ = 1;
         }
     }
     else if(st == stateY::Up)
@@ -95,21 +95,21 @@ void Mario::setYState(stateY st)
         if(stY_ == stateY::Neutral)
         {
             std::cout << "inicijalni skok\n";
-            dy = -16;
+            this->dy_ = -16;
         }
         else
         {
-            if((dy < 0) && (dy > -8) && !hit)
+            if((this->dy_ < 0) && (this->dy_ > -8) && !hit)
             {
                 hit = true;
                 std::cout << "sekundarni skok: " << y + bottomSide << " " << ground << std::endl;
-                dy -= 10;
+                this->dy_ -= 10;
             }
             return;
         }
-        Y = 3;
-        X = 0;
-        max = 1;
+        this->Y_ = 3;
+        this->X_ = 0;
+        this->maxCycles_ = 1;
     }
     else // Down je isto kao i up?
     {
@@ -124,29 +124,29 @@ void Mario::setXState(stateX st)
 
     if(stateX::Left == st)
     {
-        Y = 1;
-        max = 2;
-        dx = -5;
+        this->Y_ = 1;
+        this->maxCycles_ = 2;
+        this->dx_ = -5;
         setWalkLeft();
     }
     else if(stateX::Right == st)
     {
-        Y = 1;
-        max = 2;
-        dx = 5;
+        this->Y_ = 1;
+        this->maxCycles_ = 2;
+        this->dx_ = 5;
         setWalkRight();
     }
     else // Neutral
     {
-        Y = 0;
-        max = 1;
+        this->Y_ = 0;
+        this->maxCycles_ = 1;
         // setNeutral();?
     }
 }
 
-void Mario::nextDY(void)
+void Mario::nextdy_(void)
 {
-    this->dy += 3;
+    this->dy_ += 3;
 }
 //
 //void Mario::nextY(void)
@@ -154,7 +154,7 @@ void Mario::nextDY(void)
 ////    this->moveY();?
 //}
 
-//void Mario::changeY(int dy)
+//void Mario::changeY(int dy_)
 //{
 //    if()
 //}
@@ -164,9 +164,9 @@ void Mario::decreaseLife()
     std::cout << "Mario lifes before: " << life_ << std::endl;
     if(--life_ == 0)
     {
-        this->X = 0;
-        this->Y = 0;
-        this->max = 1;
+        this->X_ = 0;
+        this->Y_ = 0;
+        this->maxCycles_ = 1;
         hbm_ = hbmMarioDead_;
         hbmMask_ = hbmMarioDeadMask_;
         GetObject(hbm_, sizeof(BITMAP), &bitmap);
@@ -174,7 +174,7 @@ void Mario::decreaseLife()
         this->height = bitmap.bmHeight;
         this->x += 10;
 //        this->y -= 3;
-        this->dy = -14;
+        this->dy_ = -14;
         this->leftSide -= 13;
         this->rightSide -= 8;
         this->bottomSide -= 9;
@@ -259,14 +259,14 @@ void Mario::projectY()
 //    if(this->cycles == (5))
 //    {
 //        std::cout << "Mario has changed direction, even in his death Mario remains agile. AGILE ENVIRONMENTS FTW!! : D\n";
-//        this->dy = -this->dy;
+//        this->dy_ = -this->dy_;
 //    }
 
 
     if(this->cyclesUntilDeath != -1)
     {
         ++this->cycles;
-//        std::cout << "Only dying Mario should print this: " << this->cycles << std::endl;
+//        std::cout << "Only dy_ing Mario should print this: " << this->cycles << std::endl;
     }
 
 //    std::cout << "marioTop: " << this->getTop() << std::endl;
@@ -276,5 +276,36 @@ void Mario::projectY()
     {
 //        this->removeDeadObject(shared_from_this());
     }
+}
+
+HBITMAP Mario::getHbmMarioWalkLeft() {
+    return this->hbmMarioWalkLeft_;
+}
+HBITMAP Mario::getHbmMarioWalkLeftMask() {
+    return this->hbmMarioWalkLeftMask_;
+}
+HBITMAP Mario::getHbmMarioWalkRight() {
+    return this->hbmMarioWalkRight_;
+}
+HBITMAP Mario::getHbmMarioWalkRightMask() {
+    return this->hbmMarioWalkRightMask_;
+}
+HBITMAP Mario::getHbmMarioDead() {
+    return this->hbmMarioDead_;
+}
+HBITMAP Mario::getHbmMarioDeadMask() {
+    return this->hbmMarioDeadMask_;
+}
+HBITMAP Mario::getHbmSuperMarioWalkLeft() {
+    return this->hbmMarioWalkLeft_;
+}
+HBITMAP Mario::getHbmSuperMarioWalkLeftMask() {
+    return this->hbmMarioWalkLeftMask_;
+}
+HBITMAP Mario::getHbmSuperMarioWalkRight() {
+    return this->hbmMarioWalkRight_;
+}
+HBITMAP Mario::getHbmSuperMarioWalkRightMask() {
+    return this->hbmMarioWalkRightMask_;
 }
 

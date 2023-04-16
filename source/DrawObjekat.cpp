@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "../include/Game.hpp"
 
 void Game::DrawObjekat(HDC hdc)
 {
@@ -35,27 +35,27 @@ void Game::DrawObjekat(HDC hdc)
 
         if(mario->stX_ != Object::stateX::Neutral)
         {
-            mario->max = 2;
+            mario->maxCycles_ = 2;
         }
         else
         {
-            mario->max = 1;
+            mario->maxCycles_ = 1;
         }
 
-        if(mario->Y != 3)
+        if(mario->Y_ != 3)
         {
             if(++el->changeCycles == el->cyclesForChange)
             {
-                ++el->X;
+                ++el->X_;
                 el->changeCycles = 0;
             }
-            if(mario->X == 2)
-                mario->X = 0;
+            if(mario->X_ == 2)
+                mario->X_ = 0;
         }
 
-        if(el->X >= el->max)
+        if(el->X_ >= el->maxCycles_)
         {
-            el->X = 0;
+            el->X_ = 0;
         }
     }
 

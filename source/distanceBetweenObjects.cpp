@@ -1,4 +1,4 @@
-#include "distanceBetweenObjects.hpp"
+#include "../include/distanceBetweenObjects.hpp"
 
 int distanceBetweenObjects(const Object* obj1, const Object* obj2) noexcept
 {

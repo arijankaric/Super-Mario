@@ -25,8 +25,8 @@ private:
 //    const int ID_TIMER_PIRANHA_UP = 0;
 //    const int ID_TIMER_PIRANHA_DOWN = 1;
 
-    const int DX = 1;
-    const int DY = 1;
+    const int dx_ = 1;
+    const int dy_ = 1;
 
     RECT* clientRect;
     void GenerateObjects();
@@ -38,7 +38,7 @@ public:
     void UpdateObjekat();
     void Render(void);
     void DrawObjekat(HDC hdc);
-    bool UpdatePositionOfObjects(int dx, int dy);
+    bool UpdatePositionOfObjects(int dx_, int dy_);
     void praviUpdate();
     void CALLBACK PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
     void CALLBACK PiranhaTimerUp(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);

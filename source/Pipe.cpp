@@ -1,4 +1,4 @@
-#include "Pipe.hpp"
+#include "../include/Pipe.hpp"
 
 Pipe::Pipe(int x, int y)
 {
@@ -7,12 +7,12 @@ Pipe::Pipe(int x, int y)
     this->typeOfObject = objectType::Pipe;
     this->x = x;
     this->startingY = this->y = y;
-    this->dy = 0;
-    this->dx = 0;
+    this->dy_ = 0;
+    this->dx_ = 0;
     this->hbm_ = NULL; // don't animate, implement no animation
     this->hbmMask_ = NULL;
-    this->max = 1;
-    this->X = 0;
+    this->maxCycles_ = 1;
+    this->X_ = 0;
     this->leftSide = 17;
     this->rightSide = 48;
     this->topSide = -23;
@@ -20,9 +20,9 @@ Pipe::Pipe(int x, int y)
     this->moveable = false;
 }
 
-bool Pipe::checkLeft(std::shared_ptr<Object> obj, int dx)
+bool Pipe::checkLeft(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx > 0))
+    if(checkYRange(obj) && checkXLeft(obj) && (obj->dx_ > 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit left side of pipe\n";
@@ -34,9 +34,9 @@ bool Pipe::checkLeft(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Pipe::checkRight(std::shared_ptr<Object> obj, int dx)
+bool Pipe::checkRight(std::shared_ptr<Object> obj, int dx_)
 {
-    if(checkYRange(obj) && checkXRight(obj) && (obj->dx < 0))
+    if(checkYRange(obj) && checkXRight(obj) && (obj->dx_ < 0))
     {
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit right side of pipe\n";
@@ -48,12 +48,12 @@ bool Pipe::checkRight(std::shared_ptr<Object> obj, int dx)
     return false;
 }
 
-bool Pipe::checkTop(std::shared_ptr<Object> obj, int dy)
+bool Pipe::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
     if(checkYTop(obj) && checkXRange(obj))
     {
         obj->setYState(stateY::Neutral);
-//        obj->dy = obj->testingY - obj->y;
+//        obj->dy_ = obj->testingY - obj->y;
         obj->ground = obj->testingY + obj->bottomSide;
         std::cout << "----------------------------------\n";
         std::cout << Object::getStringTypeOfObject(obj) << " hit top side of pipe\n";
@@ -63,7 +63,7 @@ bool Pipe::checkTop(std::shared_ptr<Object> obj, int dy)
     return false;
 }
 
-bool Pipe::checkBottom(std::shared_ptr<Object> obj, int dy)
+bool Pipe::checkBottom(std::shared_ptr<Object> obj, int dy_)
 {
     if(checkYBottom(obj) && checkXRange(obj))
     {
