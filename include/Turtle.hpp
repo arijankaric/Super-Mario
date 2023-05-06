@@ -1,14 +1,20 @@
 #include "Object.hpp"
+#include "Image.hpp"
 
 class Turtle : public Object
 {
 private:
 
 public:
-    HBITMAP left = (HBITMAP) LoadImage(NULL, "turtleLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP leftMask = (HBITMAP) LoadImage(NULL, "turtleLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP right = (HBITMAP) LoadImage(NULL, "turtleRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP rightMask = (HBITMAP) LoadImage(NULL, "turtleRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image left_ = WrapperRAII::Image("\\resources\\turtleLeft.bmp");
+    WrapperRAII::Image leftMask_ = WrapperRAII::Image("\\resources\\turtleLeftBlack.bmp");
+    WrapperRAII::Image right_ = WrapperRAII::Image("\\resources\\turtleRight.bmp");
+    WrapperRAII::Image rightMask_ = WrapperRAII::Image("\\resources\\turtleRightBlack.bmp");
+
+    HBITMAP hbmLeft_ = left_.getHBitmap();
+    HBITMAP hbmLeftMask_ = leftMask_.getHBitmap();
+    HBITMAP hbmRight_ = right_.getHBitmap();
+    HBITMAP hbmRightMask_ = rightMask_.getHBitmap();
 
     Turtle(int x, int y);
 

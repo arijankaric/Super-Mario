@@ -1,10 +1,14 @@
 #include "Background.hpp"
+#include "./Image.hpp"
 
 class Coin : public Object
 {
 private:
-    HBITMAP coin = (HBITMAP) LoadImage(NULL, "Coin.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP coinMask = (HBITMAP) LoadImage(NULL, "CoinBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image Coin_ = WrapperRAII::Image("\\resources\\Coin.bmp");
+    WrapperRAII::Image CoinMask_ = WrapperRAII::Image("\\resources\\CoinBlack.bmp");
+
+    HBITMAP hbmCoin_ = Coin_.getHBitmap();
+    HBITMAP hbmCoinMask_ = CoinMask_.getHBitmap();
 public:
     Coin(int x, int y, bool dy_ing = false);
     bool checkBottom(std::shared_ptr<Object> obj, int dy_) override;

@@ -7,6 +7,7 @@ Game::Game()
     // dodaj samo goombe u movingObjects?
     Object::mario = mario;
     Object::objects = objects;
+    Object::newObjects = newObjects;
     GenerateObjects();
 }
 
@@ -188,7 +189,7 @@ void Game::Update(void)
     UpdateObjekat();
 }
 
-bool Game::UpdatePositionOfObjects(int dx_, int dy_) // relative to obj (for example Mario)
+void Game::UpdatePositionOfObjects(int dx_, int dy_) // relative to obj (for example Mario)
 {
     background->x += dx_;
     background->y += dy_;
@@ -258,42 +259,152 @@ bool Game::UpdatePositionOfObjects(int dx_, int dy_) // relative to obj (for exa
 
 void Game::GenerateObjects()
 {
-    std::shared_ptr<Object> objPtr = nullptr;
-    objects->push_back(std::make_shared<QuestionBlock>(176, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(193, 201));
-    objects->push_back(std::make_shared<QuestionBlock>(224, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(240, 153));
-    objects->push_back(std::make_shared<QuestionBlock>(416, 169));
-    objects->push_back(std::make_shared<QuestionBlock>(120, 201));
-    objPtr = std::make_shared<Pipe>(335, 240);
-    objects->push_back(std::make_shared<FlowerEnemy>(359, 221, objPtr, FlowerEnemy::flowerType::thrower));
-    objects->push_back(objPtr);
-    objects->push_back(std::make_shared<Ground>(25, 200));
-
-    objPtr = std::make_shared<Ground>(0, 264);
-    objPtr->rightSide = 600;
-    objPtr->leftSide = 0;
-    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
-    objects->push_back(objPtr);
-
-    objPtr = std::make_shared<Ground>(272, 185, true);
-    objPtr->rightSide = 47;
-    objPtr->leftSide = 0;
-    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
-    objects->push_back(objPtr);
-
-    objPtr = std::make_shared<Ground>(240, 215, true);
-    objPtr->rightSide = 47;
-    objPtr->leftSide = 0;
-    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
-    objects->push_back(objPtr);
+    const std::string configPath = "config.ini";
+    generateObjects(configPath);
+//    std::shared_ptr<Object> objPtr = nullptr;
+//    objects->push_back(std::make_shared<QuestionBlock>(176, 201));
+//    objects->push_back(std::make_shared<QuestionBlock>(193, 201));
+//    objects->push_back(std::make_shared<QuestionBlock>(224, 153));
+//    objects->push_back(std::make_shared<QuestionBlock>(240, 153));
+//    objects->push_back(std::make_shared<QuestionBlock>(416, 169));
+//    objects->push_back(std::make_shared<QuestionBlock>(120, 201));
+//    objPtr = std::make_shared<Pipe>(335, 240);
+//    objects->push_back(std::make_shared<FlowerEnemy>(359, 221, objPtr, FlowerEnemy::flowerType::thrower));
+//    objects->push_back(objPtr);
+//    objects->push_back(std::make_shared<Ground>(25, 200));
+//
+//    objPtr = std::make_shared<Ground>(0, 264);
+//    objPtr->rightSide = 600;
+//    objPtr->leftSide = 0;
+//    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
+//    objects->push_back(objPtr);
+//
+//    objPtr = std::make_shared<Ground>(272, 185, true);
+//    objPtr->rightSide = 47;
+//    objPtr->leftSide = 0;
+//    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
+//    objects->push_back(objPtr);
+//
+//    objPtr = std::make_shared<Ground>(240, 215, true);
+//    objPtr->rightSide = 47;
+//    objPtr->leftSide = 0;
+//    objPtr->hbm_ = objPtr->hbmMask_ = nullptr;
+//    objects->push_back(objPtr);
 
 //    objects->push_back(std::make_shared<Turtle>(245, 170));
 
 //    objects->push_back(std::make_shared<FlowerEnemy>(objects, movingObjects, 359, 221, (TIMERPROC)&PiranhaTimerUp, (TIMERPROC)&PiranhaTimerDown));
 
-    objects->push_back(std::make_shared<Goomba>(300, 250));
-    objects->push_back(std::make_shared<Turtle>(40, 235));
+//    objects->push_back(std::make_shared<Goomba>(300, 250));
+//    objects->push_back(std::make_shared<Turtle>(40, 235));
 //    objects->push_back(std::make_shared<Fireball>(mario->x, mario->y, -1, -1));
+}
+
+void Game::generateObjects(const std::string& configFile)
+{
+    std::ifstream input(configFile);
+    std::string line;
+    std::vector<ObjectArgs> objectArgs;
+
+    // Read the configuration file line by line
+    while (std::getline(input, line))
+    {
+        // Skip comments and empty lines
+        if (line.empty() || line[0] == '#')
+        {
+            continue;
+        }
+
+        // Parse the line into object type and arguments
+        std::istringstream iss(line);
+        std::string type;
+        std::string arg;
+        std::vector<std::string> args;
+
+        iss >> type;
+        if(type.back() == ',') type.pop_back();
+        while (iss >> arg)
+        {
+            if(arg.back() == ',') arg.pop_back();
+            args.push_back(arg);
+        }
+
+        // Store the object type and arguments
+        objectArgs.push_back({type, args});
+    }
+
+    // Generate objects from the parsed arguments
+    for (const auto& object : objectArgs)
+    {
+        std::shared_ptr<Object> objPtr = nullptr;
+        int x = std::stoi(object.args[0]);
+        int y = std::stoi(object.args[1]);
+
+        if (object.type == "question_block")
+        {
+            objects->push_back(std::make_shared<QuestionBlock>(x, y));
+        }
+        else if (object.type == "pipe")
+        {
+            objects->push_back(std::make_shared<Pipe>(x, y));
+        }
+        else if (object.type == "flower_enemy")
+        {
+            FlowerEnemy::flowerType type;
+            if(object.args[2] == "thrower") type = FlowerEnemy::flowerType::thrower;
+            else if(object.args[2] == "eater") type = FlowerEnemy::flowerType::eater;
+            objects->push_back(std::make_shared<FlowerEnemy>(x, y, objects->back(), type));
+        }
+        else if (object.type == "ground")
+        {
+            objPtr = std::make_shared<Ground>(x, y);
+            for(const auto& el : object.args) {
+                    std::cout << el << std::endl;
+            }
+            if(object.args.size() > 2)
+            {
+                if(object.args[2] == "true") objPtr = std::make_shared<Ground>(x, y, true);
+                else if(object.args[2] == "false") objPtr = std::make_shared<Ground>(x, y, false);
+                else std::cerr << "Error while parsing ground" << std::endl;
+            }
+            if(object.args.size() > 3)
+            {
+                objPtr->leftSide = std::stoi(object.args[3]);
+            }
+            if(object.args.size() > 4)
+            {
+                objPtr->rightSide = std::stoi(object.args[4]);
+            }
+            if(object.args.size() > 5)
+            {
+                objPtr->topSide = std::stoi(object.args[5]);
+            }
+            if(object.args.size() > 6)
+            {
+                objPtr->bottomSide = std::stoi(object.args[6]);
+            }
+            if(object.args.size() > 7)
+            {
+                if(object.args[7] == "true") objPtr->hbm_ = objPtr->hbmMask_ = nullptr;;
+            }
+            if(object.args.size() > 8)
+            {
+                std::cerr << "Too many arguments while parsing ground" << std::endl;
+            }
+            objects->push_back(objPtr);
+        }
+        else if(object.type == "goomba")
+        {
+            objects->push_back(std::make_shared<Goomba>(x, y));
+        }
+        else if(object.type == "turtle")
+        {
+            objects->push_back(std::make_shared<Turtle>(x, y));
+        }
+        else
+        {
+            std::cerr << "Unrecognized object name: " << object.type << std::endl;
+        }
+    }
 }
 

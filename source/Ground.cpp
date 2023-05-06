@@ -7,8 +7,8 @@ Ground::Ground(int x, int y, int falseGround)
     this->startingY = this->y = y;
     this->dy_ = 0;
     this->dx_ = 0;
-    this->hbm_ = ground;
-    this->hbmMask_ = ground;
+    this->hbm_ = hbmGround_;
+    this->hbmMask_ = hbmGround_;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth;
     this->height = bitmap.bmHeight;
@@ -29,7 +29,7 @@ bool Ground::checkBottom(std::shared_ptr<Object> obj, int dy_)
         return false;
     }
 
-    if(obj->typeOfObject == this->objectType::Fireball)
+    if(obj->phases)
     {
         return false;
     }
@@ -52,7 +52,7 @@ bool Ground::checkBottom(std::shared_ptr<Object> obj, int dy_)
 
 bool Ground::checkTop(std::shared_ptr<Object> obj, int dy_)
 {
-    if(obj->typeOfObject == this->objectType::Fireball)
+    if(obj->phases)
     {
         return false;
     }
@@ -82,7 +82,7 @@ bool Ground::checkLeft(std::shared_ptr<Object> obj, int dx_)
         return false;
     }
 
-    if(obj->typeOfObject == this->objectType::Fireball)
+    if(obj->phases)
     {
         return false;
     }
@@ -104,7 +104,7 @@ bool Ground::checkRight(std::shared_ptr<Object> obj, int dx_)
         return false;
     }
 
-    if(obj->typeOfObject == this->objectType::Fireball)
+    if(obj->phases)
     {
         return false;
     }

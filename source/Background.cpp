@@ -2,9 +2,9 @@
 
 Background::Background()
 {
-    this->hbm_ = (HBITMAP) LoadImage(NULL, "background.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    this->hbmMask_ = (HBITMAP) LoadImage(NULL, "backgroundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    GetObject(hbm_, sizeof(BITMAP), &bitmap);
+    this->hbm_ = hbmBackground_;
+    this->hbmMask_ = hbmBackground_;
+    GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth;
     this->height = bitmap.bmHeight;
     this->x = 0;

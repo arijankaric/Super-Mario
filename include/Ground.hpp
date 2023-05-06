@@ -4,9 +4,11 @@
 class Ground : public Object
 {
 private:
-//    BITMAP bitmap;
-    HBITMAP ground = (HBITMAP) LoadImage(NULL, "ground.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP groundMask = (HBITMAP) LoadImage(NULL, "groundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image ground_ = WrapperRAII::Image("\\resources\\ground.bmp");
+    WrapperRAII::Image groundMask_ = WrapperRAII::Image("\\resources\\groundBlack.bmp");
+
+    HBITMAP hbmGround_ = ground_.getHBitmap();
+    HBITMAP hbmGroundMask_ = groundMask_.getHBitmap();
 public:
     Ground(int x, int y, int falseGround = false);
     bool checkBottom(std::shared_ptr<Object> obj, int dy_) override;

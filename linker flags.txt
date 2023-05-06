@@ -1,1 +1,2 @@
--lgtest -lgtest_main -lpthread
+-lgtest -lgtest_main -lpthread // for running tests
+-fsanitize=address -fno-omit-frame-pointer // for running asan

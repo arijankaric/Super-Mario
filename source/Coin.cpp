@@ -7,8 +7,8 @@ Coin::Coin(int x, int y, bool dy_ing)
     this->x = x;
     this->y = y;
     this->dy_ = -15;
-    this->hbm_ = coin;
-    this->hbmMask_ = coinMask;
+    this->hbm_ = hbmCoin_;
+    this->hbmMask_ = hbmCoinMask_;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/5;
     this->height = bitmap.bmHeight;

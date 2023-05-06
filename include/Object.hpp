@@ -85,6 +85,7 @@ public:
     std::shared_ptr<Object> compareObj = nullptr;
     using vektorObjekata = std::shared_ptr<std::vector<std::shared_ptr<Object>>>;
     static vektorObjekata objects;
+    static vektorObjekata newObjects;
 //    vektorObjekata movingObjects;
 
 
@@ -131,5 +132,7 @@ public:
     virtual void decreaseLife();
     virtual void increaseLife();
     DWORD timeOfDeath = 0;
+    bool isSprite() const; // tells us if the object should have a sprite assigned(hbm_/hbmMask_)
+    bool phases = false; // tells us if the object phases through other object, for instance a fireball phases through all objects except through Mario, since Mario is it's enemy
 
 };

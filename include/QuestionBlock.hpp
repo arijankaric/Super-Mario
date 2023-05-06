@@ -4,10 +4,15 @@
 class QuestionBlock : public Object
 {
 private:
-    HBITMAP questionMark = (HBITMAP) LoadImage(NULL, "QuestionMarkBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP questionMarkMask = (HBITMAP) LoadImage(NULL, "QuestionMark.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP emptyQuestionMark = (HBITMAP) LoadImage(NULL, "emptyQuestionBlockBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP emptyQuestionMarkMask = (HBITMAP) LoadImage(NULL, "emptyQuestionBlock.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image questionMark_ = WrapperRAII::Image("\\resources\\QuestionMarkBlack.bmp");
+    WrapperRAII::Image questionMarkMask_ = WrapperRAII::Image("\\resources\\QuestionMark.bmp");
+    WrapperRAII::Image emptyQuestionMark_ = WrapperRAII::Image("\\resources\\emptyQuestionBlockBlack.bmp");
+    WrapperRAII::Image emptyQuestionMarkMask_ = WrapperRAII::Image("\\resources\\emptyQuestionBlock.bmp");
+
+    HBITMAP hbmQuestionMark_ = questionMark_.getHBitmap();
+    HBITMAP hbmQuestionMarkMask_ = questionMarkMask_.getHBitmap();
+    HBITMAP hbmEmptyQuestionMark_ = emptyQuestionMark_.getHBitmap();
+    HBITMAP hbmEmptyQuestionMarkMask_ = emptyQuestionMarkMask_.getHBitmap();
 
 public:
     QuestionBlock(int x, int y);

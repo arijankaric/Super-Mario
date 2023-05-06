@@ -8,8 +8,9 @@ Fireball::Fireball(int x, int y, int dx_, int dy_)
 //    std::cout << "dx_: " << dx_ << std::endl;
 //    std::cout << "dy_: " << dy_ << std::endl;
 //    system("pause");
-    this->hbm_ = (HBITMAP) LoadImage(NULL, "fireball.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    this->hbmMask_ = (HBITMAP) LoadImage(NULL, "fireballBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
+    this->hbm_ = this->hbmFireball_;
+    this->hbmMask_ = this->hbmFireballMask_;
     this->maxCycles_ = 4;
     this->cyclesForChange = 3;
     this->typeOfObject = objectType::Fireball;
@@ -27,6 +28,7 @@ Fireball::Fireball(int x, int y, int dx_, int dy_)
     this->topSide = 3;
     this->ground = 320;
     this->cyclesUntilDeath = -2;
+    this->phases = true;
 //    this->deadly = true;
 }
 

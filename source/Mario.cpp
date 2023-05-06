@@ -186,13 +186,13 @@ void Mario::decreaseLife()
 
 void Mario::decreaseMarioState(void)
 {
-    if(st_ == marioState::small)
+    if(st_ == marioState::regular)
     {
         decreaseLife();
     }
     else if(st_ == marioState::super)
     {
-        st_ = marioState::small;
+        st_ = marioState::regular;
     }
     else if(st_ == marioState::raccoon)
     {

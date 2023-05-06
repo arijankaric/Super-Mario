@@ -8,23 +8,50 @@
 #include <windows.h>
 #include <iostream>
 #include "../include/Game.hpp"
+#include <DbgHelp.h>
 
-const int ID_TIMER = 1;
-const int IDT_TIMER3 = 50;
+
+// const int ID_TIMER = 1;
+// const int IDT_TIMER3 = 50;
 const int ID_TIMER_PIRANHA_UP = 0;
 const int ID_TIMER_PIRANHA_DOWN = 1;
 
-const int dx_ = 1;
-const int dy_ = 1;
+// const int dx_ = 1;
+// const int dy_ = 1;
 
 std::shared_ptr<Object> Object::mario = nullptr;
 Object::vektorObjekata Object::objects = nullptr;
+Object::vektorObjekata Object::newObjects = nullptr;
 
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
+
+//void GenerateStackTrace(EXCEPTION_POINTERS* pExceptionPtrs)
+//{
+//    HANDLE hProcess = GetCurrentProcess();
+//    HANDLE hThread = GetCurrentThread();
+//    CONTEXT* pContext = pExceptionPtrs->ContextRecord;
+//
+//    STACKFRAME64 stackFrame = { 0 };
+//    stackFrame.AddrPC.Mode = AddrModeFlat;
+//    stackFrame.AddrFrame.Mode = AddrModeFlat;
+//    stackFrame.AddrStack.Mode = AddrModeFlat;
+//    stackFrame.AddrPC.Offset = pContext->Rip;
+//    stackFrame.AddrFrame.Offset = pContext->Rbp;
+//    stackFrame.AddrStack.Offset = pContext->Rsp;
+//
+//    while (StackWalk64(
+//                IMAGE_FILE_MACHINE_I386, hProcess, hThread, &stackFrame,
+//                pContext, NULL, SymFunctionTableAccess64, SymGetModuleBase64, NULL))
+//    {
+//        // Output the stack frame information.
+//        printf("0x%p\n", (void*)stackFrame.AddrPC.Offset);
+//    }
+//}
+
 
 int WINAPI WinMain (HINSTANCE hThisInstance,
                     HINSTANCE hPrevInstance,
@@ -79,6 +106,13 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
 //    Initalize(hwnd);
     DWORD vrijeme_pocetak;
+
+//    SetUnhandledExceptionFilter([](EXCEPTION_POINTERS* pExceptionPtrs) -> LONG
+//    {
+//        GenerateStackTrace(pExceptionPtrs);
+//        return EXCEPTION_EXECUTE_HANDLER;
+//    });
+
 
     /* Run the message loop. It will run until GetMessage() returns 0 */
     while (TRUE)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+#include <sstream>
 #include "Mario.hpp"
 #include "Pipe.hpp"
 #include "Goomba.hpp"
@@ -13,8 +15,10 @@ class Game
 {
 private:
 //    using vektorObjekata = std::shared_ptr<std::vector<std::shared_ptr<Object>>>;
-    Object::vektorObjekata objects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // static or soon to die objects that we don't care if they collide or not
-    Object::vektorObjekata movingObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // for example Mario and Goombas/Turtles
+    Object::vektorObjekata objects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // static or soon to die objects that we don't care if they collide or not (old idea)
+    Object::vektorObjekata movingObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // for example Mario and Goombas/Turtles (old idea)
+    Object::vektorObjekata newObjects = std::make_shared<std::vector<std::shared_ptr<Object>>>(); // new objects to be added to objects in next iteration of update such as fireball
+
     std::shared_ptr<Object> mario = std::make_shared<Mario>();
     std::shared_ptr<Object> background = std::make_shared<Background>();
     int initial_ground = 164;
@@ -30,6 +34,12 @@ private:
 
     RECT* clientRect;
     void GenerateObjects();
+    void generateObjects(const std::string& configFile);
+    struct ObjectArgs
+    {
+        std::string type;
+        std::vector<std::string> args;
+    };
 public:
     HWND hwnd;
     Game();
@@ -38,8 +48,10 @@ public:
     void UpdateObjekat();
     void Render(void);
     void DrawObjekat(HDC hdc);
-    bool UpdatePositionOfObjects(int dx_, int dy_);
+    void UpdatePositionOfObjects(int dx_, int dy_);
     void praviUpdate();
-    void CALLBACK PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
-    void CALLBACK PiranhaTimerUp(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
+    void PiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
+    void PiranhaTimerUp(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
+    static void CALLBACK StaticPiranhaTimerDown(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
+    static void CALLBACK StaticPiranhaTimerUp(HWND hwnd, UINT message, UINT idTimer, DWORD dwTime);
 };

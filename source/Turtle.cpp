@@ -5,10 +5,8 @@ Turtle::Turtle(int x, int y)
 //    this->objects = obj;
 //    this->movingObjects = movObj;
     this->life_ = 2;
-    this->hbm_ = left;
-    this->hbmMask_ = leftMask;
-    std::cout << "hbm: " << hbm_ << std::endl;
-    std::cout << "hbmMask_: " << hbmMask_ << std::endl;
+    this->hbm_ = hbmLeft_;
+    this->hbmMask_ = hbmLeftMask_;
     this->maxCycles_ = 2;
     this->cyclesForChange = 3;
     this->typeOfObject = objectType::Turtle;
@@ -203,13 +201,13 @@ void Turtle::draw(HDC hdcBuffer, HDC hdcMem)
 {
     if(this->dx_ > 0)
     {
-        hbm_ = right;
-        hbmMask_ = rightMask;
+        hbm_ = hbmRight_;
+        hbmMask_ = hbmRightMask_;
     }
     else if(this->dx_ < 0)
     {
-        hbm_ = left;
-        hbmMask_ = leftMask;
+        hbm_ = hbmLeft_;
+        hbmMask_ = hbmLeftMask_;
     }
     else
     {
@@ -232,7 +230,7 @@ void Turtle::afterDraw()
     {
         Object::afterDraw();
     }
-    else if((this->life_ == 1))
+    else if(this->life_ == 1)
     {
         if(this->dx_ == 0)
         {

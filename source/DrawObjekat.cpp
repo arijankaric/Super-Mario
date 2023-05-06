@@ -12,14 +12,20 @@ void Game::DrawObjekat(HDC hdc)
 
     HDC hdcMem = CreateCompatibleDC(hdc);
     HBITMAP hbmOld1 = (HBITMAP) SelectObject(hdcMem, background->hbm_);
+    DeleteObject(hbmOld1);
     BitBlt(hdcBuffer, 0, 0, background->width, background->height, hdcMem, background->x, background->y, SRCCOPY);
 
-//    SelectObject(hdc, hbmOld1);
+    // SelectObject(hdc, hbmOld1);
 
     for(std::shared_ptr<Object>& el : *objects)
     {
-        if((el->hbm_ == nullptr) || (el->hbmMask_ == nullptr))
+        if(el->isSprite() && ((el->hbm_ == nullptr) || (el->hbmMask_ == nullptr)))
+        {
+            std::cout << "Printing object that doesn't have a hbm_ or a hbmMask_ but should have" << std::endl;
+            std::cout << el->getStringTypeOfObject() << std::endl;
             continue;
+        }
+
 
         el->draw(hdcBuffer, hdcMem);
         el->afterDraw();

@@ -5,8 +5,9 @@ Goomba::Goomba(int x, int y)
     this->typeOfObject = objectType::Goomba;
 //    this->objects = obj;
 //    this->movingObjects = movObj;
-    this->hbm_ = (HBITMAP) LoadImage(NULL, "goomba.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    this->hbmMask_ = (HBITMAP) LoadImage(NULL, "goombaBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    this->hbm_ = hbmGoomba_;
+    this->hbmMask_ = hbmGoombaMask_;
+
     this->maxCycles_ = 2;
     this->cyclesForChange = 3;
     GetObject(hbm_, sizeof(BITMAP), &bitmap);
@@ -132,8 +133,10 @@ void Goomba::decreaseLife()
     {
         --life_;
         this->X_ = 2;
-        timeOfDeath = GetTickCount();
+        if(life_ == 0) timeOfDeath = GetTickCount();
     }
+    else if(life_ < 0) std::cout << "Goomba life <0, why?" << std::endl;
+    else std::cout << "Someone tried to decreaseLife on a dead goomba, why and who?" << std::endl;
 }
 
 void Goomba::afterDraw()

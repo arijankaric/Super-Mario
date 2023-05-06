@@ -53,6 +53,13 @@ void Game::UpdateObjekat() // Checking for interactions
 
 void Game::praviUpdate() // Updating position of objects relative to Mario and Mario
 {
+    for (auto it = (*newObjects).begin(); it != (*newObjects).end(); ++it)
+    {
+        // Move the shared pointer from source to destination
+        (*objects).push_back(std::move(*it));
+    }
+    (*newObjects).clear();
+
 //    std::cout << "-----------------------------------------------------------\n";
 //    std::cout << "praviUpdate\nmario.dy_: " << mario->dy_ << std::endl;
 //    std::cout << "-----------------------------------------------------------\n";
@@ -165,20 +172,43 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 //    std::cout << "-------------------------------------------------------------\n";
 //    std::cout << "Nakon updatea mario->y: " << mario->y << std::endl;
 //    std::cout << "-------------------------------------------------------------\n";
-    for(const std::shared_ptr<Object>& el : *objects)
-    {
-        if((el == mario) || (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
-        {
-            continue;
-        }
 
+    for (auto it = (*objects).begin(); it != (*objects).end();)
+    {
+        auto el = *it;
         if((el->cyclesUntilDeath == -2) && (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
         {
-            el->removeDeadObject(el);
-            return;
+            it = (*objects).erase(it); // erase returns the next iterator
+            continue;
+        }
+        else if((el == mario) || (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
+        {
+            ++it;
+            continue;
+        }
+        else
+        {
+            el->moveYX();
+            ++it;
         }
 
-        el->moveYX();
+    }
+
+
+//    for(const std::shared_ptr<Object>& el : *objects)
+//    {
+//        if((el == mario) || (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
+//        {
+//            continue;
+//        }
+//
+//        if((el->cyclesUntilDeath == -2) && (distanceBetweenObjects(mario.get(), el.get()) > VISINAPROZORA))
+//        {
+//            el->removeDeadObject(el);
+//            continue;
+//        }
+//
+//        el->moveYX();
 //        int testingObjectY = el->y;
 //        int directionY = el->dy_/abs(el->dy_);
 //        int endPointY = el->y + el->dy_;
@@ -200,6 +230,6 @@ void Game::praviUpdate() // Updating position of objects relative to Mario and M
 
 //        if(el->typeOfObject == FLOWER_ENEMY)
 //            std::cout << "flower_enemy.y: " << el->y << std::endl;
-    }
+//    }
 //    std::cout << "mario->y: " << mario->y << " mario->dy_: " << mario->dy_ << std::endl;
 }

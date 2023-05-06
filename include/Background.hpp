@@ -1,12 +1,16 @@
 #pragma once
 
 #include "distanceBetweenObjects.hpp"
+#include "./Image.hpp"
 
 class Background : public Object
 {
 private:
-//    HBITMAP hbmBackground = (HBITMAP) LoadImage(NULL, "background.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-//    HBITMAP hbmBackgroundMask = (HBITMAP) LoadImage(NULL, "backgroundBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image background_ = WrapperRAII::Image("\\resources\\background.bmp");
+    WrapperRAII::Image backgroundMask_ = WrapperRAII::Image("\\resources\\backgroundBlack.bmp");
+
+    HBITMAP hbmBackground_ = background_.getHBitmap();
+    HBITMAP hbmBackgroundMask_ = backgroundMask_.getHBitmap();
 public:
     Background();
 //    bool checkBottom(std::shared_ptr<Object> obj, int dy_) override;

@@ -2,5 +2,5 @@
 
 TEST(MyTestSuite, MyTestCase) {
   // Test code here
-  EXPECT_EQ(2 + 2, 5);
+  EXPECT_EQ(2 + 2, 4);
 }

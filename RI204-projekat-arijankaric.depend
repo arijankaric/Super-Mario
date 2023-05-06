@@ -301,17 +301,18 @@
 1663930649 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\updateobjekat.cpp
 	"Game.hpp"
 
-1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\background.cpp
+1682013403 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\background.cpp
 	"../include/Background.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\background.hpp
+1681992924 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\background.hpp
 	"distanceBetweenObjects.hpp"
+	"./Image.hpp"
 
 1663795256 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\distancebetweenobjects.hpp
 	"Object.hpp"
 	<math.h>
 
-1681641568 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\object.hpp
+1683412249 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\object.hpp
 	<windows.h>
 	<iostream>
 	"Global.hpp"
@@ -326,19 +327,22 @@
 	<iterator>
 	<utility>
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\coin.cpp
+1681991557 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\coin.cpp
 	"../include/Coin.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\coin.hpp
+1681991543 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\coin.hpp
 	"Background.hpp"
+	"./Image.hpp"
 
 1681637650 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\distancebetweenobjects.cpp
 	"../include/distanceBetweenObjects.hpp"
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\drawobjekat.cpp
+1683363684 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\drawobjekat.cpp
 	"../include/Game.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\game.hpp
+1683412440 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\game.hpp
+	<fstream>
+	<sstream>
 	"Mario.hpp"
 	"Pipe.hpp"
 	"Goomba.hpp"
@@ -348,8 +352,9 @@
 	"Ground.hpp"
 	"Turtle.hpp"
 
-1681642782 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\mario.hpp
+1681990847 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\mario.hpp
 	"Background.hpp"
+	"./Image.hpp"
 	<windows.h>
 	<iostream>
 	<vector>
@@ -357,27 +362,30 @@
 1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\pipe.hpp
 	"Mario.hpp"
 
-1681641423 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\goomba.hpp
-	"Object.hpp"
+1681992587 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\goomba.hpp
+	"./Object.hpp"
+	"./Image.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\questionblock.hpp
+1681992045 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\questionblock.hpp
 	"Mario.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\flowerenemy.hpp
+1683412635 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\flowerenemy.hpp
 	"Mario.hpp"
 	"Fireball.hpp"
 	"Pipe.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\fireball.hpp
+1681992568 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\fireball.hpp
 	"Object.hpp"
+	"./Image.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\ground.hpp
+1681992723 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\ground.hpp
 	"Mario.hpp"
 
-1681641424 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\turtle.hpp
+1681991686 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\turtle.hpp
 	"Object.hpp"
+	"Image.hpp"
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\fireball.cpp
+1683410927 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\fireball.cpp
 	"../include/Fireball.hpp"
 
 1681641526 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\generateobjects.cpp
@@ -390,34 +398,35 @@
 
 1652737782 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\global.cpp
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\flowerenemy.cpp
+1683367831 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\flowerenemy.cpp
 	"../include/FlowerEnemy.hpp"
 
-1681641500 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\game.cpp
+1683413602 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\game.cpp
 	"../include/Game.hpp"
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\goomba.cpp
+1683378871 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\goomba.cpp
 	"../include/Goomba.hpp"
 
-1681641603 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\ground.cpp
+1683411035 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\ground.cpp
 	"../include/Ground.hpp"
 
-1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\main.cpp
+1683413365 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\main.cpp
 	<tchar.h>
 	<windows.h>
 	<iostream>
 	"../include/Game.hpp"
+	<DbgHelp.h>
 
-1681642940 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\mario.cpp
+1681992870 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\mario.cpp
 	"../include/Mario.hpp"
 
-1681641680 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\object.cpp
+1683379258 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\object.cpp
 	"../include/distanceBetweenObjects.hpp"
 
 1681641656 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\pipe.cpp
 	"../include/Pipe.hpp"
 
-1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhatimerdown.cpp
+1681923396 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhatimerdown.cpp
 	"../include/Game.hpp"
 
 1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\piranhatimerup.cpp
@@ -426,17 +435,17 @@
 1681637769 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\praviupdate.cpp
 	"../include/Game.hpp"
 
-1681641656 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\questionblock.cpp
+1681992626 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\questionblock.cpp
 	"../include/QuestionBlock.hpp"
 	"../include/Coin.hpp"
 
-1681641680 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\turtle.cpp
+1683363814 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\turtle.cpp
 	"../include/Turtle.hpp"
 
-1681641424 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\updateobjekat.cpp
+1683413936 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\updateobjekat.cpp
 	"../include/Game.hpp"
 
-1681639932 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\sampletest.cpp
+1681643398 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\sampletest.cpp
 	"../tests/include/gtest/gtest.h"
 
 1681642373 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\include\gtest\gtest.h
@@ -672,10 +681,24 @@
 	<iostream>
 	"Mario.hpp"
 
-1681638737 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_main.cpp
-	"../tests/include/gtest/gtest.h"
+1682013709 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_main.cpp
 
-1681643190 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_mario.cpp
+1681643214 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_mario.cpp
 	"../tests/include/gtest/gtest.h"
 	"../include/Mario.hpp"
+
+1681988014 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\loadimage.hpp
+	<windows.h>
+
+1681989823 c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\include\image.hpp
+	<windows.h>
+	<iostream>
+	<stdio.h>
+
+1683363798 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\source\image.cpp
+	"../include/Image.hpp"
+
+1683412973 source:c:\users\arija\desktop\faks\wp\ri204-projekat-arijankaric\tests\test_object.cpp
+	"../tests/include/gtest/gtest.h"
+	"../include/Object.hpp"
 

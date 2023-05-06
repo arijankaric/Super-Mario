@@ -7,11 +7,15 @@
 class FlowerEnemy : public Object
 {
 private:
-//    BITMAP bitmap;
-    HBITMAP left = (HBITMAP) LoadImage(NULL, "flowerEnemyLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP leftMask = (HBITMAP) LoadImage(NULL, "flowerEnemyLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP right = (HBITMAP) LoadImage(NULL, "flowerEnemyRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP rightMask = (HBITMAP) LoadImage(NULL, "flowerEnemyRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image Left_ = WrapperRAII::Image("\\resources\\flowerEnemyLeft.bmp");
+    WrapperRAII::Image LeftMask_ = WrapperRAII::Image("\\resources\\flowerEnemyLeftBlack.bmp");
+    WrapperRAII::Image Right_ = WrapperRAII::Image("\\resources\\flowerEnemyRight.bmp");
+    WrapperRAII::Image RightMask_ = WrapperRAII::Image("\\resources\\flowerEnemyRightBlack.bmp");
+
+    HBITMAP hbmLeft_ = Left_.getHBitmap();
+    HBITMAP hbmLeftMask_ = LeftMask_.getHBitmap();
+    HBITMAP hbmRight_ = Right_.getHBitmap();
+    HBITMAP hbmRightMask_ = Right_.getHBitmap();
 public:
     enum class flowerType{eater, thrower};
     FlowerEnemy(int x, int y, TIMERPROC upFunc, TIMERPROC downFunc);

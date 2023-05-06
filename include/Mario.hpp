@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Background.hpp"
+#include "./Image.hpp"
 #include <windows.h>
 #include <iostream>
 #include <vector>
@@ -8,20 +9,31 @@
 class Mario : public Object
 {
 private:
-    HBITMAP hbmMarioWalkLeft_ = (HBITMAP) LoadImage(NULL, "SmallMarioLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkLeftMask_ = (HBITMAP) LoadImage(NULL, "SmallMarioLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkRight_ = (HBITMAP) LoadImage(NULL, "SmallMarioRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioWalkRightMask_ = (HBITMAP) LoadImage(NULL, "SmallMarioRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioDead_ = (HBITMAP) LoadImage(NULL, "marioDead.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmMarioDeadMask_ = (HBITMAP) LoadImage(NULL, "marioDeadBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmSuperMarioWalkLeft_ = (HBITMAP) LoadImage(NULL, "superMarioLeft.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmSuperMarioWalkLeftMask_ = (HBITMAP) LoadImage(NULL, "superMarioLeftBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmSuperMarioWalkRight_ = (HBITMAP) LoadImage(NULL, "superMarioRight.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    HBITMAP hbmSuperMarioWalkRightMask_ = (HBITMAP) LoadImage(NULL, "superMarioRightBlack.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    WrapperRAII::Image MarioDeadMask_ = WrapperRAII::Image("\\resources\\marioDeadBlack.bmp");
+    WrapperRAII::Image MarioWalkLeft_ = WrapperRAII::Image("\\resources\\SmallMarioLeft.bmp");
+    WrapperRAII::Image MarioWalkLeftMask_ = WrapperRAII::Image("\\resources\\SmallMarioLeftBlack.bmp");
+    WrapperRAII::Image MarioWalkRight_ = WrapperRAII::Image("\\resources\\SmallMarioRight.bmp");
+    WrapperRAII::Image MarioWalkRightMask_ = WrapperRAII::Image("\\resources\\SmallMarioRightBlack.bmp");
+    WrapperRAII::Image MarioDead_ = WrapperRAII::Image("\\resources\\marioDead.bmp");
+    WrapperRAII::Image SuperMarioWalkLeft_ = WrapperRAII::Image("\\resources\\superMarioLeft.bmp");
+    WrapperRAII::Image SuperMarioWalkLeftMask_ = WrapperRAII::Image("\\resources\\superMarioLeftBlack.bmp");
+    WrapperRAII::Image SuperMarioWalkRight_ = WrapperRAII::Image("\\resources\\superMarioRight.bmp");
+    WrapperRAII::Image SuperMarioWalkRightMask_ = WrapperRAII::Image("\\resources\\superMarioRightBlack.bmp");
+
+    HBITMAP hbmMarioWalkLeft_ = MarioWalkLeft_.getHBitmap();
+    HBITMAP hbmMarioWalkLeftMask_ = MarioWalkLeftMask_.getHBitmap();
+    HBITMAP hbmMarioWalkRight_ = MarioWalkRight_.getHBitmap();
+    HBITMAP hbmMarioWalkRightMask_ = MarioWalkRightMask_.getHBitmap();
+    HBITMAP hbmMarioDead_ = MarioDead_.getHBitmap();
+    HBITMAP hbmMarioDeadMask_ = (HBITMAP) MarioDeadMask_.getHBitmap();
+    HBITMAP hbmSuperMarioWalkLeft_ = SuperMarioWalkLeft_.getHBitmap();
+    HBITMAP hbmSuperMarioWalkLeftMask_ = SuperMarioWalkLeftMask_.getHBitmap();
+    HBITMAP hbmSuperMarioWalkRight_ = SuperMarioWalkRight_.getHBitmap();
+    HBITMAP hbmSuperMarioWalkRightMask_ = SuperMarioWalkRightMask_.getHBitmap();
 public:
     Mario(int x = 0, int y = 0);
-    enum class marioState{small, super, raccoon, sparkling};
-    marioState st_ = marioState::small;
+    enum class marioState{regular, super, raccoon, sparkling};
+    marioState st_ = marioState::regular;
     void decreaseMarioState(void);
     void setMarioState(marioState st);
 //    bool checkBottom(std::shared_ptr<Object> obj) override;

@@ -10,8 +10,8 @@ FlowerEnemy::FlowerEnemy(int x, int y, TIMERPROC upFunc, TIMERPROC downFunc)
     this->x = x;
     this->startingY = this->y = y;
     this->dy_ = -3;
-    this->hbm_ = left;
-    this->hbmMask_ = leftMask;
+    this->hbm_ = hbmLeft_;
+    this->hbmMask_ = hbmLeftMask_;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/6;
     this->height = bitmap.bmHeight;
@@ -37,8 +37,8 @@ FlowerEnemy::FlowerEnemy(int x, int y, std::shared_ptr<Object> parentPipe, flowe
     this->x = x;
     this->startingY = this->y = y;
     this->dy_ = -3;
-    this->hbm_ = left;
-    this->hbmMask_ = leftMask;
+    this->hbm_ = hbmLeft_;
+    this->hbmMask_ = hbmLeftMask_;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/6;
     this->height = bitmap.bmHeight;
@@ -154,11 +154,9 @@ void FlowerEnemy::moveYX()
         if(typeOfFlowerEnemy == flowerType::thrower)
         {
             std::cout << "new fireball in direction x: " << this->direction_.first << " direction y: " << this->direction_.second << std::endl;
-            objects->push_back(std::make_shared<Fireball>(this->x + this->leftSide, this->y + this->topSide, this->direction_.first, this->direction_.second));
+            newObjects->push_back(std::make_shared<Fireball>(this->x + this->leftSide, this->y + this->topSide, this->direction_.first, this->direction_.second));
         }
-
     }
-
     else if((this->y == this->startingY - 38) && ((GetTickCount() - vrijeme_pocetak) > 3000))
     {
         this->dy_ = 3;
@@ -173,8 +171,6 @@ void FlowerEnemy::moveYX()
         vrijeme_pocetak = GetTickCount();
 //        SetTimer(hwnd, (UINT_PTR)this, 4500, downFunc_);
 //        std::cout << "DownTimer" << std::endl;
-
-
     }
     else if((this->y == this->startingY) && ((GetTickCount() - vrijeme_pocetak) > 3000) && (mario->ground != this->parentPipe_->getTop()) && (distanceBetweenObjects(mario.get(), this->parentPipe_.get()) > 80))
     {
@@ -238,26 +234,26 @@ void FlowerEnemy::getDirection(int quadrant)
     {
     case 1:
         this->X_ = 5;
-        this->hbm_ = right;
-        this->hbmMask_ = right;
+        this->hbm_ = hbmRight_;
+        this->hbmMask_ = hbmRight_;
         this->direction_ = std::pair<int, int>(1, -1);
         break;
     case 2:
         this->X_ = 5;
-        this->hbm_ = left;
-        this->hbmMask_ = left;
+        this->hbm_ = hbmLeft_;
+        this->hbmMask_ = hbmLeft_;
         this->direction_ = std::pair<int, int>(-1, -1);
         break;
     case 3:
         this->X_ = 3;
-        this->hbm_ = left;
-        this->hbmMask_ = leftMask;
+        this->hbm_ = hbmLeft_;
+        this->hbmMask_ = hbmLeftMask_;
         this->direction_ = std::pair<int, int>(-1, 1);
         break;
     case 4:
         this->X_ = 3;
-        this->hbm_ = right;
-        this->hbmMask_ = rightMask;
+        this->hbm_ = hbmRight_;
+        this->hbmMask_ = hbmRightMask_;
         this->direction_ = std::pair<int, int>(1, 1);
         break;
     default:

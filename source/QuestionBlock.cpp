@@ -9,8 +9,8 @@ QuestionBlock::QuestionBlock(int x, int y)
     this->x = x;
     this->startingY = this->y = y;
     this->dy_ = 0;
-    this->hbm_ = questionMark;
-    this->hbmMask_ = questionMarkMask;
+    this->hbm_ = hbmQuestionMark_;
+    this->hbmMask_ = hbmQuestionMarkMask_;
     GetObject(this->hbm_, sizeof(BITMAP), &bitmap);
     this->width = bitmap.bmWidth/4;
     this->height = bitmap.bmHeight;
@@ -43,8 +43,8 @@ bool QuestionBlock::checkBottom(std::shared_ptr<Object> obj, int dy_)
             this->dy_ = -8;
             this->flag = true;
 //                    this->startingY = this->y;
-            this->hbm_ = emptyQuestionMark;
-            this->hbmMask_ = emptyQuestionMarkMask;
+            this->hbm_ = hbmEmptyQuestionMark_;
+            this->hbmMask_ = hbmEmptyQuestionMarkMask_;
             this->maxCycles_ = 1;
             objects->push_back(std::make_shared<Coin>(this->x, this->y, true));
         }

@@ -12,7 +12,7 @@ bool Object::checkY(std::shared_ptr<Object> obj, int dy_) // checkYFuture, napra
 
 Object::~Object()
 {
-    std::cout << "Object destructor: " << getStringTypeOfObject(this) << std::endl;
+    std::cout << "Object destructor: " << getStringTypeOfObject(this) << " x: " << x << " y: " << y << std::endl;
 }
 
 void Object::projectX()
@@ -62,7 +62,7 @@ void Object::projectX()
 //            std::cout << "shorted/cut\n";
             endPointX = this->testingX;
         }
-        if(collidedx_ && this->typeOfObject != objectType::Mario)
+        if(collidedx_ && (this->typeOfObject != objectType::Mario))
         {
 //            std::cout << "collided in projectX\n";
             endPointX = this->x + this->dx_;
@@ -497,7 +497,7 @@ bool Object::checkRightEdge(std::shared_ptr<Object> obj) const
 //        system("pause");
 //    }
 
-    if((obj->typeOfObject == objectType::Turtle) || (this->typeOfObject == objectType::Turtle) && ((obj->typeOfObject == objectType::Ground) ||(this->typeOfObject == objectType::Ground)))
+    if(((obj->typeOfObject == objectType::Turtle) || (this->typeOfObject == objectType::Turtle)) && ((obj->typeOfObject == objectType::Ground) ||(this->typeOfObject == objectType::Ground)))
     {
         std::cout << "this->getRight(): " << this->getRight() << "obj->getRight(): " << obj->getRight() << std::endl;
     }
@@ -578,13 +578,14 @@ int Object::getRight() const
 
 void Object::removeDeadObject(std::shared_ptr<Object> obj)
 {
-    std::cout << getStringTypeOfObject() << " died at x: " << this->x << " y: " << this->y << std::endl;
+    std::cout << obj->getStringTypeOfObject() << " died at x: " << obj->x << " y: " << obj->y << std::endl;
     objects->erase(partition(std::begin(*objects), end(*objects),
-                             [this, obj](const std::shared_ptr<Object> &x)
+                             [obj](const std::shared_ptr<Object> &x)
     {
         return (x.get() != obj.get());
     }),
     std::end(*objects));
+    std::cout << "does removeDeadObject return?\n";
 }
 
 void Object::afterDraw()
@@ -599,4 +600,11 @@ void Object::afterDraw()
     {
         this->X_ = 0;
     }
+}
+
+bool Object::isSprite() const
+{
+    if((this->typeOfObject == objectType::Ground)
+       || (this->typeOfObject == objectType::Pipe)) return false;
+    return false;
 }
